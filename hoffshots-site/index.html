@@ -404,74 +404,171 @@ nav.scrolled {
 }
 .filter-btn {
   font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-mute);
-  padding: 10px 22px;
-  border: 1px solid var(--iron-border);
-  transition: all 0.2s;
+  color: var(--text-mute); padding: 10px 22px;
+  border: 1px solid var(--iron-border); transition: all 0.2s;
 }
 .filter-btn:hover, .filter-btn.active {
   color: var(--oak); background: var(--amber); border-color: var(--amber);
 }
+
+/* Card grid — roomy, portrait cards */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
   padding: 0 48px 80px;
 }
+
+/* Card: image on top, panel below */
 .g-card {
-  position: relative; overflow: hidden;
-  aspect-ratio: 4/3;
-  background: var(--plank);
+  display: flex; flex-direction: column;
+  background: var(--iron-md);
+  border: 1px solid var(--iron-border);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  overflow: hidden;
 }
-.g-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s var(--ease); }
-.g-card:hover img { transform: scale(1.05); }
-.g-overlay {
+.g-card:hover {
+  border-color: rgba(200,133,42,0.45);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+/* Image zone — zoom-in cursor, click opens full preview */
+.g-img-wrap {
+  position: relative;
+  width: 100%; aspect-ratio: 3/2;
+  overflow: hidden; cursor: zoom-in;
+  background: var(--plank); flex-shrink: 0;
+}
+.g-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s var(--ease); display: block;
+}
+.g-card:hover .g-img-wrap img { transform: scale(1.05); }
+
+/* "Click to preview" hint — appears on hover */
+.g-zoom-hint {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(18,12,6,0.96) 0%, rgba(18,12,6,0.15) 48%, transparent 100%);
-  opacity: 0; transition: opacity 0.28s;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 20px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(18,12,6,0.45);
+  opacity: 0; transition: opacity 0.25s;
+  pointer-events: none;
 }
-.g-card:hover .g-overlay { opacity: 1; }
-.g-cat { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
-.g-title { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 400; color: var(--cream); margin-bottom: 14px; }
-.g-size-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 8px; }
-.g-select {
-  appearance: none;
-  width: 100%;
-  background: rgba(26,24,22,0.92);
-  border: 1px solid rgba(200,133,42,0.45);
+.g-card:hover .g-zoom-hint { opacity: 1; }
+.g-zoom-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--cream);
-  font-family: var(--ff-body); font-size: 0.82rem;
-  padding: 10px 36px 10px 14px;
+  padding: 10px 20px;
+  border: 1px solid rgba(245,239,228,0.5);
+  backdrop-filter: blur(4px);
+}
+.g-zoom-label::before { content: '⊕'; font-size: 1rem; color: var(--amber); }
+
+/* Category badge over image */
+.g-cat-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(18,12,6,0.82);
+  color: var(--amber);
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 5px 12px; backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Info + controls panel */
+.g-panel {
+  padding: 20px 20px 22px;
+  display: flex; flex-direction: column; gap: 12px;
+  border-top: 1px solid var(--iron-border);
+}
+.g-title {
+  font-family: var(--ff-display);
+  font-size: 1.25rem; font-weight: 400; color: var(--cream);
+}
+.g-desc {
+  font-size: 0.8rem; color: var(--text-mute); line-height: 1.75;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.g-size-label {
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mute); margin-bottom: 4px;
+}
+.g-select {
+  appearance: none; width: 100%;
+  background: var(--iron);
+  border: 1px solid var(--iron-border);
+  color: var(--cream);
+  font-family: var(--ff-body); font-size: 0.88rem;
+  padding: 12px 36px 12px 14px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C8852A'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 12px center;
-  margin-bottom: 10px;
+  transition: border-color 0.2s;
 }
 .g-select:focus { outline: none; border-color: var(--amber); }
 .g-select option { background: var(--iron-md); }
+.g-btn-row { display: flex; gap: 8px; }
 .g-add-btn {
-  width: 100%; padding: 11px;
+  flex: 1; padding: 13px;
   background: var(--amber); color: var(--oak);
-  font-family: var(--ff-body); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: var(--ff-body); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
   transition: background 0.2s;
 }
 .g-add-btn:hover { background: var(--amber-lt); }
+.g-preview-btn {
+  padding: 13px 16px;
+  border: 1px solid var(--iron-border); color: var(--text-mute);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.g-preview-btn:hover { border-color: var(--amber); color: var(--amber); }
 .g-custom-link {
-  display: block; text-align: center; margin-top: 8px;
-  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-mute); transition: color 0.2s;
-  padding: 6px;
+  display: block; text-align: center;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mute); transition: color 0.2s; padding: 4px;
 }
 .g-custom-link:hover { color: var(--amber); }
 
-/* ── LIGHTBOX ────────────────────────────────────────────── */
+/* ── IMAGE PREVIEW OVERLAY (full-view on click) ──────────── */
+.img-preview {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(10,7,4,0.96);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  cursor: zoom-out;
+}
+.img-preview.open { display: flex; animation: fadeUp 0.25s var(--ease); }
+.img-preview img {
+  max-width: min(90vw, 1200px);
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+  cursor: default;
+}
+.img-preview-close {
+  position: fixed; top: 20px; right: 24px;
+  font-size: 2rem; color: var(--text-mute);
+  padding: 10px; line-height: 1;
+  transition: color 0.2s; z-index: 401; cursor: pointer;
+}
+.img-preview-close:hover { color: var(--cream); }
+.img-preview-caption {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--ff-display); font-size: 1rem; font-style: italic;
+  color: var(--text-mute);
+  background: rgba(18,12,6,0.7);
+  padding: 8px 24px; backdrop-filter: blur(6px);
+  pointer-events: none; white-space: nowrap;
+}
+
+/* ── ORDER LIGHTBOX (size/wrap/buy) ──────────────────────── */
 .lightbox {
   position: fixed; inset: 0; z-index: 300;
   background: rgba(18,12,6,0.97);
   display: none; align-items: center; justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(10px);
+  padding: 24px; backdrop-filter: blur(10px);
 }
 .lightbox.open { display: flex; animation: fadeUp 0.3s var(--ease); }
 .lb-inner {
@@ -483,8 +580,19 @@ nav.scrolled {
   position: relative; overflow: hidden;
   background: var(--oak-md);
   display: flex; align-items: center; justify-content: center;
+  cursor: zoom-in;
 }
-.lb-img-wrap img { width: 100%; height: 100%; object-fit: contain; max-height: 80vh; }
+.lb-img-wrap img {
+  width: 100%; height: 100%; object-fit: contain; max-height: 80vh;
+  transition: transform 0.4s var(--ease);
+}
+.lb-img-wrap:hover img { transform: scale(1.03); }
+.lb-img-zoom-hint {
+  position: absolute; bottom: 14px; right: 14px;
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber); background: rgba(18,12,6,0.75);
+  padding: 5px 10px; pointer-events: none;
+}
 .lb-close {
   position: absolute; top: 16px; right: 16px; z-index: 10;
   font-size: 1.5rem; color: var(--text-mute); padding: 8px;
@@ -493,8 +601,7 @@ nav.scrolled {
 .lb-close:hover { color: var(--cream); }
 .lb-info {
   overflow-y: auto; padding-right: 4px;
-  display: flex; flex-direction: column; justify-content: flex-start;
-  padding-top: 8px;
+  display: flex; flex-direction: column; padding-top: 8px;
 }
 .lb-kicker { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
 .lb-title {
@@ -507,15 +614,10 @@ nav.scrolled {
 .lb-sizes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 .lb-size-opt {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 18px;
-  border: 1px solid var(--iron-border);
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  padding: 14px 18px; border: 1px solid var(--iron-border);
+  cursor: pointer; transition: border-color 0.2s, background 0.2s;
 }
-.lb-size-opt.selected {
-  border-color: var(--amber);
-  background: rgba(200,133,42,0.07);
-}
+.lb-size-opt.selected { border-color: var(--amber); background: rgba(200,133,42,0.07); }
 .lb-size-opt:hover { border-color: rgba(200,133,42,0.5); }
 .lb-size-name { font-size: 0.9rem; color: var(--cream); }
 .lb-size-detail { font-size: 0.72rem; color: var(--text-mute); }
@@ -805,8 +907,12 @@ footer.wood { padding: 56px 48px 28px; }
   .sec-head { padding: 56px 20px 24px; }
   .gallery-page-head { padding: 80px 20px 0; }
   .filter-row { padding: 20px 20px 28px; }
-  .gallery-grid { padding: 0 20px 60px; grid-template-columns: 1fr 1fr; }
-  .gallery-grid .g-card { aspect-ratio: 3/2; }
+  .gallery-grid { padding: 0 20px 60px; grid-template-columns: 1fr; gap: 20px; }
+  .g-zoom-hint { display: none; }
+  /* Image preview mobile */
+  .img-preview { padding: 0; }
+  .img-preview img { max-width: 100vw; max-height: 100vh; }
+  .img-preview-caption { font-size: 0.85rem; padding: 6px 16px; }
 
   /* Featured */
   .featured-grid {
@@ -929,6 +1035,13 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
+<!-- IMAGE FULL PREVIEW OVERLAY -->
+<div class="img-preview" id="img-preview" onclick="closePreview()">
+  <button class="img-preview-close" onclick="closePreview()">✕</button>
+  <img id="preview-img" src="" alt="" onclick="event.stopPropagation()">
+  <div class="img-preview-caption" id="preview-caption"></div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="lb-inner">
@@ -1023,8 +1136,8 @@ footer.wood { padding: 56px 48px 28px; }
     </div>
   </div>
   <div class="about-stats">
-    <div class="stat-cell wood"><div class="stat-num">250+</div><div class="stat-label">Original works</div></div>
-    <div class="stat-cell wood"><div class="stat-num">38</div><div class="stat-label">Countries photographed</div></div>
+    <div class="stat-cell wood"><div class="stat-num">24+</div><div class="stat-label">Original works</div></div>
+    <div class="stat-cell wood"><div class="stat-num">8</div><div class="stat-label">Countries photographed</div></div>
     <div class="stat-cell wood"><div class="stat-num">100%</div><div class="stat-label">Made to order</div></div>
   </div>
 </div>
@@ -1167,7 +1280,6 @@ footer.wood { padding: 56px 48px 28px; }
    Your manifest.json has all titles, categories, descriptions ready to copy in.
    ──────────────────────────────────────────────────────────── */
 const ART = [
-  
   {
     id:3, title:"Amsterdam",
     src:"sales_ready/Amsterdam.jpeg",
@@ -1223,7 +1335,7 @@ const ART = [
       {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
-   {
+  {
     id:10, title:"Haifa",
     src:"sales_ready/Haifa.jpeg",
     cat:"Urban",
@@ -1321,8 +1433,8 @@ const ART = [
       {label:'24×36"', detail:'Large · signature wall piece',    price:195},
       {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
-  },
- ];
+  }
+];
 
 /* ── STATE ───────────────────────────────────────────────── */
 let cart = [];
@@ -1404,19 +1516,28 @@ function buildGallery(filter) {
     const c = document.createElement('div');
     c.className = 'g-card';
     c.innerHTML = `
-      <img src="${art.src}" alt="${art.title}"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-           style="width:100%;height:100%;object-fit:cover" onclick="openLB(${art.id})">
-      <div class="art-ph" style="display:none">${art.title}</div>
-      <div class="g-overlay">
-        <div class="g-cat">${art.cat}</div>
+      <div class="g-img-wrap" onclick="openPreview(${art.id})">
+        <img src="${art.src}" alt="${art.title}"
+             onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
+        <div class="g-zoom-hint">
+          <span class="g-zoom-label">View Full Image</span>
+        </div>
+        <div class="g-cat-badge">${art.cat}</div>
+      </div>
+      <div class="g-panel">
         <div class="g-title">${art.title}</div>
-        <div class="g-size-label">Select Canvas Size</div>
-        <select class="g-select" id="gs-${art.id}" onclick="event.stopPropagation()">
-          ${art.sizes.map((s,i)=>`<option value="${i}">${s.label} — $${s.price}</option>`).join('')}
-        </select>
-        <button class="g-add-btn" onclick="event.stopPropagation();addFromGallery(${art.id})">Add to Cart</button>
-        <a href="#" class="g-custom-link" onclick="event.stopPropagation();nav('custom')">Commission a Custom Size</a>
+        <div class="g-desc">${art.desc}</div>
+        <div>
+          <div class="g-size-label">Canvas Size</div>
+          <select class="g-select" id="gs-${art.id}">
+            ${art.sizes.map((s,i)=>`<option value="${i}">${s.label} — $${s.price}</option>`).join('')}
+          </select>
+        </div>
+        <div class="g-btn-row">
+          <button class="g-add-btn" onclick="addFromGallery(${art.id})">Add to Cart</button>
+          <button class="g-preview-btn" onclick="openLB(${art.id})">Order Options</button>
+        </div>
+        <a href="#" class="g-custom-link" onclick="event.preventDefault();nav('custom')">Commission a Custom Size →</a>
       </div>`;
     grid.appendChild(c);
   });
@@ -1445,6 +1566,21 @@ function buildGallery(filter) {
     sel.appendChild(o);
   });
 })();
+
+/* ── IMAGE FULL PREVIEW ──────────────────────────────────── */
+function openPreview(id) {
+  const art = ART.find(a => a.id === id);
+  if (!art) return;
+  document.getElementById('preview-img').src = art.src;
+  document.getElementById('preview-img').alt = art.title;
+  document.getElementById('preview-caption').textContent = art.title + '  ·  ' + art.cat;
+  document.getElementById('img-preview').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePreview() {
+  document.getElementById('img-preview').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 /* ── LIGHTBOX ────────────────────────────────────────────── */
 function openLB(id) {
@@ -1627,6 +1763,7 @@ function showToast(msg) {
 /* ── ESC KEY ─────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    closePreview();
     closeLB();
     if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
     if (document.getElementById('mobile-nav').classList.contains('open')) toggleMobileNav();
