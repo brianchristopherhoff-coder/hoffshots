@@ -6,6 +6,7 @@
 <title>Hoffshots — The World, As I Found It</title>
 <meta name="description" content="Original photography and digital art printed on premium canvas. Architecture, landscape, and quiet scenes from around the world.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script src="https://js.stripe.com/v3/"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ── DESIGN TOKENS ───────────────────────────────────────── */
@@ -1204,27 +1205,31 @@ footer.wood { padding: 56px 48px 28px; }
         <div class="checkout-sec-title">Shipping Information</div>
         <div class="co-form">
           <div class="co-two">
-            <div class="form-field"><label class="form-label">First Name</label><input class="form-input" type="text"></div>
-            <div class="form-field"><label class="form-label">Last Name</label><input class="form-input" type="text"></div>
+            <div class="form-field"><label class="form-label">First Name</label><input class="form-input" id="co-fname" type="text" autocomplete="given-name"></div>
+            <div class="form-field"><label class="form-label">Last Name</label><input class="form-input" id="co-lname" type="text" autocomplete="family-name"></div>
           </div>
-          <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email"></div>
-          <div class="form-field"><label class="form-label">Street Address</label><input class="form-input" type="text"></div>
+          <div class="form-field"><label class="form-label">Email</label><input class="form-input" id="co-email" type="email" autocomplete="email"></div>
+          <div class="form-field"><label class="form-label">Street Address</label><input class="form-input" id="co-address" type="text" autocomplete="street-address"></div>
           <div class="co-two">
-            <div class="form-field"><label class="form-label">City</label><input class="form-input" type="text"></div>
-            <div class="form-field"><label class="form-label">State</label><input class="form-input" type="text"></div>
+            <div class="form-field"><label class="form-label">City</label><input class="form-input" id="co-city" type="text" autocomplete="address-level2"></div>
+            <div class="form-field"><label class="form-label">State</label><input class="form-input" id="co-state" type="text" autocomplete="address-level1"></div>
           </div>
           <div class="co-two">
-            <div class="form-field"><label class="form-label">ZIP</label><input class="form-input" type="text"></div>
-            <div class="form-field"><label class="form-label">Country</label><input class="form-input" type="text" value="United States"></div>
+            <div class="form-field"><label class="form-label">ZIP</label><input class="form-input" id="co-zip" type="text" autocomplete="postal-code"></div>
+            <div class="form-field"><label class="form-label">Country</label><input class="form-input" id="co-country" type="text" value="US" autocomplete="country"></div>
           </div>
           <div class="checkout-sec-title" style="margin-top:28px">Payment</div>
-          <div class="form-field"><label class="form-label">Card Number</label><input class="form-input" type="text" placeholder="·  ·  ·  ·    ·  ·  ·  ·    ·  ·  ·  ·    ·  ·  ·  ·"></div>
-          <div class="co-two">
-            <div class="form-field"><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM / YY"></div>
-            <div class="form-field"><label class="form-label">CVC</label><input class="form-input" type="text" placeholder="· · ·"></div>
+          <div class="form-field">
+            <label class="form-label">Card Details</label>
+            <div id="stripe-card-element" style="background:var(--iron-md);border:1px solid var(--iron-border);padding:14px 16px;min-height:46px;"></div>
+            <div id="stripe-card-errors" style="color:#e05a4a;font-size:0.78rem;margin-top:6px;min-height:18px;"></div>
           </div>
-          <div class="secure-note">🔒 Secured by Stripe. Card info is never stored on this server.</div>
-          <button class="pay-btn" onclick="processPayment()">Place Order — <span id="co-total-btn">$0.00</span></button>
+          <div class="secure-note">🔒 Secured by Stripe. Card info never touches our server.</div>
+          <div id="checkout-error" style="display:none;background:rgba(224,90,74,0.1);border:1px solid rgba(224,90,74,0.4);color:#e05a4a;padding:12px 16px;font-size:0.82rem;margin-top:8px;"></div>
+          <button class="pay-btn" id="pay-btn" onclick="processPayment()">
+            <span id="pay-btn-text">Place Order — <span id="co-total-btn">$0.00</span></span>
+            <span id="pay-btn-loading" style="display:none">Processing...</span>
+          </button>
         </div>
       </div>
       <div>
@@ -1237,6 +1242,18 @@ footer.wood { padding: 56px 48px 28px; }
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════ PAGE: CONFIRMED ══════════ -->
+<div id="page-confirmed" class="page">
+  <div style="max-width:600px;margin:0 auto;padding:120px 48px 80px;text-align:center;">
+    <div style="font-size:3rem;margin-bottom:24px;color:var(--amber)">✓</div>
+    <div class="sec-kicker" style="justify-content:center;margin-bottom:16px;">Order Confirmed</div>
+    <h2 class="sec-title" style="margin-bottom:20px;">Thank you for your order.</h2>
+    <p style="font-size:0.95rem;color:var(--text-mute);line-height:2.0;margin-bottom:32px;">Your canvas print is now in production. You'll receive a shipping confirmation with tracking within 3–5 business days.</p>
+    <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:40px;" id="confirm-email-note"></p>
+    <button class="btn-primary" onclick="nav('gallery')" style="margin:0 auto;">Continue Browsing</button>
   </div>
 </div>
 
@@ -1287,8 +1304,8 @@ const ART = [
     desc:"The city between moments — narrow facades leaning toward each other across cobblestone, a quiet street that hasn't decided what century it belongs to.",
     tags:["amsterdam","street","netherlands","urban","europe","travel","historic"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1298,8 +1315,8 @@ const ART = [
     desc:"Where Caribbean light hits colonial colour and neither apologises. Willemstad's waterfront in the silence before the day begins its noise.",
     tags:["curacao","caribbean","colorful","island","landscape","travel","tropical"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1309,8 +1326,8 @@ const ART = [
     desc:"The lowest point on earth and somehow the stillest. A horizon of salt and mineral silence where the water refuses to move and the sky refuses to end.",
     tags:["dead sea","israel","jordan","landscape","salt","water","middle east","travel"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1320,8 +1337,8 @@ const ART = [
     desc:"Marble in repose. The goddess caught in the moment before movement — sculpture that makes stillness feel like a held breath.",
     tags:["sculpture","marble","classical","art","museum","europe","architecture","fine art"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1331,8 +1348,8 @@ const ART = [
     desc:"The bridge that earned its name. Steel suspension arching over the Danube — Budapest's most elegant engineering, best seen when the city is still sleeping.",
     tags:["budapest","bridge","hungary","architecture","danube","europe","travel","suspension"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1342,8 +1359,8 @@ const ART = [
     desc:"The port city that climbs Mount Carmel in tiers of light and stone. A view earned by elevation — where three faiths share a skyline without argument.",
     tags:["haifa","israel","port","cityscape","urban","middle east","travel","mediterranean"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1353,8 +1370,8 @@ const ART = [
     desc:"Stone and myth at the edge of the known world. The monument that outlasted the empire that built it — two pillars marking where the map once ended.",
     tags:["hercules","gibraltar","monument","ancient","architecture","europe","travel","myth"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1364,8 +1381,8 @@ const ART = [
     desc:"The monasteries of Meteora balance on pinnacles of rock as if gravity made an exception for faith. A landscape that should not exist and yet absolutely does.",
     tags:["meteora","greece","monastery","rock","landscape","kalambaka","europe","travel"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1375,8 +1392,8 @@ const ART = [
     desc:"The city that invented the idea of itself. Paris without its crowd is just light on stone — and that turns out to be enough.",
     tags:["paris","france","urban","architecture","europe","travel","iconic","cityscape"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1386,8 +1403,8 @@ const ART = [
     desc:"The continent's spine at a moment of total stillness. The Rockies without scale — just rock, sky, and the particular silence that altitude makes.",
     tags:["rocky mountains","colorado","landscape","mountains","usa","nature","travel","wilderness"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1397,8 +1414,8 @@ const ART = [
     desc:"Ice that remembers a different climate. St Mary Glacier in Colorado — the stillness of ancient water paused on its slow return to the sea.",
     tags:["glacier","colorado","landscape","ice","mountain","usa","nature","travel"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1408,8 +1425,8 @@ const ART = [
     desc:"The water here is not blue — it is every colour that blue forgot it could be. A Caribbean scene that resets your entire understanding of the word turquoise.",
     tags:["virgin islands","caribbean","tropical","landscape","water","island","travel","usa"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1419,8 +1436,8 @@ const ART = [
     desc:"The Nike of Samothrace — headless, armless, and more alive than almost anything in the Louvre. Marble that captured forward motion two thousand years before photography.",
     tags:["winged victory","louvre","paris","sculpture","greece","ancient","art","museum"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   },
   {
@@ -1430,8 +1447,8 @@ const ART = [
     desc:"The Croatian capital before the day claims it. Cathedral spires over terracotta rooftops — a Central European city that kept its dignity through everything.",
     tags:["zagreb","croatia","cathedral","urban","europe","travel","rooftops","architecture"],
     sizes:[
-      {label:'16x24"', detail:'Studio · signature medium sized wall piece',    price:69},
-      {label:'24x36"', detail:'Gallery · statement installation', price:99}
+      {label:'24×36"', detail:'Large · signature wall piece',    price:195},
+      {label:'36×48"', detail:'Gallery · statement installation', price:320}
     ]
   }
 ];
@@ -1687,6 +1704,47 @@ function toggleCart() {
   document.body.style.overflow = open ? 'hidden' : '';
 }
 
+/* ── STRIPE + WORKER CONFIG ──────────────────────────────── */
+// After deploying your Cloudflare Worker, paste its URL here:
+const WORKER_URL = 'https://hoffshots-checkout.brianchristopherhoff.workers.dev/';
+const STRIPE_PK  = 'pk_live_51TBRblFnWUk0EAeTcPlCV1TW3FDbGq8BTpV1PS377gmmgak1j81GwGJFI1bwtR37SIKzE7kboLrddzhUdSi1TAzh00lHe47sJM';
+
+let stripe = null;
+let stripeCard = null;
+
+function initStripe() {
+  if (stripe) return;
+  stripe = Stripe(STRIPE_PK);
+  const elements = stripe.elements({
+    appearance: {
+      theme: 'night',
+      variables: {
+        colorPrimary: '#C8852A',
+        colorBackground: '#252220',
+        colorText: '#F0E8DA',
+        colorDanger: '#e05a4a',
+        fontFamily: 'DM Sans, system-ui, sans-serif',
+        borderRadius: '0px'
+      }
+    }
+  });
+  stripeCard = elements.create('card', {
+    style: {
+      base: {
+        color: '#F0E8DA',
+        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontSize: '16px',
+        '::placeholder': { color: '#6A5A4A' }
+      },
+      invalid: { color: '#e05a4a' }
+    }
+  });
+  stripeCard.mount('#stripe-card-element');
+  stripeCard.on('change', e => {
+    document.getElementById('stripe-card-errors').textContent = e.error ? e.error.message : '';
+  });
+}
+
 /* ── CHECKOUT ────────────────────────────────────────────── */
 function renderCheckout() {
   const total = cart.reduce((s,i) => s + i.size.price, 0);
@@ -1706,15 +1764,101 @@ function renderCheckout() {
   document.getElementById('co-sub').textContent = fmt;
   document.getElementById('co-total').textContent = fmt;
   document.getElementById('co-total-btn').textContent = fmt;
+  setTimeout(initStripe, 150);
 }
-function processPayment() {
-  // ── STRIPE INTEGRATION POINT ──
-  // Replace this with:
-  //   1. POST cart data to your Cloudflare Worker
-  //   2. Worker creates Stripe Checkout session
-  //   3. Redirect to session.url
-  // See: stripe.com/docs/checkout/quickstart
-  showToast('Connecting to secure checkout...');
+
+async function processPayment() {
+  const btn      = document.getElementById('pay-btn');
+  const btnText  = document.getElementById('pay-btn-text');
+  const btnLoad  = document.getElementById('pay-btn-loading');
+  const errorEl  = document.getElementById('checkout-error');
+
+  const fields = {
+    firstName: document.getElementById('co-fname').value.trim(),
+    lastName:  document.getElementById('co-lname').value.trim(),
+    email:     document.getElementById('co-email').value.trim(),
+    address:   document.getElementById('co-address').value.trim(),
+    city:      document.getElementById('co-city').value.trim(),
+    state:     document.getElementById('co-state').value.trim(),
+    zip:       document.getElementById('co-zip').value.trim(),
+    country:   document.getElementById('co-country').value.trim() || 'US'
+  };
+
+  if (Object.values(fields).some(v => !v)) {
+    errorEl.textContent = 'Please fill in all shipping fields.';
+    errorEl.style.display = 'block'; return;
+  }
+  if (!fields.email.includes('@')) {
+    errorEl.textContent = 'Please enter a valid email address.';
+    errorEl.style.display = 'block'; return;
+  }
+  if (!cart.length) {
+    errorEl.textContent = 'Your cart is empty.';
+    errorEl.style.display = 'block'; return;
+  }
+
+  btn.disabled = true;
+  btnText.style.display = 'none';
+  btnLoad.style.display = 'inline';
+  errorEl.style.display = 'none';
+
+  try {
+    // Step 1 — create Stripe payment intent via Worker
+    const intentRes = await fetch(`${WORKER_URL}/api/payment-intent`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cart: cart.map(i => ({
+          title: i.art.title, src: i.art.src,
+          size: i.size.label, wrap: i.wrap, price: i.size.price
+        }))
+      })
+    });
+    const intentData = await intentRes.json();
+    if (intentData.error) throw new Error(intentData.error);
+
+    // Step 2 — confirm card charge with Stripe.js
+    const { paymentIntent, error: stripeErr } = await stripe.confirmCardPayment(
+      intentData.clientSecret,
+      { payment_method: {
+          card: stripeCard,
+          billing_details: { name: `${fields.firstName} ${fields.lastName}`, email: fields.email }
+        }
+      }
+    );
+    if (stripeErr) throw new Error(stripeErr.message);
+    if (paymentIntent.status !== 'succeeded') throw new Error('Payment not completed.');
+
+    // Step 3 — fulfill via Worker → Printful
+    const fulfillRes = await fetch(`${WORKER_URL}/api/fulfill`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        paymentIntentId: paymentIntent.id,
+        shipping: fields,
+        cart: cart.map(i => ({
+          title: i.art.title, src: i.art.src,
+          size: i.size.label, wrap: i.wrap, price: i.size.price
+        }))
+      })
+    });
+    const fulfillData = await fulfillRes.json();
+    if (!fulfillData.success) throw new Error(fulfillData.error || 'Fulfillment failed.');
+
+    // Step 4 — success
+    cart = [];
+    renderCart();
+    document.getElementById('confirm-email-note').textContent =
+      `Confirmation sent to ${fields.email}`;
+    nav('confirmed');
+
+  } catch (err) {
+    errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errorEl.style.display = 'block';
+    btn.disabled = false;
+    btnText.style.display = 'inline';
+    btnLoad.style.display = 'none';
+  }
 }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
