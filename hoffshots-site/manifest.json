@@ -1,0 +1,2051 @@
+{
+  "brand": "Hoffshots",
+  "generated": "2026-03-15T23:44:15.520228Z",
+  "images": [
+    {
+      "id": "bda64feab052",
+      "filename": "00000IMG_00000_BURST20180508111831989_COVER-01.jpeg",
+      "original_filename": "00000IMG_00000_BURST20180508111831989_COVER-01.jpeg",
+      "processed_at": "2026-03-15T23:43:02.584783Z",
+      "exif": {
+        "width": 4031,
+        "height": 1730,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:08 11:27:19",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(45.0, 59.0, 0.114)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(7.0, 46.0, 55.199)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "0.0",
+          "GPSTimeStamp": "(9.0, 18.0, 21.0)",
+          "GPSDOP": "11.731",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:08"
+        }
+      },
+      "title": "00000Img 00000 Burst20180508111831989 Cover 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "00000Img 00000 Burst20180508111831989 Cover 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "00000img 00000 burst20180508111831989 cover 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "5686b86b6d3f",
+      "filename": "IMG_20160330_141318-01.jpeg",
+      "original_filename": "IMG_20160330_141318-01.jpeg",
+      "processed_at": "2026-03-15T23:43:04.590551Z",
+      "exif": {
+        "width": 2567,
+        "height": 3853,
+        "DateTime": "2019:03:08 10:09:59"
+      },
+      "title": "Img 20160330 141318 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20160330 141318 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20160330 141318 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "7c998ac57606",
+      "filename": "IMG_20160901_123415-01.jpeg",
+      "original_filename": "IMG_20160901_123415-01.jpeg",
+      "processed_at": "2026-03-15T23:43:06.051839Z",
+      "exif": {
+        "width": 4032,
+        "height": 2686,
+        "DateTime": "2019:03:08 10:10:21"
+      },
+      "title": "Img 20160901 123415 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20160901 123415 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20160901 123415 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "f67359bc5625",
+      "filename": "IMG_20180502_163442-01.jpeg",
+      "original_filename": "IMG_20180502_163442-01.jpeg",
+      "processed_at": "2026-03-15T23:43:08.272090Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:02 18:34:18",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(52.0, 22.0, 5.73)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(4.0, 53.0, 46.74)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "60.31",
+          "GPSTimeStamp": "(14.0, 34.0, 38.0)",
+          "GPSDOP": "10.701",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:02"
+        }
+      },
+      "title": "Img 20180502 163442 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180502 163442 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180502 163442 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "9e71b365d6a8",
+      "filename": "IMG_20180502_173312-01-01.jpeg",
+      "original_filename": "IMG_20180502_173312-01-01.jpeg",
+      "processed_at": "2026-03-15T23:43:09.532205Z",
+      "exif": {
+        "width": 3815,
+        "height": 1629,
+        "DateTime": "2019:03:06 10:11:44"
+      },
+      "title": "Img 20180502 173312 01 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180502 173312 01 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180502 173312 01 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "45bc8e4dee85",
+      "filename": "IMG_20180506_134503-01-01.jpeg",
+      "original_filename": "IMG_20180506_134503-01-01.jpeg",
+      "processed_at": "2026-03-15T23:43:11.238132Z",
+      "exif": {
+        "width": 2682,
+        "height": 3791,
+        "DateTime": "2019:03:06 10:10:20"
+      },
+      "title": "Img 20180506 134503 01 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180506 134503 01 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180506 134503 01 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "815b238bea89",
+      "filename": "IMG_20180506_210507.jpg",
+      "original_filename": "IMG_20180506_210507.jpg",
+      "processed_at": "2026-03-15T23:43:13.211859Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:06 21:05:07",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(48.0, 34.0, 49.48)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(7.0, 44.0, 33.4)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "191.0",
+          "GPSTimeStamp": "(19.0, 5.0, 2.0)",
+          "GPSDOP": "40.413",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:06"
+        }
+      },
+      "title": "Img 20180506 210507",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180506 210507 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180506 210507"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "c3abfddb9b85",
+      "filename": "IMG_20180508_200856-01.jpeg",
+      "original_filename": "IMG_20180508_200856-01.jpeg",
+      "processed_at": "2026-03-15T23:43:14.250587Z",
+      "exif": {
+        "width": 3787,
+        "height": 2840,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:08 22:00:01",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(47.0, 10.0, 10.05)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(9.0, 29.0, 45.02)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "505.12",
+          "GPSTimeStamp": "(18.0, 8.0, 42.0)",
+          "GPSDOP": "10.0",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:08"
+        }
+      },
+      "title": "Img 20180508 200856 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180508 200856 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180508 200856 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "3e7de6cfda04",
+      "filename": "IMG_20180508_201342-01.jpeg",
+      "original_filename": "IMG_20180508_201342-01.jpeg",
+      "processed_at": "2026-03-15T23:43:16.439111Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:08 22:01:12",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(47.0, 10.0, 8.1)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(9.0, 29.0, 59.23)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "500.09",
+          "GPSTimeStamp": "(18.0, 13.0, 40.0)",
+          "GPSDOP": "10.0",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:08"
+        }
+      },
+      "title": "Img 20180508 201342 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180508 201342 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180508 201342 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "9cec0e2b9f5c",
+      "filename": "IMG_20180523_092052-01.jpeg",
+      "original_filename": "IMG_20180523_092052-01.jpeg",
+      "processed_at": "2026-03-15T23:43:17.868640Z",
+      "exif": {
+        "width": 2197,
+        "height": 4032,
+        "DateTime": "2019:03:06 09:57:22"
+      },
+      "title": "Img 20180523 092052 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180523 092052 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180523 092052 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "ed360aa5a9a4",
+      "filename": "IMG_20180525_122000-01.jpeg",
+      "original_filename": "IMG_20180525_122000-01.jpeg",
+      "processed_at": "2026-03-15T23:43:19.624217Z",
+      "exif": {
+        "width": 3974,
+        "height": 2649,
+        "DateTime": "2019:03:06 09:55:23"
+      },
+      "title": "Img 20180525 122000 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180525 122000 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180525 122000 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "2b7606da5011",
+      "filename": "IMG_20180525_124035.jpg",
+      "original_filename": "IMG_20180525_124035.jpg",
+      "processed_at": "2026-03-15T23:43:21.890998Z",
+      "exif": {
+        "width": 3024,
+        "height": 4032,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:06:02 19:53:43",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(32.0, 48.0, 49.62)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(34.0, 59.0, 12.18)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "162.2",
+          "GPSTimeStamp": "(9.0, 40.0, 33.0)",
+          "GPSDOP": "11.723",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:25"
+        }
+      },
+      "title": "Img 20180525 124035",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180525 124035 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180525 124035"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "fcfa2cc821a9",
+      "filename": "IMG_20180526_120834-01.jpeg",
+      "original_filename": "IMG_20180526_120834-01.jpeg",
+      "processed_at": "2026-03-15T23:43:23.200053Z",
+      "exif": {
+        "width": 2968,
+        "height": 2427,
+        "DateTime": "2019:03:06 09:54:14"
+      },
+      "title": "Img 20180526 120834 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180526 120834 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180526 120834 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "7844643b97fa",
+      "filename": "IMG_20180530_094331.jpg",
+      "original_filename": "IMG_20180530_094331.jpg",
+      "processed_at": "2026-03-15T23:43:24.563236Z",
+      "exif": {
+        "width": 3007,
+        "height": 3928,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:05:30 09:43:31",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(52.0, 23.0, 2.06)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(4.0, 54.0, 8.39)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "56.9",
+          "GPSTimeStamp": "(7.0, 43.0, 9.0)",
+          "GPSDOP": "16.175",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:05:30"
+        }
+      },
+      "title": "Img 20180530 094331",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20180530 094331 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20180530 094331"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "c0d88624a05d",
+      "filename": "IMG_20190225_122026-01.jpeg",
+      "original_filename": "IMG_20190225_122026-01.jpeg",
+      "processed_at": "2026-03-15T23:43:26.366332Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:02:25 13:35:52",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(37.0, 58.0, 47.64)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(23.0, 44.0, 1.79)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "116.48",
+          "GPSTimeStamp": "(10.0, 20.0, 14.0)",
+          "GPSDOP": "6.432",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:02:25"
+        }
+      },
+      "title": "Img 20190225 122026 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190225 122026 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190225 122026 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "ff40c070209c",
+      "filename": "IMG_20190226_123001-01.jpeg",
+      "original_filename": "IMG_20190226_123001-01.jpeg",
+      "processed_at": "2026-03-15T23:43:28.617798Z",
+      "exif": {
+        "width": 4032,
+        "height": 2702,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:02:26 15:51:57",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(39.0, 43.0, 15.64)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(21.0, 37.0, 50.6)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "372.21",
+          "GPSTimeStamp": "(10.0, 30.0, 1.0)",
+          "GPSDOP": "17.152",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:02:26"
+        }
+      },
+      "title": "Img 20190226 123001 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190226 123001 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190226 123001 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "a43cbaad1377",
+      "filename": "IMG_20190305_103729-01~2.jpeg",
+      "original_filename": "IMG_20190305_103729-01~2.jpeg",
+      "processed_at": "2026-03-15T23:43:29.729587Z",
+      "exif": {
+        "width": 3049,
+        "height": 2285,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 15:43:35",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 26.12)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 4.25)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "361.75",
+          "GPSTimeStamp": "(9.0, 37.0, 15.0)",
+          "GPSDOP": "27.836",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Img 20190305 103729 01~2",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190305 103729 01~2 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190305 103729 01~2"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "a37d84b441cf",
+      "filename": "IMG_20190305_112646-01.jpeg",
+      "original_filename": "IMG_20190305_112646-01.jpeg",
+      "processed_at": "2026-03-15T23:43:31.292403Z",
+      "exif": {
+        "width": 3024,
+        "height": 4032,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 13:36:11",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 12.9)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 27.74)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "258.42",
+          "GPSTimeStamp": "(10.0, 26.0, 30.0)",
+          "GPSDOP": "9.739",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Img 20190305 112646 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190305 112646 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190305 112646 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "b827659340da",
+      "filename": "IMG_20190305_112949-01.jpeg",
+      "original_filename": "IMG_20190305_112949-01.jpeg",
+      "processed_at": "2026-03-15T23:43:33.282853Z",
+      "exif": {
+        "width": 2853,
+        "height": 4031,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 12:33:06",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 11.75)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 38.53)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "243.62",
+          "GPSTimeStamp": "(10.0, 29.0, 47.0)",
+          "GPSDOP": "4.246",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Img 20190305 112949 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190305 112949 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190305 112949 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "55d8b650a262",
+      "filename": "IMG_20190305_113142-01.jpeg",
+      "original_filename": "IMG_20190305_113142-01.jpeg",
+      "processed_at": "2026-03-15T23:43:34.275898Z",
+      "exif": {
+        "width": 1983,
+        "height": 2974,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 12:29:09",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 10.48)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 44.83)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "262.46",
+          "GPSTimeStamp": "(10.0, 31.0, 42.0)",
+          "GPSDOP": "5.36",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Img 20190305 113142 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190305 113142 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190305 113142 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "b09eccc2be15",
+      "filename": "IMG_20190306_071026-01.jpeg",
+      "original_filename": "IMG_20190306_071026-01.jpeg",
+      "processed_at": "2026-03-15T23:43:35.621027Z",
+      "exif": {
+        "width": 1711,
+        "height": 4015,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:06 09:13:30",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 14.31)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 25.0, 18.55)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "231.74",
+          "GPSTimeStamp": "(6.0, 10.0, 21.0)",
+          "GPSDOP": "9.747",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:06"
+        }
+      },
+      "title": "Img 20190306 071026 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190306 071026 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190306 071026 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "d0a8c7bf02c1",
+      "filename": "IMG_20190307_170901-01.jpeg",
+      "original_filename": "IMG_20190307_170901-01.jpeg",
+      "processed_at": "2026-03-15T23:43:36.566583Z",
+      "exif": {
+        "width": 3024,
+        "height": 4032,
+        "DateTime": "2019:03:07 18:37:25"
+      },
+      "title": "Img 20190307 170901 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190307 170901 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190307 170901 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "ecc30fa291f8",
+      "filename": "IMG_20190310_192048.jpg",
+      "original_filename": "IMG_20190310_192048.jpg",
+      "processed_at": "2026-03-15T23:43:38.333468Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:10 19:20:49",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(47.0, 3.0, 29.67)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(8.0, 18.0, 38.81)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "502.04",
+          "GPSTimeStamp": "(18.0, 20.0, 38.0)",
+          "GPSDOP": "12.566",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:10"
+        }
+      },
+      "title": "Img 20190310 192048",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190310 192048 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190310 192048"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "4474bd2d1c1f",
+      "filename": "IMG_20190311_193431-01-01-01-01.jpeg",
+      "original_filename": "IMG_20190311_193431-01-01-01-01.jpeg",
+      "processed_at": "2026-03-15T23:43:40.662772Z",
+      "exif": {
+        "width": 2690,
+        "height": 4031,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:18 17:40:30",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(48.0, 51.0, 26.36)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(2.0, 17.0, 45.36)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "76.79",
+          "GPSTimeStamp": "(18.0, 34.0, 25.0)",
+          "GPSDOP": "9.648",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:11"
+        }
+      },
+      "title": "Img 20190311 193431 01 01 01 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190311 193431 01 01 01 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190311 193431 01 01 01 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "ec98394268e7",
+      "filename": "IMG_20190312_102406-01-01.jpeg",
+      "original_filename": "IMG_20190312_102406-01-01.jpeg",
+      "processed_at": "2026-03-15T23:43:42.098626Z",
+      "exif": {
+        "width": 4032,
+        "height": 2689,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:13 20:46:02",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(48.0, 51.0, 47.23)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(2.0, 19.0, 46.82)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "78.04",
+          "GPSTimeStamp": "(9.0, 23.0, 55.0)",
+          "GPSDOP": "5.024",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:12"
+        }
+      },
+      "title": "Img 20190312 102406 01 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190312 102406 01 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190312 102406 01 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "43001d59b0dd",
+      "filename": "IMG_20190312_102923-01.jpeg",
+      "original_filename": "IMG_20190312_102923-01.jpeg",
+      "processed_at": "2026-03-15T23:43:43.525873Z",
+      "exif": {
+        "width": 2047,
+        "height": 3071,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:12 13:39:03",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(48.0, 51.0, 44.54)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(2.0, 19.0, 49.24)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "67.56",
+          "GPSTimeStamp": "(9.0, 29.0, 22.0)",
+          "GPSDOP": "6.273",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:12"
+        }
+      },
+      "title": "Img 20190312 102923 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190312 102923 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190312 102923 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "f6f8952bbb71",
+      "filename": "IMG_20190317_082602-01.jpeg",
+      "original_filename": "IMG_20190317_082602-01.jpeg",
+      "processed_at": "2026-03-15T23:43:45.020258Z",
+      "exif": {
+        "width": 2641,
+        "height": 3961,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:17 10:24:02",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(51.0, 30.0, 19.69)",
+          "GPSLongitudeRef": "W",
+          "GPSLongitude": "(0.0, 11.0, 9.21)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "70.16",
+          "GPSTimeStamp": "(8.0, 25.0, 56.0)",
+          "GPSDOP": "10.852",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:17"
+        }
+      },
+      "title": "Img 20190317 082602 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190317 082602 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190317 082602 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "abc27e7ebd3c",
+      "filename": "IMG_20190318_120705-01.jpeg",
+      "original_filename": "IMG_20190318_120705-01.jpeg",
+      "processed_at": "2026-03-15T23:43:46.820707Z",
+      "exif": {
+        "width": 4032,
+        "height": 2685,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:18 12:50:14",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(51.0, 10.0, 43.72)",
+          "GPSLongitudeRef": "W",
+          "GPSLongitude": "(1.0, 49.0, 35.74)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "156.38",
+          "GPSTimeStamp": "(12.0, 6.0, 58.0)",
+          "GPSDOP": "6.432",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:18"
+        }
+      },
+      "title": "Img 20190318 120705 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20190318 120705 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20190318 120705 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "564a15c94736",
+      "filename": "IMG_20201001_225514_945.jpg",
+      "original_filename": "IMG_20201001_225514_945.jpg",
+      "processed_at": "2026-03-15T23:43:47.787171Z",
+      "exif": {
+        "width": 3024,
+        "height": 3780,
+        "GPS": {
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(39.0, 49.0, 44.0)",
+          "GPSLongitudeRef": "W",
+          "GPSLongitude": "(105.0, 38.0, 35.0)"
+        }
+      },
+      "title": "Img 20201001 225514 945",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Img 20201001 225514 945 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "img 20201001 225514 945"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "0d6caf8ea682",
+      "filename": "MVIMG_20180113_084744-02.jpeg",
+      "original_filename": "MVIMG_20180113_084744-02.jpeg",
+      "processed_at": "2026-03-15T23:43:49.243125Z",
+      "exif": {
+        "width": 4029,
+        "height": 1349,
+        "Make": "Google",
+        "Model": "Pixel 2 XL",
+        "DateTime": "2018:01:15 18:49:45",
+        "FocalLength": "4.459",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(52.0, 22.0, 42.25)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(4.0, 53.0, 38.07)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "47.04",
+          "GPSTimeStamp": "(7.0, 47.0, 43.0)",
+          "GPSDOP": "8.576",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2018:01:13"
+        }
+      },
+      "title": "Mvimg 20180113 084744 02",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20180113 084744 02 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20180113 084744 02"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "93bd10aa66b3",
+      "filename": "MVIMG_20180519_094658-01.jpeg",
+      "original_filename": "MVIMG_20180519_094658-01.jpeg",
+      "processed_at": "2026-03-15T23:43:53.165918Z",
+      "exif": {
+        "width": 4032,
+        "height": 2686,
+        "DateTime": "2019:03:06 10:02:14"
+      },
+      "title": "Mvimg 20180519 094658 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20180519 094658 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20180519 094658 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "a4fdfa8c4e11",
+      "filename": "MVIMG_20190222_091510-01.jpeg",
+      "original_filename": "MVIMG_20190222_091510-01.jpeg",
+      "processed_at": "2026-03-15T23:43:57.055956Z",
+      "exif": {
+        "width": 4003,
+        "height": 3002,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:02:22 12:32:20",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(52.0, 22.0, 51.12)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(4.0, 37.0, 52.65)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "45.79",
+          "GPSTimeStamp": "(8.0, 15.0, 5.0)",
+          "GPSDOP": "12.062",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:02:22"
+        }
+      },
+      "title": "Mvimg 20190222 091510 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20190222 091510 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20190222 091510 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "10f83a7a28cc",
+      "filename": "MVIMG_20190304_173759-01.jpeg",
+      "original_filename": "MVIMG_20190304_173759-01.jpeg",
+      "processed_at": "2026-03-15T23:43:59.340234Z",
+      "exif": {
+        "width": 2111,
+        "height": 2983,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 19:39:32",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 15.79)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 25.0, 27.37)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "252.79",
+          "GPSTimeStamp": "(16.0, 38.0, 0.0)",
+          "GPSDOP": "6.388",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:04"
+        }
+      },
+      "title": "Mvimg 20190304 173759 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20190304 173759 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20190304 173759 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "0495b25c0321",
+      "filename": "MVIMG_20190305_111642-01.jpeg",
+      "original_filename": "MVIMG_20190305_111642-01.jpeg",
+      "processed_at": "2026-03-15T23:44:02.435374Z",
+      "exif": {
+        "width": 3838,
+        "height": 2879,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 13:40:35",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 17.82)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 40.0)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "218.78",
+          "GPSTimeStamp": "(10.0, 16.0, 26.0)",
+          "GPSDOP": "5.27",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Mvimg 20190305 111642 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20190305 111642 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20190305 111642 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "abc90f699077",
+      "filename": "MVIMG_20190305_111727-01.jpeg",
+      "original_filename": "MVIMG_20190305_111727-01.jpeg",
+      "processed_at": "2026-03-15T23:44:05.019853Z",
+      "exif": {
+        "width": 3728,
+        "height": 2796,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 13:39:29",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 18.02)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 39.7)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "226.27",
+          "GPSTimeStamp": "(10.0, 17.0, 26.0)",
+          "GPSDOP": "6.432",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Mvimg 20190305 111727 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20190305 111727 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20190305 111727 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "df1271f3229f",
+      "filename": "MVIMG_20190305_113006-01.jpeg",
+      "original_filename": "MVIMG_20190305_113006-01.jpeg",
+      "processed_at": "2026-03-15T23:44:07.074168Z",
+      "exif": {
+        "width": 2429,
+        "height": 3436,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2019:03:05 12:29:49",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(50.0, 5.0, 11.77)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(14.0, 24.0, 38.22)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "250.5",
+          "GPSTimeStamp": "(10.0, 30.0, 7.0)",
+          "GPSDOP": "11.148",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2019:03:05"
+        }
+      },
+      "title": "Mvimg 20190305 113006 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Mvimg 20190305 113006 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "mvimg 20190305 113006 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "d4a0208a19d3",
+      "filename": "PXL_20200927_000604986-01.jpeg",
+      "original_filename": "PXL_20200927_000604986-01.jpeg",
+      "processed_at": "2026-03-15T23:44:10.600263Z",
+      "exif": {
+        "width": 4032,
+        "height": 3024,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2020:09:26 19:29:16",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(39.0, 50.0, 8.59)",
+          "GPSLongitudeRef": "W",
+          "GPSLongitude": "(105.0, 38.0, 46.43)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "3211.66",
+          "GPSTimeStamp": "(0.0, 4.0, 48.0)",
+          "GPSDOP": "8.576",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2020:09:27"
+        }
+      },
+      "title": "Pxl 20200927 000604986 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Pxl 20200927 000604986 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "pxl 20200927 000604986 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "d7666c8d9a69",
+      "filename": "PXL_20200929_005923361.NIGHT-01.jpeg",
+      "original_filename": "PXL_20200929_005923361.NIGHT-01.jpeg",
+      "processed_at": "2026-03-15T23:44:13.891750Z",
+      "exif": {
+        "width": 3024,
+        "height": 4032,
+        "Make": "Google",
+        "Model": "Pixel 3",
+        "DateTime": "2020:09:28 19:04:13",
+        "FocalLength": "4.44",
+        "FNumber": "1.8",
+        "GPS": {
+          "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(39.0, 44.0, 55.66)",
+          "GPSLongitudeRef": "W",
+          "GPSLongitude": "(104.0, 59.0, 57.28)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "1678.52",
+          "GPSTimeStamp": "(0.0, 59.0, 17.0)",
+          "GPSDOP": "27.872",
+          "GPSProcessingMethod": "b'ASCII\\x00\\x00\\x00fused'",
+          "GPSDateStamp": "2020:09:29"
+        }
+      },
+      "title": "Pxl 20200929 005923361.Night 01",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Pxl 20200929 005923361.Night 01 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "pxl 20200929 005923361.night 01"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "939bfeeb5d3b",
+      "filename": "Screenshot_20190108-163731.png",
+      "original_filename": "Screenshot_20190108-163731.png",
+      "processed_at": "2026-03-15T23:44:14.937548Z",
+      "exif": {
+        "width": 1080,
+        "height": 492
+      },
+      "title": "Screenshot 20190108 163731",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Screenshot 20190108 163731 - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "screenshot 20190108 163731"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    },
+    {
+      "id": "dbed75040c67",
+      "filename": "SNES Dark.JPG",
+      "original_filename": "SNES Dark.JPG",
+      "processed_at": "2026-03-15T23:44:15.516495Z",
+      "exif": {
+        "width": 640,
+        "height": 480,
+        "Make": "SONY",
+        "Model": "DSC-P93",
+        "DateTime": "2006:10:14 21:55:26",
+        "FocalLength": "7.9",
+        "FNumber": "2.8"
+      },
+      "title": "Snes Dark",
+      "description": "A stunning piece from the Hoffshots collection.",
+      "alt_text": "Snes Dark - Canvas print by Hoffshots",
+      "category": "Other",
+      "mood": [
+        "evocative",
+        "timeless"
+      ],
+      "style_tags": [
+        "photographic",
+        "fine art"
+      ],
+      "color_palette": [
+        "neutral"
+      ],
+      "seo_tags": [
+        "canvas print",
+        "wall art",
+        "hoffshots",
+        "snes dark"
+      ],
+      "recommended_sizes": [
+        "16x20",
+        "24x30"
+      ],
+      "limited_edition_potential": false,
+      "suggested_price_range": "$45-$120",
+      "_note": "Placeholder \u2014 run with ANTHROPIC_API_KEY set for real AI tags"
+    }
+  ],
+  "total": 40
+}
