@@ -758,6 +758,169 @@ footer.wood { padding: 56px 48px 28px; }
   .stat-cell { border-right: none; }
   .filter-btn { font-size: 0.72rem; padding: 9px 16px; }
 }
+
+/* ── VAULT ───────────────────────────────────────────────── */
+.vault-banner {
+  margin: 0 48px 40px;
+  background: var(--oak);
+  border: 1px solid rgba(200,133,42,0.35);
+  padding: 28px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+.vault-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 40px, rgba(200,133,42,0.03) 40px, rgba(200,133,42,0.03) 41px);
+}
+.vault-banner-left { position: relative; z-index: 1; }
+.vault-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
+.vault-heading { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 400; color: var(--cream); }
+.vault-sub { font-size: 0.82rem; color: var(--text-mute); margin-top: 4px; }
+.vault-countdown { position: relative; z-index: 1; display: flex; gap: 16px; }
+.vault-unit { display: flex; flex-direction: column; align-items: center; }
+.vault-num { font-family: var(--ff-display); font-size: 2rem; font-weight: 400; color: var(--amber); line-height: 1; min-width: 48px; text-align: center; }
+.vault-unit-label { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+.vault-sep { font-family: var(--ff-display); font-size: 1.6rem; color: var(--text-dim); align-self: flex-start; padding-top: 4px; }
+.vault-closed-banner {
+  margin: 0 48px 40px;
+  background: var(--iron-md);
+  border: 1px solid var(--iron-border);
+  padding: 40px 36px;
+  text-align: center;
+}
+.vault-closed-icon { font-size: 2.4rem; margin-bottom: 16px; opacity: 0.4; }
+.vault-closed-head { font-family: var(--ff-display); font-size: 1.6rem; color: var(--cream); margin-bottom: 8px; }
+.vault-closed-sub { font-size: 0.88rem; color: var(--text-mute); margin-bottom: 24px; }
+.vault-open-countdown { display: flex; gap: 16px; justify-content: center; }
+
+/* Rotation badge */
+.g-rotation-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(200,133,42,0.9);
+  color: var(--oak);
+  font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 4px 10px; font-weight: 500;
+  pointer-events: none;
+}
+
+/* ── ROOM VISUALIZER ─────────────────────────────────────── */
+.viz-trigger {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mute); padding: 8px 0;
+  transition: color 0.2s; cursor: pointer; border: none; background: none;
+  font-family: var(--ff-body);
+}
+.viz-trigger::before { content: '⊡'; font-size: 0.9rem; color: var(--amber); }
+.viz-trigger:hover { color: var(--amber); }
+.room-viz-overlay {
+  position: fixed; inset: 0; z-index: 450;
+  background: rgba(10,7,4,0.97);
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(16px);
+}
+.room-viz-overlay.open { display: flex; animation: fadeIn 0.25s var(--ease); }
+.room-viz-inner { width: 100%; max-width: 900px; }
+.room-viz-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.room-viz-title { font-family: var(--ff-display); font-size: 1.2rem; color: var(--cream); }
+.room-viz-close { font-size: 1.5rem; color: var(--text-mute); padding: 8px; transition: color 0.2s, transform 0.2s; cursor: pointer; }
+.room-viz-close:hover { color: var(--cream); transform: rotate(90deg); }
+.room-viz-controls {
+  display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center;
+}
+.room-viz-btn {
+  padding: 8px 18px; border: 1px solid var(--iron-border);
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mute); transition: all 0.2s; font-family: var(--ff-body);
+}
+.room-viz-btn.active { border-color: var(--amber); color: var(--amber); background: rgba(200,133,42,0.08); }
+.room-viz-btn:hover { border-color: rgba(200,133,42,0.5); color: var(--cream); }
+.room-viz-size-label { font-size: 0.72rem; color: var(--text-dim); margin-left: 8px; }
+#room-canvas { display: block; width: 100%; border: 1px solid var(--iron-border); }
+.room-viz-note { font-size: 0.72rem; color: var(--text-dim); margin-top: 10px; text-align: center; letter-spacing: 0.08em; }
+
+/* ── COLLECTOR'S CLUB ────────────────────────────────────── */
+.collector-wrap { padding: 96px 48px 80px; max-width: 860px; margin: 0 auto; }
+.collector-hero {
+  background: var(--oak-md);
+  background-image: repeating-linear-gradient(88deg, transparent 0px, transparent 6px, rgba(255,255,255,0.015) 6px, rgba(255,255,255,0.015) 7px);
+  border: 1px solid rgba(200,133,42,0.2);
+  padding: 56px; margin-bottom: 56px; text-align: center;
+}
+.collector-badge {
+  display: inline-block; border: 1px solid var(--amber);
+  padding: 6px 20px; font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 24px;
+}
+.collector-title { font-family: var(--ff-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--cream); margin-bottom: 16px; }
+.collector-sub { font-size: 0.95rem; color: var(--text-mute); line-height: 1.9; max-width: 560px; margin: 0 auto 32px; }
+.collector-price { font-family: var(--ff-display); font-size: 2.4rem; color: var(--amber); margin-bottom: 6px; }
+.collector-price-sub { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 32px; }
+.collector-perks { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; text-align: left; }
+.collector-perk { padding: 20px; background: rgba(0,0,0,0.2); border: 1px solid var(--iron-border); }
+.perk-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.perk-title { font-family: var(--ff-display); font-size: 1rem; color: var(--cream); margin-bottom: 6px; }
+.perk-desc { font-size: 0.78rem; color: var(--text-mute); line-height: 1.75; }
+.collector-form { max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.collector-success { display: none; text-align: center; padding: 32px; border: 1px solid rgba(200,133,42,0.3); }
+.collector-success.show { display: block; animation: scaleIn 0.4s var(--ease); }
+.collector-success-icon { font-size: 2.4rem; color: var(--amber); margin-bottom: 16px; }
+
+/* ── COMMERCIAL ──────────────────────────────────────────── */
+.commercial-wrap { padding: 96px 48px 80px; }
+.commercial-intro { font-size: 0.95rem; color: var(--text-mute); line-height: 2.0; max-width: 620px; margin: 16px 0 52px; }
+.bundle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; margin-bottom: 72px; }
+.bundle-card {
+  background: var(--iron-md); border: 1px solid var(--iron-border);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+}
+.bundle-card:hover { border-color: rgba(200,133,42,0.4); box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+.bundle-preview { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; height: 160px; }
+.bundle-img { overflow: hidden; background: var(--plank); }
+.bundle-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.bundle-card:hover .bundle-img img { transform: scale(1.06); }
+.bundle-panel { padding: 22px 22px 24px; }
+.bundle-tag { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.bundle-name { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+.bundle-desc { font-size: 0.8rem; color: var(--text-mute); line-height: 1.75; margin-bottom: 16px; }
+.bundle-pricing { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+.bundle-price { font-family: var(--ff-display); font-size: 1.6rem; color: var(--amber); }
+.bundle-per { font-size: 0.72rem; color: var(--text-dim); }
+.bundle-pieces { font-size: 0.72rem; color: var(--text-dim); text-decoration: line-through; }
+.bundle-add-btn {
+  width: 100%; padding: 13px; background: var(--amber); color: var(--oak);
+  font-family: var(--ff-body); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.bundle-add-btn:hover { background: var(--amber-lt); box-shadow: 0 0 16px rgba(200,133,42,0.3); }
+.commercial-inquiry {
+  background: var(--iron-md); border: 1px solid var(--iron-border);
+  border-left: 3px solid var(--amber);
+  padding: 40px; max-width: 640px;
+}
+.inquiry-head { font-family: var(--ff-display); font-size: 1.4rem; color: var(--cream); margin-bottom: 8px; }
+.inquiry-sub { font-size: 0.85rem; color: var(--text-mute); margin-bottom: 28px; line-height: 1.8; }
+
+/* Mobile additions */
+@media (max-width: 768px) {
+  .vault-banner, .vault-closed-banner { margin: 0 20px 32px; }
+  .vault-countdown { gap: 10px; }
+  .vault-num { font-size: 1.5rem; min-width: 36px; }
+  .room-viz-overlay { padding: 16px; justify-content: flex-end; }
+  .room-viz-inner { max-width: 100%; }
+  .collector-perks { grid-template-columns: 1fr; }
+  .collector-hero { padding: 36px 24px; }
+  .commercial-wrap { padding: 80px 20px 60px; }
+  .bundle-grid { grid-template-columns: 1fr; }
+  .collector-wrap { padding: 80px 20px 60px; }
+}
 </style>
 </head>
 <body>
@@ -770,6 +933,8 @@ footer.wood { padding: 56px 48px 28px; }
     <li><a href="#" onclick="nav('gallery')" id="nl-gallery">Gallery</a></li>
     <li><a href="#" onclick="nav('journal')" id="nl-journal">Journal</a></li>
     <li><a href="#" onclick="nav('about')" id="nl-about">About</a></li>
+    <li><a href="#" onclick="nav('commercial')" id="nl-commercial">Commercial</a></li>
+    <li><a href="#" onclick="nav('collector')" id="nl-collector">Collector's Club</a></li>
     <li><a href="#" onclick="nav('faq')" id="nl-faq">FAQs</a></li>
     <li>
       <button class="nav-cart-btn" onclick="toggleCart()">
@@ -788,6 +953,8 @@ footer.wood { padding: 56px 48px 28px; }
   <a href="#" onclick="nav('gallery');toggleMobileNav()">Gallery</a>
   <a href="#" onclick="nav('journal');toggleMobileNav()">Journal</a>
   <a href="#" onclick="nav('about');toggleMobileNav()">About</a>
+  <a href="#" onclick="nav('commercial');toggleMobileNav()">Commercial</a>
+  <a href="#" onclick="nav('collector');toggleMobileNav()">Collector's Club</a>
   <a href="#" onclick="nav('faq');toggleMobileNav()">FAQ</a>
   <a href="#" onclick="nav('custom');toggleMobileNav()">Custom Commission</a>
   <a href="#" onclick="toggleCart();toggleMobileNav()">Cart</a>
@@ -911,6 +1078,7 @@ footer.wood { padding: 56px 48px 28px; }
     <div class="sec-kicker">The Collection</div>
     <h2 class="sec-title" style="margin-top:8px">All Works</h2>
   </div>
+  <div id="vault-banner-container"></div>
   <div class="filter-row" id="filter-row"></div>
   <div class="gallery-grid" id="gallery-grid"></div>
 </div>
@@ -1045,6 +1213,98 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
+<!-- ROOM VISUALIZER OVERLAY -->
+<div class="room-viz-overlay" id="room-viz-overlay">
+  <div class="room-viz-inner">
+    <div class="room-viz-header">
+      <div class="room-viz-title" id="rv-title">Visualize on Your Wall</div>
+      <button class="room-viz-close" onclick="closeViz()">✕</button>
+    </div>
+    <div class="room-viz-controls">
+      <button class="room-viz-btn active" onclick="setVizScene(this,'wall')">Wall Mount</button>
+      <button class="room-viz-btn" onclick="setVizScene(this,'lean')">Tabletop Lean</button>
+      <span style="width:1px;height:24px;background:var(--iron-border);margin:0 4px;"></span>
+      <button class="room-viz-btn active" id="rv-size-btn" onclick="toggleVizSize()">16×24"</button>
+      <span class="room-viz-size-label" id="rv-size-note">Switch size to compare</span>
+    </div>
+    <canvas id="room-canvas" height="480"></canvas>
+    <div class="room-viz-note">Illustrated for scale reference · Actual colors may vary by monitor</div>
+  </div>
+</div>
+
+<!-- ══════════ COLLECTOR'S CLUB ══════════ -->
+<div id="page-collector" class="page">
+  <div class="collector-wrap">
+    <div class="collector-hero">
+      <div class="collector-badge">Hoffshots Collector's Club</div>
+      <h2 class="collector-title">Art That Finds You.<br>Four Times a Year.</h2>
+      <p class="collector-sub">Join a small group of collectors who receive a limited-edition Hoffshots canvas print every quarter — locations you haven't seen in the gallery, sizes made exclusively for members. Plus one Hero piece discount annually.</p>
+      <div class="collector-price">$149 <span style="font-size:1rem;color:var(--text-mute)">/year</span></div>
+      <div class="collector-price-sub">Four prints · One hero discount · First access to new work</div>
+      <div class="collector-perks">
+        <div class="collector-perk">
+          <div class="perk-icon">◻</div>
+          <div class="perk-title">Quarterly Print</div>
+          <div class="perk-desc">A 16×24" canvas print mailed to your door every three months. Exclusive locations — never listed in the public gallery.</div>
+        </div>
+        <div class="collector-perk">
+          <div class="perk-icon">◈</div>
+          <div class="perk-title">Hero Piece Discount</div>
+          <div class="perk-desc">Once per year, 25% off any 24×36" gallery print. For the piece you've been waiting for.</div>
+        </div>
+        <div class="collector-perk">
+          <div class="perk-icon">◉</div>
+          <div class="perk-title">First Access</div>
+          <div class="perk-desc">Members see new work and Vault drops 48 hours before the public. No countdown required.</div>
+        </div>
+      </div>
+      <div class="collector-form" id="collector-form">
+        <div class="form-field">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" id="cc-name" type="text" placeholder="First and last name">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" id="cc-email" type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Shipping Address</label>
+          <input class="form-input" id="cc-address" type="text" placeholder="Street, City, State, ZIP">
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="joinCollectorsClub()">
+          Join the Collector's Club — $149/yr
+        </button>
+        <p style="font-size:0.72rem;color:var(--text-dim);text-align:center;line-height:1.7">Annual membership. Cancel anytime. First print ships within 30 days of joining.</p>
+      </div>
+      <div class="collector-success" id="collector-success">
+        <div class="collector-success-icon">✓</div>
+        <div class="sec-title" style="margin-bottom:12px">Welcome to the Club.</div>
+        <p style="font-size:0.88rem;color:var(--text-mute);line-height:1.9">You're in. Your first quarterly print ships within 30 days. Watch your inbox — I'll be in touch personally with details about your membership and what's coming your way.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ COMMERCIAL ══════════ -->
+<div id="page-commercial" class="page">
+  <div class="commercial-wrap">
+    <div class="sec-kicker">For Spaces That Mean Business</div>
+    <h2 class="sec-title" style="margin-top:8px">Commercial & Office Collections</h2>
+    <p class="commercial-intro">Curated sets for lobbies, offices, Airbnbs, and hospitality spaces. Instead of choosing one piece, choose an atmosphere. Every bundle is designed to work together on a wall — complementary locations, consistent scale, unified mood.</p>
+    <div class="bundle-grid" id="bundle-grid"></div>
+    <div class="commercial-inquiry">
+      <div class="inquiry-head">Larger Installation?</div>
+      <p class="inquiry-sub">Hotels, restaurants, corporate offices — if you need more than three pieces or a fully custom curated set, let's talk. I work directly with interior designers and commercial buyers on volume pricing and custom sizing.</p>
+      <div class="form-grid" style="max-width:560px">
+        <div class="form-field"><label class="form-label">Name</label><input class="form-input" type="text" id="ci-name" placeholder="Your name"></div>
+        <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" id="ci-email" placeholder="you@company.com"></div>
+        <div class="form-field full"><label class="form-label">Tell me about the space</label><textarea class="form-textarea" id="ci-notes" style="min-height:100px" placeholder="Number of pieces needed, space type, budget range, timeline..."></textarea></div>
+      </div>
+      <button class="btn-primary" style="margin-top:24px" onclick="submitCommercialInquiry()">Send Inquiry</button>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="wood">
   <div class="footer-grid">
@@ -1059,6 +1319,8 @@ footer.wood { padding: 56px 48px 28px; }
         <li><a href="#" onclick="nav('gallery')">Gallery</a></li>
         <li><a href="#" onclick="nav('journal')">The Journal</a></li>
         <li><a href="#" onclick="nav('about')">About the Artist</a></li>
+        <li><a href="#" onclick="nav('commercial')">Commercial Bundles</a></li>
+        <li><a href="#" onclick="nav('collector')">Collector's Club</a></li>
         <li><a href="#" onclick="nav('custom')">Custom Commission</a></li>
         <li><a href="#" onclick="nav('faq')">FAQ</a></li>
       </ul>
@@ -1752,8 +2014,526 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ── INIT REVEAL on home load ────────────────────────────── */
-setTimeout(initReveal, 300);
+/* ══════════════════════════════════════════════════════════
+   GALLERY ROTATION CONFIG
+   rotate: true  = this piece can rotate out
+   vault:  true  = hidden, only shows during vault windows
+   CYCLE_DAYS: how many days before rotation changes
+   VISIBLE_COUNT: how many rotation pieces show at once
+   ══════════════════════════════════════════════════════════ */
+const ROTATION_CONFIG = {
+  CYCLE_DAYS: 21,       // rotation changes every 21 days
+  VISIBLE_COUNT: 4,     // how many rotating pieces show at once
+  VAULT_CYCLE_DAYS: 60, // vault opens on 60-day cycle
+  VAULT_WINDOW_HRS: 72  // vault stays open 72 hours
+};
+
+// Mark which pieces rotate and which are vault-only
+// Add  rotate:true  to pieces that cycle in/out
+// Add  vault:true   to pieces that only appear during vault windows
+const ART_FLAGS = {
+  3:  { rotate: false },
+  5:  { rotate: true  },
+  6:  { rotate: true  },
+  7:  { rotate: false },
+  8:  { rotate: true  },
+  10: { rotate: false },
+  11: { rotate: true  },
+  12: { rotate: false },
+  17: { rotate: false },
+  20: { rotate: true  },
+  22: { rotate: true  },
+  25: { rotate: false },
+  27: { rotate: true  },
+  28: { rotate: true  }
+};
+
+function getVisibleArt() {
+  const permanent = ART.filter(a => !ART_FLAGS[a.id]?.rotate && !ART_FLAGS[a.id]?.vault);
+  const rotationPool = ART.filter(a => ART_FLAGS[a.id]?.rotate);
+  if (!rotationPool.length) return ART;
+  // Deterministic rotation based on current date cycle
+  const cycleMs = ROTATION_CONFIG.CYCLE_DAYS * 24 * 60 * 60 * 1000;
+  const cycleIndex = Math.floor(Date.now() / cycleMs);
+  const offset = cycleIndex % rotationPool.length;
+  const rotated = [];
+  for (let i = 0; i < ROTATION_CONFIG.VISIBLE_COUNT && i < rotationPool.length; i++) {
+    rotated.push(rotationPool[(offset + i) % rotationPool.length]);
+  }
+  return [...permanent, ...rotated].sort((a,b) => ART.indexOf(a) - ART.indexOf(b));
+}
+
+function isRotating(id) { return ART_FLAGS[id]?.rotate === true; }
+
+/* ── VAULT LOGIC ─────────────────────────────────────────── */
+function getVaultStatus() {
+  const cycleMs = ROTATION_CONFIG.VAULT_CYCLE_DAYS * 24 * 60 * 60 * 1000;
+  const windowMs = ROTATION_CONFIG.VAULT_WINDOW_HRS * 60 * 60 * 1000;
+  const now = Date.now();
+  // Use epoch start aligned to cycle
+  const epochStart = new Date('2025-01-01').getTime();
+  const elapsed = now - epochStart;
+  const cyclePos = elapsed % cycleMs;
+  const isOpen = cyclePos < windowMs;
+  const msUntilNext = isOpen ? (windowMs - cyclePos) : (cycleMs - cyclePos);
+  return { isOpen, msUntilNext };
+}
+
+function formatCountdown(ms) {
+  const totalSecs = Math.floor(ms / 1000);
+  const days = Math.floor(totalSecs / 86400);
+  const hrs  = Math.floor((totalSecs % 86400) / 3600);
+  const mins = Math.floor((totalSecs % 3600) / 60);
+  const secs = totalSecs % 60;
+  return { days, hrs, mins, secs };
+}
+
+function buildVaultBanner() {
+  const container = document.getElementById('vault-banner-container');
+  if (!container) return;
+  const { isOpen, msUntilNext } = getVaultStatus();
+  if (isOpen) {
+    container.innerHTML = `
+      <div class="vault-banner">
+        <div class="vault-banner-left">
+          <div class="vault-label">The Vault is Open</div>
+          <div class="vault-heading">Limited Window — Select Pieces Available</div>
+          <div class="vault-sub">These works are only available for a 72-hour window. Once it closes, they return to the vault.</div>
+        </div>
+        <div class="vault-countdown" id="vault-countdown"></div>
+      </div>`;
+  } else {
+    container.innerHTML = `
+      <div class="vault-closed-banner">
+        <div class="vault-closed-icon">⊟</div>
+        <div class="vault-closed-head">The Vault</div>
+        <div class="vault-closed-sub">Every 60 days, three exclusive pieces become available for 72 hours only. Next window opens in:</div>
+        <div class="vault-open-countdown" id="vault-countdown"></div>
+      </div>`;
+  }
+  updateVaultCountdown(msUntilNext);
+}
+
+let vaultTimer = null;
+function updateVaultCountdown(initialMs) {
+  let remaining = initialMs;
+  function tick() {
+    const el = document.getElementById('vault-countdown');
+    if (!el) return;
+    const { days, hrs, mins, secs } = formatCountdown(remaining);
+    el.innerHTML = `
+      <div class="vault-unit"><div class="vault-num">${String(days).padStart(2,'0')}</div><div class="vault-unit-label">Days</div></div>
+      <div class="vault-sep">:</div>
+      <div class="vault-unit"><div class="vault-num">${String(hrs).padStart(2,'0')}</div><div class="vault-unit-label">Hours</div></div>
+      <div class="vault-sep">:</div>
+      <div class="vault-unit"><div class="vault-num">${String(mins).padStart(2,'0')}</div><div class="vault-unit-label">Min</div></div>
+      <div class="vault-sep">:</div>
+      <div class="vault-unit"><div class="vault-num">${String(secs).padStart(2,'0')}</div><div class="vault-unit-label">Sec</div></div>`;
+    remaining -= 1000;
+    if (remaining < 0) { buildVaultBanner(); return; }
+  }
+  if (vaultTimer) clearInterval(vaultTimer);
+  tick();
+  vaultTimer = setInterval(tick, 1000);
+}
+
+/* ── OVERRIDE buildGallery to use rotation + vault ──────── */
+function buildGallery(filter) {
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+  const visible = getVisibleArt();
+  const filtered = (!filter || filter==='All') ? visible : visible.filter(a => a.cat === filter);
+  filtered.forEach(art => {
+    const rotating = isRotating(art.id);
+    const c = document.createElement('div');
+    c.className = 'g-card';
+    c.innerHTML = `
+      <div class="g-img-wrap" onclick="openPreview(${art.id})">
+        <img src="${art.src}" alt="${art.title}" onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
+        <div class="g-zoom-hint"><span class="g-zoom-label">View Full Image</span></div>
+        <div class="g-cat-badge">${art.cat}</div>
+        ${rotating ? '<div class="g-rotation-badge">Rotating</div>' : ''}
+      </div>
+      <div class="g-panel">
+        <div class="g-title">${art.title}</div>
+        <div class="g-desc">${art.desc}</div>
+        <div>
+          <div class="g-size-label">Canvas Size</div>
+          <select class="g-select" id="gs-${art.id}">
+            ${art.sizes.map((s,i)=>`<option value="${i}">${s.label} — $${s.price}</option>`).join('')}
+          </select>
+        </div>
+        <div class="g-btn-row">
+          <button class="g-add-btn" onclick="addFromGallery(${art.id})">Add to Cart</button>
+          <button class="g-preview-btn" onclick="openLB(${art.id})">Order Options</button>
+        </div>
+        <button class="viz-trigger" onclick="openViz(${art.id})">Visualize on My Wall</button>
+        <a href="#" class="g-custom-link" onclick="event.preventDefault();nav('custom')">Commission a Custom Size →</a>
+      </div>`;
+    grid.appendChild(c);
+  });
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === (filter||'All')));
+  setTimeout(initReveal, 50);
+}
+
+/* ── ROOM VISUALIZER ─────────────────────────────────────── */
+let vizArt = null;
+let vizScene = 'wall';
+let vizSizeIndex = 0;
+
+function openViz(id) {
+  vizArt = ART.find(a => a.id === id);
+  if (!vizArt) return;
+  vizSizeIndex = 0;
+  document.getElementById('rv-title').textContent = 'Visualize: ' + vizArt.title;
+  document.getElementById('rv-size-btn').textContent = vizArt.sizes[0].label;
+  document.getElementById('room-viz-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(drawRoom, 50);
+}
+
+function closeViz() {
+  document.getElementById('room-viz-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function setVizScene(btn, scene) {
+  vizScene = scene;
+  document.querySelectorAll('.room-viz-btn').forEach(b => { if(b.textContent === 'Wall Mount' || b.textContent === 'Tabletop Lean') b.classList.remove('active'); });
+  btn.classList.add('active');
+  drawRoom();
+}
+
+function toggleVizSize() {
+  vizSizeIndex = vizSizeIndex === 0 ? 1 : 0;
+  const btn = document.getElementById('rv-size-btn');
+  if (vizArt) btn.textContent = vizArt.sizes[vizSizeIndex].label;
+  drawRoom();
+}
+
+function drawRoom() {
+  const canvas = document.getElementById('room-canvas');
+  if (!canvas || !vizArt) return;
+  const W = canvas.offsetWidth || 860;
+  canvas.width = W;
+  canvas.height = 480;
+  const ctx = canvas.getContext('2d');
+  const H = 480;
+
+  if (vizScene === 'wall') {
+    drawWallScene(ctx, W, H);
+  } else {
+    drawLeanScene(ctx, W, H);
+  }
+}
+
+function drawWallScene(ctx, W, H) {
+  // Background wall
+  ctx.fillStyle = '#2A2420';
+  ctx.fillRect(0, 0, W, H);
+  // Wood grain lines on wall
+  ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 18) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H * 0.72); ctx.stroke();
+  }
+  // Floor
+  const floorY = H * 0.72;
+  const grad = ctx.createLinearGradient(0, floorY, 0, H);
+  grad.addColorStop(0, '#1C1208');
+  grad.addColorStop(1, '#0E0A04');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, floorY, W, H - floorY);
+  // Floor grain
+  ctx.strokeStyle = 'rgba(200,133,42,0.04)';
+  for (let x = 0; x < W; x += 28) {
+    ctx.beginPath(); ctx.moveTo(x, floorY); ctx.lineTo(x + 20, H); ctx.stroke();
+  }
+  // Baseboard
+  ctx.fillStyle = '#3B2A1A';
+  ctx.fillRect(0, floorY - 6, W, 8);
+  // Sofa silhouette
+  const sofaW = W * 0.42;
+  const sofaX = (W - sofaW) / 2;
+  const sofaY = floorY - 68;
+  ctx.fillStyle = '#2E2018';
+  ctx.beginPath();
+  ctx.roundRect(sofaX, sofaY, sofaW, 64, [4,4,0,0]);
+  ctx.fill();
+  // Sofa cushions
+  ctx.fillStyle = '#362616';
+  const cushW = sofaW / 3 - 8;
+  [0,1,2].forEach(i => {
+    ctx.beginPath();
+    ctx.roundRect(sofaX + 4 + i * (cushW + 8), sofaY + 6, cushW, 48, 3);
+    ctx.fill();
+  });
+  // Sofa legs
+  ctx.fillStyle = '#C8852A';
+  [[sofaX + 12, floorY - 4],[sofaX + sofaW - 20, floorY - 4]].forEach(([lx, ly]) => {
+    ctx.fillRect(lx, ly, 8, 6);
+  });
+  // Side table
+  const tableX = sofaX + sofaW + 16;
+  const tableY = floorY - 40;
+  ctx.fillStyle = '#2E1E0F';
+  ctx.beginPath(); ctx.roundRect(tableX, tableY, 44, 38, 2); ctx.fill();
+  ctx.fillStyle = '#3B2A1A';
+  ctx.fillRect(tableX + 8, floorY - 2, 4, 2);
+  ctx.fillRect(tableX + 32, floorY - 2, 4, 2);
+  // Small object on table
+  ctx.fillStyle = '#C8852A';
+  ctx.beginPath(); ctx.arc(tableX + 22, tableY - 8, 6, 0, Math.PI * 2); ctx.fill();
+
+  // Canvas artwork on wall
+  const sizeLabel = vizArt.sizes[vizSizeIndex].label;
+  const is16x24 = sizeLabel.includes('16');
+  const SCALE = W / 10;
+  const artW = is16x24 ? SCALE * 2.4 : SCALE * 3.6;
+  const artH = is16x24 ? SCALE * 3.6 : SCALE * 5.4;
+  const artX = (W - artW) / 2;
+  const artY = sofaY - artH - 24;
+
+  // Shadow behind canvas
+  ctx.shadowColor = 'rgba(0,0,0,0.5)';
+  ctx.shadowBlur = 20;
+  ctx.shadowOffsetY = 8;
+
+  // Draw artwork image
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.src = vizArt.src;
+  img.onload = () => {
+    ctx.shadowColor = 'rgba(0,0,0,0.5)';
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetY = 8;
+    ctx.drawImage(img, artX, artY, artW, artH);
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+    // Frame
+    ctx.strokeStyle = '#1A1208';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(artX, artY, artW, artH);
+    // Size label
+    ctx.fillStyle = 'rgba(200,133,42,0.85)';
+    ctx.fillRect(artX, artY + artH - 22, artW, 22);
+    ctx.fillStyle = '#1C1208';
+    ctx.font = `500 11px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText(sizeLabel, artX + artW / 2, artY + artH - 8);
+    ctx.textAlign = 'left';
+  };
+  img.onerror = () => {
+    // Fallback amber rectangle
+    ctx.fillStyle = '#C8852A';
+    ctx.fillRect(artX, artY, artW, artH);
+    ctx.shadowColor = 'transparent';
+    ctx.fillStyle = '#1C1208';
+    ctx.font = `400 14px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText(vizArt.title, artX + artW/2, artY + artH/2);
+    ctx.textAlign = 'left';
+  };
+
+  // Hanging wire hint
+  ctx.strokeStyle = 'rgba(200,133,42,0.3)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(artX + artW * 0.3, artY);
+  ctx.lineTo(W / 2, artY - 10);
+  ctx.lineTo(artX + artW * 0.7, artY);
+  ctx.stroke();
+
+  // Dimensions annotation
+  ctx.fillStyle = 'rgba(154,136,112,0.7)';
+  ctx.font = `300 10px 'DM Sans', sans-serif`;
+  ctx.textAlign = 'right';
+  ctx.fillText(sizeLabel + ' canvas', artX - 6, artY + artH / 2);
+  ctx.textAlign = 'left';
+}
+
+function drawLeanScene(ctx, W, H) {
+  // Wall
+  ctx.fillStyle = '#2A2420';
+  ctx.fillRect(0, 0, W, H * 0.68);
+  for (let x = 0; x < W; x += 18) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.02)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H * 0.68); ctx.stroke();
+  }
+  // Surface (credenza/table)
+  const surfY = H * 0.68;
+  ctx.fillStyle = '#1C1208';
+  ctx.fillRect(0, surfY, W, H - surfY);
+  // Surface top
+  ctx.fillStyle = '#3B2A1A';
+  ctx.fillRect(W * 0.12, surfY - 10, W * 0.76, 12);
+  // Surface legs
+  ctx.fillStyle = '#2E1E0F';
+  [[W*0.15, surfY+2],[W*0.82, surfY+2]].forEach(([lx, ly]) => {
+    ctx.fillRect(lx, ly, 18, H - surfY - 10);
+  });
+  // Surface grain
+  ctx.strokeStyle = 'rgba(200,133,42,0.04)';
+  for (let x = W*0.12; x < W*0.88; x += 20) {
+    ctx.beginPath(); ctx.moveTo(x, surfY - 10); ctx.lineTo(x, surfY + 2); ctx.stroke();
+  }
+  // Small decorative objects
+  ctx.fillStyle = '#4A3020';
+  ctx.beginPath(); ctx.roundRect(W*0.2, surfY - 42, 22, 34, 2); ctx.fill();
+  ctx.fillStyle = '#C8852A';
+  ctx.beginPath(); ctx.arc(W*0.21, surfY - 48, 5, 0, Math.PI * 2); ctx.fill();
+
+  // Canvas leaning
+  const sizeLabel = vizArt.sizes[vizSizeIndex].label;
+  const is16x24 = sizeLabel.includes('16');
+  const SCALE = W / 11;
+  const artW = is16x24 ? SCALE * 2.4 : SCALE * 3.4;
+  const artH = is16x24 ? SCALE * 3.6 : SCALE * 5.1;
+  const artX = W / 2 - artW / 2 + 20;
+  const artY = surfY - artH - 2;
+  const lean = 0.06;
+
+  ctx.save();
+  ctx.transform(1, 0, lean, 1, artX - artH * lean, artY);
+  ctx.shadowColor = 'rgba(0,0,0,0.6)';
+  ctx.shadowBlur = 24;
+  ctx.shadowOffsetX = -8;
+  ctx.shadowOffsetY = 6;
+
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.src = vizArt.src;
+  img.onload = () => {
+    ctx.save();
+    ctx.transform(1, 0, lean, 1, artX - artH * lean, artY);
+    ctx.shadowColor = 'rgba(0,0,0,0.6)';
+    ctx.shadowBlur = 24;
+    ctx.shadowOffsetX = -8;
+    ctx.shadowOffsetY = 6;
+    ctx.drawImage(img, 0, 0, artW, artH);
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = '#1A1208';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(0, 0, artW, artH);
+    ctx.fillStyle = 'rgba(200,133,42,0.85)';
+    ctx.fillRect(0, artH - 22, artW, 22);
+    ctx.fillStyle = '#1C1208';
+    ctx.font = `500 11px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.fillText(sizeLabel, artW / 2, artH - 8);
+    ctx.restore();
+  };
+  img.onerror = () => {
+    ctx.fillStyle = '#C8852A';
+    ctx.fillRect(0, 0, artW, artH);
+    ctx.shadowColor = 'transparent';
+    ctx.restore();
+  };
+
+  ctx.restore();
+}
+
+/* ── COMMERCIAL BUNDLES ──────────────────────────────────── */
+const BUNDLES = [
+  {
+    id: 'euro-trio',
+    name: 'The European Trio',
+    tag: 'Most Popular',
+    desc: 'Three architectural icons from across Europe. Amsterdam, Hercules, and Zagreb — a cohesive narrative of ancient stone and quiet streets. Designed for a single wall in a lobby or living room.',
+    artIds: [3, 11, 28],
+    bundlePrice: 349,
+    setting: 'Lobby · Office · Living Room'
+  },
+  {
+    id: 'landscape-set',
+    name: 'The Landscape Collection',
+    tag: 'Interior Design Favourite',
+    desc: 'Three landscapes that share a mood — vast, minimal, and unhurried. Curaçao, Rocky Mountains, and Virgin Islands. Works in horizontal line or staggered arrangement.',
+    artIds: [5, 20, 25],
+    bundlePrice: 349,
+    setting: 'Bedroom · Spa · Airbnb'
+  },
+  {
+    id: 'contrast-kit',
+    name: 'The Contrast Kit',
+    tag: 'Gallery Wall Ready',
+    desc: 'Architecture meets landscape. A deliberate tension between the built and the natural — Elizabeth Bridge, Kalambaka, and Paris. Three works that make each other more interesting.',
+    artIds: [8, 12, 17],
+    bundlePrice: 349,
+    setting: 'Conference Room · Hotel Suite · Home Office'
+  }
+];
+
+function buildBundles() {
+  const grid = document.getElementById('bundle-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  BUNDLES.forEach(bundle => {
+    const artPieces = bundle.artIds.map(id => ART.find(a => a.id === id)).filter(Boolean);
+    const individualTotal = artPieces.reduce((s, a) => s + a.sizes[1].price, 0);
+    const card = document.createElement('div');
+    card.className = 'bundle-card';
+    card.innerHTML = `
+      <div class="bundle-preview">
+        ${artPieces.map(a => `<div class="bundle-img"><img src="${a.src}" alt="${a.title}" onerror="this.style.display='none'"></div>`).join('')}
+      </div>
+      <div class="bundle-panel">
+        <div class="bundle-tag">${bundle.tag}</div>
+        <div class="bundle-name">${bundle.name}</div>
+        <div class="bundle-desc">${bundle.desc}</div>
+        <div style="font-size:0.72rem;color:var(--text-dim);margin-bottom:12px">${bundle.setting}</div>
+        <div class="bundle-pricing">
+          <div class="bundle-price">$${bundle.bundlePrice}</div>
+          <div class="bundle-per">for 3 prints</div>
+          <div class="bundle-pieces">($${individualTotal} separately)</div>
+        </div>
+        <button class="bundle-add-btn" onclick="addBundle('${bundle.id}')">Add Bundle to Cart</button>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function addBundle(bundleId) {
+  const bundle = BUNDLES.find(b => b.id === bundleId);
+  if (!bundle) return;
+  const artPieces = bundle.artIds.map(id => ART.find(a => a.id === id)).filter(Boolean);
+  const priceEach = Math.round(bundle.bundlePrice / artPieces.length);
+  artPieces.forEach((art, i) => {
+    const fakeSize = { label: art.sizes[1].label, detail: 'Bundle piece', price: i === 0 ? (bundle.bundlePrice - priceEach * (artPieces.length - 1)) : priceEach };
+    cart.push({ art, size: fakeSize, wrap: 'Black Edge', uid: Date.now() + Math.random() });
+  });
+  renderCart();
+  showToast(bundle.name + ' added to cart — 3 pieces');
+  const d = document.getElementById('cart-drawer');
+  const o = document.getElementById('cart-overlay');
+  if (!d.classList.contains('open')) { d.classList.add('open'); o.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+
+function submitCommercialInquiry() {
+  showToast('Inquiry sent — I\'ll be in touch within 48 hours.');
+}
+
+/* ── COLLECTOR'S CLUB ────────────────────────────────────── */
+function joinCollectorsClub() {
+  const name = document.getElementById('cc-name').value.trim();
+  const email = document.getElementById('cc-email').value.trim();
+  const address = document.getElementById('cc-address').value.trim();
+  if (!name || !email || !address) { showToast('Please fill in all fields.'); return; }
+  if (!email.includes('@')) { showToast('Please enter a valid email.'); return; }
+  // In production: POST to Worker → create Stripe subscription
+  // For now: show success state
+  document.getElementById('collector-form').style.display = 'none';
+  document.getElementById('collector-success').classList.add('show');
+  showToast('Welcome to the Collector\'s Club, ' + name.split(' ')[0] + '!');
+}
+
+/* ── INIT NEW FEATURES ───────────────────────────────────── */
+buildVaultBanner();
+buildBundles();
+
+
 </script>
 </body>
 </html>
