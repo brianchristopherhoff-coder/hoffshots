@@ -11,7 +11,6 @@
 <style>
 /* ── DESIGN TOKENS ───────────────────────────────────────── */
 :root {
-  /* Wood grain palette — warm, raw, workshop */
   --oak:        #1C1208;
   --oak-md:     #2E1E0F;
   --oak-lt:     #4A3020;
@@ -32,7 +31,6 @@
   --ff-display: 'Playfair Display', Georgia, serif;
   --ff-body:    'DM Sans', system-ui, sans-serif;
   --ease:       cubic-bezier(0.16, 1, 0.3, 1);
-  --grain-url:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
 }
 
 /* ── RESET ───────────────────────────────────────────────── */
@@ -41,20 +39,8 @@ html { scroll-behavior: smooth; font-size: 18px; }
 body {
   background-color: var(--iron);
   background-image:
-    repeating-linear-gradient(
-      92deg,
-      transparent 0px,
-      transparent 38px,
-      rgba(255,255,255,0.012) 38px,
-      rgba(255,255,255,0.012) 39px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0px,
-      transparent 80px,
-      rgba(0,0,0,0.08) 80px,
-      rgba(0,0,0,0.08) 81px
-    );
+    repeating-linear-gradient(92deg, transparent 0px, transparent 38px, rgba(255,255,255,0.012) 38px, rgba(255,255,255,0.012) 39px),
+    repeating-linear-gradient(180deg, transparent 0px, transparent 80px, rgba(0,0,0,0.08) 80px, rgba(0,0,0,0.08) 81px);
   color: var(--text-main);
   font-family: var(--ff-body);
   font-weight: 300;
@@ -65,32 +51,37 @@ a { color: inherit; text-decoration: none; }
 button { border: none; background: none; font-family: var(--ff-body); cursor: pointer; }
 select { cursor: pointer; }
 
-/* ── WOOD GRAIN TEXTURE MIXIN ────────────────────────────── */
+/* ── WOOD GRAIN ──────────────────────────────────────────── */
 .wood {
   background-color: var(--oak-md);
   background-image:
-    repeating-linear-gradient(
-      88deg,
-      transparent 0px,
-      transparent 6px,
-      rgba(255,255,255,0.015) 6px,
-      rgba(255,255,255,0.015) 7px
-    ),
-    repeating-linear-gradient(
-      91deg,
-      transparent 0px,
-      transparent 22px,
-      rgba(0,0,0,0.06) 22px,
-      rgba(0,0,0,0.06) 24px
-    ),
-    repeating-linear-gradient(
-      89deg,
-      transparent 0px,
-      transparent 50px,
-      rgba(255,255,255,0.02) 50px,
-      rgba(255,255,255,0.02) 52px
-    );
+    repeating-linear-gradient(88deg, transparent 0px, transparent 6px, rgba(255,255,255,0.015) 6px, rgba(255,255,255,0.015) 7px),
+    repeating-linear-gradient(91deg, transparent 0px, transparent 22px, rgba(0,0,0,0.06) 22px, rgba(0,0,0,0.06) 24px),
+    repeating-linear-gradient(89deg, transparent 0px, transparent 50px, rgba(255,255,255,0.02) 50px, rgba(255,255,255,0.02) 52px);
 }
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes scaleIn { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+@keyframes slideInRight { from { transform:translateX(100%); } to { transform:translateX(0); } }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+@keyframes shimmer { 0%{opacity:0.7} 50%{opacity:1} 100%{opacity:0.7} }
+@keyframes heroWord { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* Button press effect */
+.btn-primary, .btn-outline, .g-add-btn, .lb-add-btn, .cart-co-btn, .pay-btn, .feat-btn {
+  transition: transform 0.12s var(--ease), background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn-primary:active, .g-add-btn:active, .lb-add-btn:active, .cart-co-btn:active, .pay-btn:active, .feat-btn:active {
+  transform: scale(0.97);
+}
+.btn-outline:active { transform: scale(0.97); }
+.btn-primary:hover { box-shadow: 0 0 20px rgba(200,133,42,0.35); }
+
+/* Scroll-reveal cards */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ── NAV ─────────────────────────────────────────────────── */
 nav {
@@ -107,81 +98,52 @@ nav.scrolled {
   backdrop-filter: blur(16px);
 }
 .nav-logo {
-  font-family: var(--ff-display);
-  font-size: 1.7rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--cream);
-  flex-shrink: 0;
+  font-family: var(--ff-display); font-size: 1.7rem; font-weight: 400;
+  letter-spacing: 0.08em; color: var(--cream); flex-shrink: 0;
+  transition: opacity 0.2s;
 }
+.nav-logo:hover { opacity: 0.85; }
 .nav-logo span { color: var(--amber); }
-.nav-links {
-  display: flex; gap: 36px; list-style: none;
-  align-items: center;
-}
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
 .nav-links a {
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-mute);
-  transition: color 0.2s;
-  padding-bottom: 3px;
-  border-bottom: 1px solid transparent;
+  font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mute); transition: color 0.2s;
+  padding-bottom: 3px; border-bottom: 1px solid transparent;
 }
-.nav-links a:hover, .nav-links a.active {
-  color: var(--cream);
-  border-bottom-color: var(--amber);
-}
+.nav-links a:hover, .nav-links a.active { color: var(--cream); border-bottom-color: var(--amber); }
 .nav-cart-btn {
   display: flex; align-items: center; gap: 8px;
   font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-mute);
-  padding: 8px 18px;
-  border: 1px solid var(--iron-border);
-  transition: all 0.2s;
-  position: relative;
+  color: var(--text-mute); padding: 8px 18px;
+  border: 1px solid var(--iron-border); transition: all 0.2s;
 }
 .nav-cart-btn:hover { color: var(--cream); border-color: var(--amber); }
+.nav-cart-btn:active { transform: scale(0.97); }
 .cart-count {
   background: var(--amber); color: var(--oak);
   font-size: 0.65rem; font-weight: 500;
   width: 18px; height: 18px; border-radius: 50%;
   display: none; align-items: center; justify-content: center;
+  animation: scaleIn 0.2s var(--ease);
 }
 .cart-count.show { display: flex; }
 
-/* ── HAMBURGER (mobile) ──────────────────────────────────── */
-.hamburger {
-  display: none;
-  flex-direction: column; gap: 5px;
-  padding: 8px; cursor: pointer;
-}
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--cream);
-  transition: all 0.3s;
-}
+/* ── HAMBURGER ───────────────────────────────────────────── */
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); transition: all 0.3s; }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile nav drawer */
 .mobile-nav {
-  display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 190;
-  background: rgba(22,19,16,0.98);
-  flex-direction: column;
+  display: none; position: fixed; inset: 0; z-index: 190;
+  background: rgba(22,19,16,0.98); flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 0;
   backdrop-filter: blur(12px);
 }
-.mobile-nav.open { display: flex; }
+.mobile-nav.open { display: flex; animation: fadeIn 0.25s var(--ease); }
 .mobile-nav a {
-  font-family: var(--ff-display);
-  font-size: 2.2rem; font-weight: 400;
-  color: var(--text-mute);
-  padding: 16px 40px;
-  width: 100%; text-align: center;
+  font-family: var(--ff-display); font-size: 2.2rem; font-weight: 400;
+  color: var(--text-mute); padding: 16px 40px; width: 100%; text-align: center;
   border-bottom: 1px solid rgba(200,133,42,0.1);
   transition: color 0.2s, background 0.2s;
 }
@@ -191,107 +153,71 @@ nav.scrolled {
 /* ── PAGES ───────────────────────────────────────────────── */
 .page { display: none; min-height: 100vh; }
 .page.active { display: block; animation: fadeUp 0.45s var(--ease); }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
-/* ── HERO ─────────────────────────────────────────────────── */
+/* ── HERO ────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  min-height: 100vh;
+  position: relative; min-height: 100vh;
   display: flex; align-items: flex-end;
-  padding: 0 48px 88px;
-  overflow: hidden;
+  padding: 0 48px 88px; overflow: hidden;
 }
 .hero-bg {
   position: absolute; inset: 0;
   background-color: var(--oak);
   background-image:
-    repeating-linear-gradient(
-      89deg,
-      transparent 0px, transparent 14px,
-      rgba(255,255,255,0.02) 14px, rgba(255,255,255,0.02) 15px
-    ),
-    repeating-linear-gradient(
-      91deg,
-      transparent 0px, transparent 40px,
-      rgba(0,0,0,0.06) 40px, rgba(0,0,0,0.06) 42px
-    ),
+    repeating-linear-gradient(89deg, transparent 0px, transparent 14px, rgba(255,255,255,0.02) 14px, rgba(255,255,255,0.02) 15px),
+    repeating-linear-gradient(91deg, transparent 0px, transparent 40px, rgba(0,0,0,0.06) 40px, rgba(0,0,0,0.06) 42px),
     linear-gradient(160deg, rgba(200,133,42,0.08) 0%, rgba(26,24,22,0.9) 60%);
 }
 .hero-gallery-strip {
-  position: absolute; top: 0; right: 0; bottom: 0;
-  width: 46%;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 3px;
-  opacity: 0.32;
+  position: absolute; top: 0; right: 0; bottom: 0; width: 46%;
+  display: grid; grid-template-rows: repeat(3, 1fr); gap: 3px; opacity: 0.32;
 }
-.hero-strip-cell {
-  background: var(--plank);
-  overflow: hidden;
-}
-.hero-strip-cell img { width: 100%; height: 100%; object-fit: cover; }
-.hero-content {
-  position: relative; z-index: 2;
-  max-width: 600px;
-  padding-top: 100px;
-}
+.hero-strip-cell { background: var(--plank); overflow: hidden; }
+.hero-strip-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+.hero-strip-cell:hover img { transform: scale(1.08); }
+.hero-content { position: relative; z-index: 2; max-width: 600px; padding-top: 100px; }
 .hero-stamp {
   display: inline-flex; align-items: center; gap: 14px;
   font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--amber); margin-bottom: 24px;
+  animation: heroWord 0.8s var(--ease) both;
 }
-.hero-stamp::before {
-  content: ''; display: block;
-  width: 36px; height: 1px; background: var(--amber);
-}
+.hero-stamp::before { content: ''; display: block; width: 36px; height: 1px; background: var(--amber); }
 .hero-title {
-  font-family: var(--ff-display);
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 400; line-height: 1.05;
-  color: var(--cream);
-  margin-bottom: 24px;
+  font-family: var(--ff-display); font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400; line-height: 1.05; color: var(--cream); margin-bottom: 24px;
 }
+.hero-title .word-1 { display: inline-block; animation: heroWord 0.8s 0.1s var(--ease) both; }
+.hero-title .word-2 { display: inline-block; animation: heroWord 0.8s 0.2s var(--ease) both; }
+.hero-title .word-3 { display: inline-block; animation: heroWord 0.8s 0.3s var(--ease) both; }
 .hero-title em { font-style: italic; color: var(--amber-lt); }
 .hero-sub {
-  font-size: 1rem;
-  color: var(--text-mute);
-  line-height: 1.85;
-  max-width: 420px;
-  margin-bottom: 44px;
+  font-size: 1rem; color: var(--text-mute); line-height: 1.85;
+  max-width: 420px; margin-bottom: 44px;
+  animation: heroWord 0.8s 0.4s var(--ease) both;
 }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: heroWord 0.8s 0.5s var(--ease) both; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 12px;
   font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--oak); background: var(--amber);
-  padding: 16px 36px;
+  color: var(--oak); background: var(--amber); padding: 16px 36px;
   border: 1px solid var(--amber);
-  transition: background 0.2s;
 }
-.btn-primary:hover { background: var(--amber-lt); border-color: var(--amber-lt); }
+.btn-primary:hover { background: var(--amber-lt); border-color: var(--amber-lt); box-shadow: 0 0 24px rgba(200,133,42,0.4); }
 .btn-outline {
   display: inline-flex; align-items: center; gap: 12px;
   font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--cream);
-  padding: 16px 36px;
+  color: var(--cream); padding: 16px 36px;
   border: 1px solid rgba(200,133,42,0.35);
-  transition: border-color 0.2s, color 0.2s;
 }
 .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
 .hero-scroll-hint {
   position: absolute; bottom: 36px; right: 48px;
   font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-dim);
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  color: var(--text-dim); display: flex; flex-direction: column; align-items: center; gap: 10px;
   animation: bob 2.5s ease-in-out infinite;
 }
-.hero-scroll-hint::after {
-  content: ''; width: 1px; height: 44px; background: var(--text-dim);
-}
-@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+.hero-scroll-hint::after { content: ''; width: 1px; height: 44px; background: var(--text-dim); }
 
 /* ── SECTION CHROME ──────────────────────────────────────── */
 .sec-head {
@@ -301,42 +227,25 @@ nav.scrolled {
 }
 .sec-kicker {
   font-size: 0.75rem; letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--amber);
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 10px;
+  color: var(--amber); display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
 }
 .sec-kicker::before { content:''; width:28px; height:1px; background:var(--amber); }
-.sec-title {
-  font-family: var(--ff-display);
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  font-weight: 400; color: var(--cream);
-}
+.sec-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 400; color: var(--cream); }
 .see-all {
   font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-mute);
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-  white-space: nowrap;
+  color: var(--text-mute); border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s; white-space: nowrap;
 }
 .see-all:hover { color: var(--amber); border-color: var(--amber); }
 
 /* ── FEATURED GRID ───────────────────────────────────────── */
 .featured-grid {
-  display: grid;
-  grid-template-columns: 1.55fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 4px;
-  padding: 0 48px;
+  display: grid; grid-template-columns: 1.55fr 1fr 1fr;
+  grid-template-rows: auto auto; gap: 4px; padding: 0 48px;
 }
-.feat-card {
-  position: relative; overflow: hidden;
-  background: var(--plank);
-}
+.feat-card { position: relative; overflow: hidden; background: var(--plank); }
 .feat-card:first-child { grid-row: 1 / 3; }
-.feat-card img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.65s var(--ease);
-}
+.feat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.65s var(--ease); }
 .feat-card:first-child img { min-height: 560px; }
 .feat-card:not(:first-child) img { height: 230px; }
 .feat-card:hover img { transform: scale(1.04); }
@@ -344,8 +253,7 @@ nav.scrolled {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(18,12,6,0.92) 0%, transparent 52%);
   opacity: 0; transition: opacity 0.3s;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 24px;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
 }
 .feat-card:hover .feat-overlay { opacity: 1; }
 .feat-cat { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
@@ -353,262 +261,165 @@ nav.scrolled {
 .feat-btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--oak); background: var(--amber);
-  padding: 9px 18px; width: fit-content;
-  transition: background 0.2s;
+  color: var(--oak); background: var(--amber); padding: 9px 18px; width: fit-content;
 }
 .feat-btn:hover { background: var(--amber-lt); }
 
-/* ── PHILOSOPHY BAND ─────────────────────────────────────── */
-.philosophy {
-  display: grid; grid-template-columns: 1fr 1fr;
-  margin: 72px 0 0;
+/* ── ON THE WALL (social proof) ──────────────────────────── */
+.on-the-wall { padding: 72px 48px; }
+.wall-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+.wall-item { position: relative; overflow: hidden; background: var(--plank); aspect-ratio: 4/3; }
+.wall-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s var(--ease); }
+.wall-item:hover img { transform: scale(1.04); }
+.wall-ph {
+  width: 100%; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: var(--iron-md); border: 1px dashed var(--iron-border);
+  color: var(--text-dim); text-align: center; padding: 24px;
 }
-.philosophy-text {
-  padding: 72px 64px;
+.wall-ph-icon { font-size: 2rem; opacity: 0.3; }
+.wall-ph-text { font-size: 0.78rem; line-height: 1.6; }
+.wall-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(18,12,6,0.88), transparent);
+  padding: 20px 16px 14px;
+  font-family: var(--ff-display); font-style: italic;
+  font-size: 0.88rem; color: var(--cream-dk);
 }
+
+/* ── PHILOSOPHY ──────────────────────────────────────────── */
+.philosophy { display: grid; grid-template-columns: 1fr 1fr; margin: 72px 0 0; }
+.philosophy-text { padding: 72px 64px; }
 .philosophy-text.wood { padding: 72px 64px; }
 .philo-quote {
-  font-family: var(--ff-display);
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-  font-weight: 400; font-style: italic;
-  color: var(--cream); line-height: 1.45;
-  margin-bottom: 28px;
-  border-left: 3px solid var(--amber);
-  padding-left: 24px;
+  font-family: var(--ff-display); font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 400; font-style: italic; color: var(--cream); line-height: 1.45;
+  margin-bottom: 28px; border-left: 3px solid var(--amber); padding-left: 24px;
 }
-.philo-body {
-  font-size: 0.95rem; color: var(--text-mute);
-  line-height: 2.0; max-width: 400px;
-}
-.philo-sig {
-  margin-top: 36px;
-  font-family: var(--ff-display); font-size: 1.2rem;
-  color: var(--amber);
-}
-.philosophy-visual {
-  overflow: hidden; min-height: 460px;
-  position: relative;
-}
+.philo-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.0; max-width: 400px; }
+.philo-sig { margin-top: 36px; font-family: var(--ff-display); font-size: 1.2rem; color: var(--amber); }
+.philosophy-visual { overflow: hidden; min-height: 460px; position: relative; }
 .philosophy-visual img { width: 100%; height: 100%; object-fit: cover; }
 .philosophy-visual .iron-plate {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 4px;
+  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(to right, var(--amber) 0%, transparent 60%);
 }
 
-/* ── GALLERY PAGE ─────────────────────────────────────────── */
+/* ── GALLERY ─────────────────────────────────────────────── */
 .gallery-page-head { padding: 96px 48px 0; }
-.filter-row {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  padding: 24px 48px 40px;
-}
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; padding: 24px 48px 40px; }
 .filter-btn {
   font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-mute); padding: 10px 22px;
   border: 1px solid var(--iron-border); transition: all 0.2s;
 }
-.filter-btn:hover, .filter-btn.active {
-  color: var(--oak); background: var(--amber); border-color: var(--amber);
-}
-
-/* Card grid — roomy, portrait cards */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
-  padding: 0 48px 80px;
-}
-
-/* Card: image on top, panel below */
+.filter-btn:hover, .filter-btn.active { color: var(--oak); background: var(--amber); border-color: var(--amber); }
+.filter-btn:active { transform: scale(0.96); }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; padding: 0 48px 80px; }
 .g-card {
   display: flex; flex-direction: column;
-  background: var(--iron-md);
-  border: 1px solid var(--iron-border);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  background: var(--iron-md); border: 1px solid var(--iron-border);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
   overflow: hidden;
 }
-.g-card:hover {
-  border-color: rgba(200,133,42,0.45);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-}
-
-/* Image zone — zoom-in cursor, click opens full preview */
-.g-img-wrap {
-  position: relative;
-  width: 100%; aspect-ratio: 3/2;
-  overflow: hidden; cursor: zoom-in;
-  background: var(--plank); flex-shrink: 0;
-}
-.g-img-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.6s var(--ease); display: block;
-}
+.g-card:hover { border-color: rgba(200,133,42,0.45); box-shadow: 0 8px 40px rgba(0,0,0,0.5); transform: translateY(-2px); }
+.g-img-wrap { position: relative; width: 100%; aspect-ratio: 3/2; overflow: hidden; cursor: zoom-in; background: var(--plank); flex-shrink: 0; }
+.g-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); display: block; }
 .g-card:hover .g-img-wrap img { transform: scale(1.05); }
-
-/* "Click to preview" hint — appears on hover */
 .g-zoom-hint {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(18,12,6,0.45);
-  opacity: 0; transition: opacity 0.25s;
-  pointer-events: none;
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(18,12,6,0.45); opacity: 0; transition: opacity 0.25s; pointer-events: none;
 }
 .g-card:hover .g-zoom-hint { opacity: 1; }
 .g-zoom-label {
   display: flex; align-items: center; gap: 8px;
   font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--cream);
-  padding: 10px 20px;
-  border: 1px solid rgba(245,239,228,0.5);
-  backdrop-filter: blur(4px);
+  color: var(--cream); padding: 10px 20px;
+  border: 1px solid rgba(245,239,228,0.5); backdrop-filter: blur(4px);
 }
 .g-zoom-label::before { content: '⊕'; font-size: 1rem; color: var(--amber); }
-
-/* Category badge over image */
 .g-cat-badge {
-  position: absolute; top: 12px; left: 12px;
-  background: rgba(18,12,6,0.82);
-  color: var(--amber);
-  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 5px 12px; backdrop-filter: blur(4px);
-  pointer-events: none;
+  position: absolute; top: 12px; left: 12px; background: rgba(18,12,6,0.82);
+  color: var(--amber); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 5px 12px; backdrop-filter: blur(4px); pointer-events: none;
 }
-
-/* Info + controls panel */
-.g-panel {
-  padding: 20px 20px 22px;
-  display: flex; flex-direction: column; gap: 12px;
-  border-top: 1px solid var(--iron-border);
-}
-.g-title {
-  font-family: var(--ff-display);
-  font-size: 1.25rem; font-weight: 400; color: var(--cream);
-}
-.g-desc {
-  font-size: 0.8rem; color: var(--text-mute); line-height: 1.75;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.g-size-label {
-  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-mute); margin-bottom: 4px;
-}
+.g-panel { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--iron-border); }
+.g-title { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 400; color: var(--cream); }
+.g-desc { font-size: 0.8rem; color: var(--text-mute); line-height: 1.75; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.g-size-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 4px; }
 .g-select {
-  appearance: none; width: 100%;
-  background: var(--iron);
-  border: 1px solid var(--iron-border);
-  color: var(--cream);
-  font-family: var(--ff-body); font-size: 0.88rem;
-  padding: 12px 36px 12px 14px;
+  appearance: none; width: 100%; background: var(--iron); border: 1px solid var(--iron-border);
+  color: var(--cream); font-family: var(--ff-body); font-size: 0.88rem; padding: 12px 36px 12px 14px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C8852A'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 12px center;
-  transition: border-color 0.2s;
+  background-repeat: no-repeat; background-position: right 12px center; transition: border-color 0.2s;
 }
 .g-select:focus { outline: none; border-color: var(--amber); }
 .g-select option { background: var(--iron-md); }
 .g-btn-row { display: flex; gap: 8px; }
 .g-add-btn {
-  flex: 1; padding: 13px;
-  background: var(--amber); color: var(--oak);
+  flex: 1; padding: 13px; background: var(--amber); color: var(--oak);
   font-family: var(--ff-body); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
-  transition: background 0.2s;
 }
-.g-add-btn:hover { background: var(--amber-lt); }
+.g-add-btn:hover { background: var(--amber-lt); box-shadow: 0 0 16px rgba(200,133,42,0.3); }
 .g-preview-btn {
-  padding: 13px 16px;
-  border: 1px solid var(--iron-border); color: var(--text-mute);
+  padding: 13px 16px; border: 1px solid var(--iron-border); color: var(--text-mute);
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  transition: border-color 0.2s, color 0.2s;
-  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s; white-space: nowrap;
 }
 .g-preview-btn:hover { border-color: var(--amber); color: var(--amber); }
-.g-custom-link {
-  display: block; text-align: center;
-  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-mute); transition: color 0.2s; padding: 4px;
-}
+.g-preview-btn:active { transform: scale(0.96); }
+.g-custom-link { display: block; text-align: center; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); transition: color 0.2s; padding: 4px; }
 .g-custom-link:hover { color: var(--amber); }
 
-/* ── IMAGE PREVIEW OVERLAY (full-view on click) ──────────── */
+/* ── IMAGE PREVIEW ───────────────────────────────────────── */
 .img-preview {
-  position: fixed; inset: 0; z-index: 400;
-  background: rgba(10,7,4,0.96);
+  position: fixed; inset: 0; z-index: 400; background: rgba(10,7,4,0.97);
   display: none; align-items: center; justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(12px);
-  cursor: zoom-out;
+  padding: 20px; backdrop-filter: blur(16px); cursor: zoom-out;
 }
-.img-preview.open { display: flex; animation: fadeUp 0.25s var(--ease); }
+.img-preview.open { display: flex; animation: fadeIn 0.25s var(--ease); }
+.img-preview.open img { animation: scaleIn 0.3s var(--ease); }
 .img-preview img {
-  max-width: min(90vw, 1200px);
-  max-height: 90vh;
-  object-fit: contain;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.8);
-  cursor: default;
+  max-width: min(90vw, 1200px); max-height: 90vh; object-fit: contain;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.9); cursor: default;
 }
 .img-preview-close {
-  position: fixed; top: 20px; right: 24px;
-  font-size: 2rem; color: var(--text-mute);
-  padding: 10px; line-height: 1;
-  transition: color 0.2s; z-index: 401; cursor: pointer;
+  position: fixed; top: 20px; right: 24px; font-size: 2rem; color: var(--text-mute);
+  padding: 10px; line-height: 1; transition: color 0.2s; z-index: 401; cursor: pointer;
 }
 .img-preview-close:hover { color: var(--cream); }
 .img-preview-caption {
-  position: fixed; bottom: 24px; left: 50%;
-  transform: translateX(-50%);
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
   font-family: var(--ff-display); font-size: 1rem; font-style: italic;
-  color: var(--text-mute);
-  background: rgba(18,12,6,0.7);
-  padding: 8px 24px; backdrop-filter: blur(6px);
-  pointer-events: none; white-space: nowrap;
+  color: var(--text-mute); background: rgba(18,12,6,0.7);
+  padding: 8px 24px; backdrop-filter: blur(6px); pointer-events: none; white-space: nowrap;
 }
 
-/* ── ORDER LIGHTBOX (size/wrap/buy) ──────────────────────── */
+/* ── LIGHTBOX ────────────────────────────────────────────── */
 .lightbox {
-  position: fixed; inset: 0; z-index: 300;
-  background: rgba(18,12,6,0.97);
+  position: fixed; inset: 0; z-index: 300; background: rgba(18,12,6,0.97);
   display: none; align-items: center; justify-content: center;
   padding: 24px; backdrop-filter: blur(10px);
 }
-.lightbox.open { display: flex; animation: fadeUp 0.3s var(--ease); }
+.lightbox.open { display: flex; animation: scaleIn 0.3s var(--ease); }
 .lb-inner {
   display: grid; grid-template-columns: 1fr 420px;
-  gap: 48px; max-width: 1080px; width: 100%;
-  max-height: 92vh; overflow: hidden;
+  gap: 48px; max-width: 1080px; width: 100%; max-height: 92vh; overflow: hidden;
 }
 .lb-img-wrap {
-  position: relative; overflow: hidden;
-  background: var(--oak-md);
-  display: flex; align-items: center; justify-content: center;
-  cursor: zoom-in;
+  position: relative; overflow: hidden; background: var(--oak-md);
+  display: flex; align-items: center; justify-content: center; cursor: zoom-in;
 }
-.lb-img-wrap img {
-  width: 100%; height: 100%; object-fit: contain; max-height: 80vh;
-  transition: transform 0.4s var(--ease);
-}
-.lb-img-wrap:hover img { transform: scale(1.03); }
-.lb-img-zoom-hint {
-  position: absolute; bottom: 14px; right: 14px;
-  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--amber); background: rgba(18,12,6,0.75);
-  padding: 5px 10px; pointer-events: none;
-}
+.lb-img-wrap img { width: 100%; height: 100%; object-fit: contain; max-height: 80vh; transition: transform 0.4s var(--ease); }
+.lb-img-wrap:hover img { transform: scale(1.04); }
 .lb-close {
   position: absolute; top: 16px; right: 16px; z-index: 10;
-  font-size: 1.5rem; color: var(--text-mute); padding: 8px;
-  transition: color 0.2s;
+  font-size: 1.5rem; color: var(--text-mute); padding: 8px; transition: color 0.2s, transform 0.2s;
 }
-.lb-close:hover { color: var(--cream); }
-.lb-info {
-  overflow-y: auto; padding-right: 4px;
-  display: flex; flex-direction: column; padding-top: 8px;
-}
+.lb-close:hover { color: var(--cream); transform: rotate(90deg); }
+.lb-info { overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; padding-top: 8px; }
 .lb-kicker { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
-.lb-title {
-  font-family: var(--ff-display); font-size: 2.2rem; font-weight: 400;
-  color: var(--cream); line-height: 1.15; margin-bottom: 14px;
-}
+.lb-title { font-family: var(--ff-display); font-size: 2.2rem; font-weight: 400; color: var(--cream); line-height: 1.15; margin-bottom: 14px; }
 .lb-desc { font-size: 0.9rem; color: var(--text-mute); line-height: 1.95; margin-bottom: 28px; }
 .lb-divider { height: 1px; background: var(--iron-border); margin-bottom: 24px; }
 .lb-config-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 12px; }
@@ -616,10 +427,10 @@ nav.scrolled {
 .lb-size-opt {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 18px; border: 1px solid var(--iron-border);
-  cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
+.lb-size-opt:hover { transform: translateX(3px); }
 .lb-size-opt.selected { border-color: var(--amber); background: rgba(200,133,42,0.07); }
-.lb-size-opt:hover { border-color: rgba(200,133,42,0.5); }
 .lb-size-name { font-size: 0.9rem; color: var(--cream); }
 .lb-size-detail { font-size: 0.72rem; color: var(--text-mute); }
 .lb-size-price { font-family: var(--ff-display); font-size: 1.15rem; color: var(--amber); }
@@ -630,36 +441,45 @@ nav.scrolled {
   border: 1px solid var(--iron-border); color: var(--text-mute);
   transition: all 0.2s; cursor: pointer;
 }
-.wrap-opt.selected, .wrap-opt:hover {
-  border-color: var(--amber); color: var(--cream); background: rgba(200,133,42,0.07);
-}
+.wrap-opt.selected, .wrap-opt:hover { border-color: var(--amber); color: var(--cream); background: rgba(200,133,42,0.07); }
 .lb-add-btn {
-  width: 100%; padding: 16px;
-  background: var(--amber); color: var(--oak);
+  width: 100%; padding: 16px; background: var(--amber); color: var(--oak);
   font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
-  transition: background 0.2s; margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-.lb-add-btn:hover { background: var(--amber-lt); }
+.lb-add-btn:hover { background: var(--amber-lt); box-shadow: 0 0 20px rgba(200,133,42,0.4); }
 .lb-custom-btn {
-  display: block; text-align: center;
-  font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-mute); padding: 12px;
-  border: 1px solid var(--iron-border);
+  display: block; text-align: center; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mute); padding: 12px; border: 1px solid var(--iron-border);
   transition: border-color 0.2s, color 0.2s;
 }
 .lb-custom-btn:hover { border-color: var(--amber); color: var(--amber); }
 
-/* ── CART DRAWER ─────────────────────────────────────────── */
-.cart-overlay {
-  position: fixed; inset: 0; z-index: 290;
-  background: rgba(18,12,6,0.65);
-  display: none; backdrop-filter: blur(4px);
+/* You May Also Like */
+.lb-also { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--iron-border); }
+.lb-also-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+.lb-also-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.lb-also-item {
+  cursor: pointer; overflow: hidden; position: relative;
+  aspect-ratio: 3/2; background: var(--plank);
+  border: 1px solid var(--iron-border); transition: border-color 0.2s, transform 0.2s;
 }
-.cart-overlay.open { display: block; }
+.lb-also-item:hover { border-color: var(--amber); transform: scale(1.03); }
+.lb-also-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease); }
+.lb-also-item:hover img { transform: scale(1.08); }
+.lb-also-title {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(18,12,6,0.9), transparent);
+  padding: 12px 8px 6px;
+  font-family: var(--ff-display); font-size: 0.72rem; color: var(--cream);
+}
+
+/* ── CART ────────────────────────────────────────────────── */
+.cart-overlay { position: fixed; inset: 0; z-index: 290; background: rgba(18,12,6,0.65); display: none; backdrop-filter: blur(4px); }
+.cart-overlay.open { display: block; animation: fadeIn 0.2s; }
 .cart-drawer {
   position: fixed; top: 0; right: -100%; bottom: 0; z-index: 295;
-  width: min(440px, 100vw);
-  background: var(--iron-md);
+  width: min(440px, 100vw); background: var(--iron-md);
   border-left: 1px solid var(--iron-border);
   display: flex; flex-direction: column;
   transition: right 0.4s var(--ease);
@@ -668,28 +488,19 @@ nav.scrolled {
 .cart-drawer.open { right: 0; }
 .cart-head {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 24px 28px;
-  border-bottom: 1px solid var(--iron-border);
-  flex-shrink: 0;
+  padding: 24px 28px; border-bottom: 1px solid var(--iron-border); flex-shrink: 0;
 }
 .cart-head-title { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 400; color: var(--cream); }
-.cart-x {
-  font-size: 1.3rem; color: var(--text-mute); padding: 8px;
-  transition: color 0.2s;
-}
-.cart-x:hover { color: var(--cream); }
+.cart-x { font-size: 1.3rem; color: var(--text-mute); padding: 8px; transition: color 0.2s, transform 0.2s; }
+.cart-x:hover { color: var(--cream); transform: rotate(90deg); }
 .cart-body { flex: 1; overflow-y: auto; padding: 20px 28px; -webkit-overflow-scrolling: touch; }
-.cart-empty-state {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  min-height: 200px; gap: 12px; color: var(--text-mute);
-}
+.cart-empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; gap: 12px; color: var(--text-mute); }
 .cart-empty-icon { font-size: 2.4rem; opacity: 0.25; }
 .cart-empty-msg { font-size: 0.88rem; }
 .c-item {
-  display: grid; grid-template-columns: 76px 1fr;
-  gap: 16px; padding: 16px 0;
+  display: grid; grid-template-columns: 76px 1fr; gap: 16px; padding: 16px 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  animation: fadeUp 0.3s var(--ease);
+  animation: fadeUp 0.35s var(--ease);
 }
 .c-item-img { width: 76px; height: 60px; object-fit: cover; background: var(--plank); }
 .c-item-name { font-family: var(--ff-display); font-size: 1rem; color: var(--cream); margin-bottom: 4px; }
@@ -698,70 +509,37 @@ nav.scrolled {
 .c-item-price { font-family: var(--ff-display); font-size: 1.05rem; color: var(--amber); }
 .c-item-rm { font-size: 0.68rem; color: var(--text-dim); transition: color 0.2s; }
 .c-item-rm:hover { color: var(--cream); }
-.cart-foot {
-  padding: 20px 28px;
-  border-top: 1px solid var(--iron-border);
-  flex-shrink: 0;
-}
-.cart-total-row {
-  display: flex; justify-content: space-between; align-items: baseline;
-  margin-bottom: 18px;
-}
+.cart-foot { padding: 20px 28px; border-top: 1px solid var(--iron-border); flex-shrink: 0; }
+.cart-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
 .cart-total-label { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
 .cart-total-val { font-family: var(--ff-display); font-size: 1.8rem; color: var(--cream); }
 .cart-co-btn {
-  width: 100%; padding: 16px;
-  background: var(--amber); color: var(--oak);
+  width: 100%; padding: 16px; background: var(--amber); color: var(--oak);
   font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
-  transition: background 0.2s; margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-.cart-co-btn:hover { background: var(--amber-lt); }
-.cart-cont {
-  display: block; text-align: center;
-  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-mute); padding: 8px;
-  transition: color 0.2s;
-}
+.cart-co-btn:hover { background: var(--amber-lt); box-shadow: 0 0 20px rgba(200,133,42,0.35); }
+.cart-cont { display: block; text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); padding: 8px; transition: color 0.2s; }
 .cart-cont:hover { color: var(--cream); }
 
 /* ── ABOUT ───────────────────────────────────────────────── */
-.about-split {
-  display: grid; grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 80px);
-  padding-top: 80px;
-}
+.about-split { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); padding-top: 80px; }
 .about-visual { overflow: hidden; }
-.about-visual img { width: 100%; height: 100%; object-fit: cover; }
-.about-content {
-  padding: 72px 64px;
-  display: flex; flex-direction: column; justify-content: center;
-}
+.about-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+.about-visual:hover img { transform: scale(1.04); }
+.about-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
 .about-content.wood { padding: 72px 64px; }
-.about-title {
-  font-family: var(--ff-display);
-  font-size: clamp(1.9rem, 3.5vw, 3rem);
-  font-weight: 400; color: var(--cream);
-  line-height: 1.25; margin-bottom: 28px;
-  margin-top: 16px;
-}
-.about-body {
-  font-size: 0.95rem; color: var(--text-mute);
-  line-height: 2.1; margin-bottom: 18px;
-}
+.about-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 28px; margin-top: 16px; }
+.about-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.1; margin-bottom: 18px; }
 .about-sig { font-family: var(--ff-display); font-size: 1.3rem; color: var(--amber); margin-top: 28px; }
-.about-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-}
-.stat-cell {
-  padding: 40px 44px;
-  border-right: 1px solid rgba(200,133,42,0.12);
-  border-top: 1px solid rgba(200,133,42,0.12);
-}
+.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+.stat-cell { padding: 40px 44px; border-right: 1px solid rgba(200,133,42,0.12); border-top: 1px solid rgba(200,133,42,0.12); }
 .stat-cell:last-child { border-right: none; }
-.stat-num { font-family: var(--ff-display); font-size: 3rem; font-weight: 400; color: var(--amber); }
+.stat-num { font-family: var(--ff-display); font-size: 3rem; font-weight: 400; color: var(--amber); transition: transform 0.3s; }
+.stat-cell:hover .stat-num { transform: scale(1.08); }
 .stat-label { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin-top: 6px; }
 
-/* ── CUSTOM ORDER ─────────────────────────────────────────── */
+/* ── CUSTOM ──────────────────────────────────────────────── */
 .custom-wrap { padding: 96px 48px 80px; max-width: 820px; margin: 0 auto; }
 .custom-intro { font-size: 0.95rem; color: var(--text-mute); line-height: 2.0; margin: 16px 0 44px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -771,51 +549,34 @@ nav.scrolled {
 .form-input, .form-textarea, .form-sel {
   background: var(--iron-md); border: 1px solid var(--iron-border);
   color: var(--cream); font-family: var(--ff-body); font-size: 0.92rem;
-  padding: 13px 16px; transition: border-color 0.2s; appearance: none;
+  padding: 13px 16px; transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
 }
-.form-input:focus, .form-textarea:focus, .form-sel:focus { outline: none; border-color: var(--amber); }
+.form-input:focus, .form-textarea:focus, .form-sel:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 2px rgba(200,133,42,0.12); }
 .form-textarea { min-height: 140px; resize: vertical; }
 .form-sel {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C8852A'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 14px center;
 }
 .form-sel option { background: var(--iron-md); }
-.form-submit {
-  margin-top: 32px; padding: 16px 48px;
-  background: var(--amber); color: var(--oak);
-  font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
-  transition: background 0.2s;
-}
-.form-submit:hover { background: var(--amber-lt); }
+.form-submit { margin-top: 32px; padding: 16px 48px; background: var(--amber); color: var(--oak); font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.2s, transform 0.12s, box-shadow 0.2s; }
+.form-submit:hover { background: var(--amber-lt); box-shadow: 0 0 20px rgba(200,133,42,0.35); }
+.form-submit:active { transform: scale(0.97); }
 .form-note { font-size: 0.8rem; color: var(--text-mute); line-height: 1.85; margin-top: 18px; }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 .faq-wrap { padding: 96px 48px 80px; max-width: 780px; margin: 0 auto; }
 .faq-item { border-bottom: 1px solid var(--iron-border); }
-.faq-q {
-  width: 100%; text-align: left; padding: 22px 0;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 0.95rem; color: var(--cream); line-height: 1.5;
-  gap: 16px; transition: color 0.2s;
-}
+.faq-q { width: 100%; text-align: left; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; color: var(--cream); line-height: 1.5; gap: 16px; transition: color 0.2s; }
 .faq-q:hover { color: var(--amber); }
 .faq-icon { font-size: 1.2rem; color: var(--amber); flex-shrink: 0; transition: transform 0.25s; }
 .faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-a {
-  font-size: 0.9rem; color: var(--text-mute); line-height: 2.0;
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.35s var(--ease), padding 0.35s;
-}
+.faq-a { font-size: 0.9rem; color: var(--text-mute); line-height: 2.0; max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease), padding 0.35s; }
 .faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
 
 /* ── CHECKOUT ────────────────────────────────────────────── */
 .checkout-wrap { padding: 96px 48px 80px; }
 .checkout-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; max-width: 1020px; }
-.checkout-sec-title {
-  font-family: var(--ff-display); font-size: 1.4rem; font-weight: 400;
-  color: var(--cream); margin-bottom: 24px;
-  padding-bottom: 14px; border-bottom: 1px solid var(--iron-border);
-}
+.checkout-sec-title { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 400; color: var(--cream); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--iron-border); }
 .co-form { display: flex; flex-direction: column; gap: 16px; }
 .co-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .order-box { background: var(--iron-md); padding: 28px; }
@@ -824,51 +585,102 @@ nav.scrolled {
 .o-item-name { font-family: var(--ff-display); font-size: 0.95rem; color: var(--cream); }
 .o-item-size { font-size: 0.72rem; color: var(--text-mute); margin-top: 3px; }
 .o-item-price { font-family: var(--ff-display); font-size: 1rem; color: var(--amber); }
-.o-line {
-  display: flex; justify-content: space-between;
-  font-size: 0.82rem; color: var(--text-mute);
-  padding: 10px 0; border-top: 1px solid var(--iron-border);
-}
+.o-line { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-mute); padding: 10px 0; border-top: 1px solid var(--iron-border); }
 .o-line.total { color: var(--cream); font-family: var(--ff-display); font-size: 1.15rem; }
-.secure-note {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 0.72rem; color: var(--text-dim); margin-top: 16px;
-}
-.pay-btn {
-  width: 100%; padding: 17px; margin-top: 20px;
-  background: var(--amber); color: var(--oak);
-  font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+.secure-note { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--text-dim); margin-top: 16px; }
+.pay-btn { width: 100%; padding: 17px; margin-top: 20px; background: var(--amber); color: var(--oak); font-family: var(--ff-body); font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.2s, box-shadow 0.2s; }
+.pay-btn:hover { background: var(--amber-lt); box-shadow: 0 0 24px rgba(200,133,42,0.4); }
+
+/* ── BLOG ────────────────────────────────────────────────── */
+/* Index */
+.blog-wrap { padding: 96px 48px 80px; max-width: 920px; margin: 0 auto; }
+.blog-intro { font-size: 0.92rem; color: var(--text-mute); line-height: 1.9; max-width: 540px; margin-top: 14px; margin-bottom: 56px; }
+.blog-post-list { display: flex; flex-direction: column; }
+.blog-card {
+  display: grid; grid-template-columns: 180px 1fr;
+  gap: 40px; padding: 44px 0;
+  border-bottom: 1px solid var(--iron-border);
+  cursor: pointer;
   transition: background 0.2s;
 }
-.pay-btn:hover { background: var(--amber-lt); }
+.blog-card:first-child { border-top: 1px solid var(--iron-border); }
+.blog-card:hover { background: rgba(200,133,42,0.03); }
+.blog-date-col { display: flex; flex-direction: column; align-items: flex-start; padding-top: 4px; flex-shrink: 0; }
+.blog-date-month { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+.blog-date-day { font-family: var(--ff-display); font-size: 3.2rem; font-weight: 400; color: var(--cream); line-height: 1; margin: 4px 0 2px; transition: color 0.2s; }
+.blog-card:hover .blog-date-day { color: var(--amber-lt); }
+.blog-date-year { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.1em; }
+.blog-card-body { display: flex; flex-direction: column; gap: 8px; }
+.blog-card-loc { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); }
+.blog-card-title { font-family: var(--ff-display); font-size: 1.65rem; font-weight: 400; color: var(--cream); line-height: 1.2; transition: color 0.2s; }
+.blog-card:hover .blog-card-title { color: var(--amber-lt); }
+.blog-card-excerpt { font-size: 0.88rem; color: var(--text-mute); line-height: 1.8; }
+.blog-card-read { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+.blog-card-read::after { content: '→'; transition: transform 0.2s; }
+.blog-card:hover .blog-card-read::after { transform: translateX(4px); }
+
+/* Single post */
+.blog-single { display: none; padding: 96px 48px 80px; max-width: 780px; margin: 0 auto; }
+.blog-single.visible { display: block; animation: fadeUp 0.4s var(--ease); }
+.blog-back {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 52px;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-mute); transition: color 0.2s, gap 0.2s;
+}
+.blog-back::before { content: '←'; transition: transform 0.2s; }
+.blog-back:hover { color: var(--amber); gap: 12px; }
+.blog-back:hover::before { transform: translateX(-4px); }
+.blog-post-eyebrow { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.blog-post-title { font-family: var(--ff-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; color: var(--cream); line-height: 1.1; margin-bottom: 16px; }
+.blog-post-meta { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.1em; padding-bottom: 32px; margin-bottom: 36px; border-bottom: 1px solid var(--iron-border); }
+.blog-hero-img {
+  width: 100%; aspect-ratio: 16/9; object-fit: cover;
+  background: var(--plank); margin-bottom: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display); font-size: 0.85rem; color: var(--text-dim);
+}
+.blog-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.blog-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.25; }
+.blog-body p { margin-bottom: 26px; }
+.blog-body p:last-child { margin-bottom: 0; }
+.blog-pullquote {
+  font-family: var(--ff-display); font-size: 1.45rem; font-style: italic;
+  color: var(--cream); border-left: 3px solid var(--amber);
+  padding: 6px 0 6px 28px; margin: 40px 0;
+  line-height: 1.5;
+}
+.blog-cta-box {
+  margin-top: 56px; padding: 36px 40px;
+  background: var(--iron-md); border: 1px solid var(--iron-border);
+  border-left: 3px solid var(--amber);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  transition: border-color 0.2s;
+}
+.blog-cta-box:hover { border-color: rgba(200,133,42,0.5); }
+.blog-cta-text { font-family: var(--ff-display); font-size: 1.2rem; color: var(--cream); }
+.blog-cta-sub { font-size: 0.78rem; color: var(--text-mute); margin-top: 6px; }
 
 /* ── FOOTER ──────────────────────────────────────────────── */
-footer {
-  border-top: 1px solid rgba(200,133,42,0.15);
-  padding: 56px 48px 28px;
-}
+footer { border-top: 1px solid rgba(200,133,42,0.15); padding: 56px 48px 28px; }
 footer.wood { padding: 56px 48px 28px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-logo { font-family: var(--ff-display); font-size: 1.5rem; color: var(--cream); margin-bottom: 14px; display: block; }
+.footer-logo { font-family: var(--ff-display); font-size: 1.5rem; color: var(--cream); margin-bottom: 14px; display: block; transition: opacity 0.2s; }
+.footer-logo:hover { opacity: 0.8; }
 .footer-logo span { color: var(--amber); }
 .footer-tagline { font-family: var(--ff-display); font-style: italic; font-size: 1rem; color: var(--text-mute); }
 .footer-col-head { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 0.85rem; color: var(--text-mute); transition: color 0.2s; }
-.footer-links a:hover { color: var(--cream); }
-.footer-bottom {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  padding-top: 22px; border-top: 1px solid rgba(200,133,42,0.1);
-  font-size: 0.75rem; color: var(--text-dim);
-}
+.footer-links a { font-size: 0.85rem; color: var(--text-mute); transition: color 0.2s, padding-left 0.2s; }
+.footer-links a:hover { color: var(--cream); padding-left: 4px; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 22px; border-top: 1px solid rgba(200,133,42,0.1); font-size: 0.75rem; color: var(--text-dim); }
 
 /* ── TOAST ───────────────────────────────────────────────── */
 .toast {
   position: fixed; bottom: 32px; left: 50%;
   transform: translateX(-50%) translateY(16px);
   background: var(--oak-md); border: 1px solid rgba(200,133,42,0.3);
-  color: var(--cream); padding: 14px 28px;
-  font-size: 0.85rem; letter-spacing: 0.08em;
+  color: var(--cream); padding: 14px 28px; font-size: 0.85rem; letter-spacing: 0.08em;
   opacity: 0; transition: opacity 0.28s, transform 0.28s;
   z-index: 500; pointer-events: none; white-space: nowrap;
   box-shadow: 0 4px 24px rgba(0,0,0,0.4);
@@ -876,25 +688,15 @@ footer.wood { padding: 56px 48px 28px; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ── ART PLACEHOLDER ─────────────────────────────────────── */
-.art-ph {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--plank);
-  font-family: var(--ff-display); font-size: 0.85rem;
-  color: var(--text-dim); text-align: center; padding: 12px;
-}
+.art-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--plank); font-family: var(--ff-display); font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; }
 
-/* ═══════════════ MOBILE ══════════════════════════════════════ */
+/* ═══════ MOBILE ══════════════════════════════════════════ */
 @media (max-width: 768px) {
   html { font-size: 16px; }
-
-  /* Nav */
   nav { padding: 18px 20px; }
   nav.scrolled { padding: 12px 20px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
-
-  /* Hero */
   .hero { padding: 0 20px 72px; }
   .hero-gallery-strip { display: none; }
   .hero-content { max-width: 100%; }
@@ -903,77 +705,53 @@ footer.wood { padding: 56px 48px 28px; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-outline { width: 100%; justify-content: center; }
   .hero-scroll-hint { display: none; }
-
-  /* Section headers */
   .sec-head { padding: 56px 20px 24px; }
   .gallery-page-head { padding: 80px 20px 0; }
   .filter-row { padding: 20px 20px 28px; }
   .gallery-grid { padding: 0 20px 60px; grid-template-columns: 1fr; gap: 20px; }
   .g-zoom-hint { display: none; }
-  /* Image preview mobile */
   .img-preview { padding: 0; }
   .img-preview img { max-width: 100vw; max-height: 100vh; }
   .img-preview-caption { font-size: 0.85rem; padding: 6px 16px; }
-
-  /* Featured */
-  .featured-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding: 0 20px;
-  }
+  .featured-grid { grid-template-columns: 1fr; grid-template-rows: auto; padding: 0 20px; }
   .feat-card:first-child { grid-row: auto; }
   .feat-card:first-child img { min-height: 280px; height: 280px; }
   .feat-card:not(:first-child) img { height: 200px; }
-  /* Always show overlay info on mobile */
   .feat-overlay { opacity: 1; }
-  .g-overlay { opacity: 1; background: linear-gradient(to top, rgba(18,12,6,0.95) 0%, rgba(18,12,6,0.2) 55%, transparent 100%); }
-
-  /* Philosophy */
   .philosophy { grid-template-columns: 1fr; }
   .philosophy-text.wood { padding: 48px 24px; }
   .philosophy-visual { min-height: 280px; }
-
-  /* Lightbox — full screen on mobile */
   .lightbox { padding: 0; align-items: flex-end; }
-  .lb-inner {
-    grid-template-columns: 1fr;
-    max-height: 95vh;
-    width: 100%;
-    background: var(--iron-md);
-    border-radius: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+  .lb-inner { grid-template-columns: 1fr; max-height: 95vh; width: 100%; background: var(--iron-md); overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .lb-img-wrap { max-height: 42vh; min-height: 220px; }
   .lb-info { padding: 24px 20px 32px; overflow-y: visible; }
   .lb-title { font-size: 1.7rem; }
-
-  /* Cart — full width on mobile */
-  .cart-drawer { width: 100%; right: -100%; }
+  .lb-also-grid { grid-template-columns: repeat(3, 1fr); }
+  .cart-drawer { width: 100%; }
   .cart-head { padding: 20px; }
   .cart-body { padding: 16px 20px; }
   .cart-foot { padding: 16px 20px; }
-
-  /* About */
   .about-split { grid-template-columns: 1fr; padding-top: 72px; }
   .about-visual { min-height: 300px; max-height: 300px; }
   .about-content.wood { padding: 40px 24px; }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .stat-cell:nth-child(3) { grid-column: 1 / -1; border-right: none; }
-
-  /* Custom, FAQ, Checkout */
   .custom-wrap, .faq-wrap { padding: 80px 20px 60px; }
   .form-grid { grid-template-columns: 1fr; }
   .checkout-wrap { padding: 80px 20px 60px; }
   .checkout-grid { grid-template-columns: 1fr; }
   .co-two { grid-template-columns: 1fr; }
-
-  /* Footer */
   footer.wood { padding: 40px 20px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { justify-content: center; text-align: center; }
+  .blog-wrap, .blog-single { padding: 80px 20px 60px; }
+  .blog-card { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  .blog-date-col { flex-direction: row; align-items: baseline; gap: 10px; }
+  .blog-date-day { font-size: 2rem; }
+  .blog-cta-box { flex-direction: column; align-items: flex-start; }
+  .wall-grid { grid-template-columns: 1fr; }
+  .on-the-wall { padding: 48px 20px; }
 }
-
 @media (max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr; }
@@ -990,6 +768,7 @@ footer.wood { padding: 56px 48px 28px; }
   <ul class="nav-links">
     <li><a href="#" onclick="nav('home')" id="nl-home" class="active">Home</a></li>
     <li><a href="#" onclick="nav('gallery')" id="nl-gallery">Gallery</a></li>
+    <li><a href="#" onclick="nav('journal')" id="nl-journal">Journal</a></li>
     <li><a href="#" onclick="nav('about')" id="nl-about">About</a></li>
     <li><a href="#" onclick="nav('faq')" id="nl-faq">FAQs</a></li>
     <li>
@@ -1007,6 +786,7 @@ footer.wood { padding: 56px 48px 28px; }
 <div class="mobile-nav" id="mobile-nav">
   <a href="#" onclick="nav('home');toggleMobileNav()">Home</a>
   <a href="#" onclick="nav('gallery');toggleMobileNav()">Gallery</a>
+  <a href="#" onclick="nav('journal');toggleMobileNav()">Journal</a>
   <a href="#" onclick="nav('about');toggleMobileNav()">About</a>
   <a href="#" onclick="nav('faq');toggleMobileNav()">FAQ</a>
   <a href="#" onclick="nav('custom');toggleMobileNav()">Custom Commission</a>
@@ -1036,7 +816,7 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
-<!-- IMAGE FULL PREVIEW OVERLAY -->
+<!-- IMAGE PREVIEW -->
 <div class="img-preview" id="img-preview" onclick="closePreview()">
   <button class="img-preview-close" onclick="closePreview()">✕</button>
   <img id="preview-img" src="" alt="" onclick="event.stopPropagation()">
@@ -1065,6 +845,10 @@ footer.wood { padding: 56px 48px 28px; }
       </div>
       <button class="lb-add-btn" onclick="addFromLB()">Add to Cart — <span id="lb-price">$0</span></button>
       <button class="lb-custom-btn" onclick="closeLB();nav('custom')">Commission a Custom Size →</button>
+      <div class="lb-also">
+        <div class="lb-also-label">You May Also Like</div>
+        <div class="lb-also-grid" id="lb-also-grid"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1072,14 +856,16 @@ footer.wood { padding: 56px 48px 28px; }
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ══════════ PAGE: HOME ══════════ -->
+<!-- ══════════ HOME ══════════ -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-gallery-strip" id="hero-strip"></div>
     <div class="hero-content">
       <div class="hero-stamp">CAPTURING</div>
-      <h1 class="hero-title">The world,<br><em>as I find it.</em></h1>
+      <h1 class="hero-title">
+        <span class="word-1">The</span> <span class="word-2">world,</span><br><span class="word-3"><em>as I find it.</em></span>
+      </h1>
       <p class="hero-sub">Architecture stripped of crowds. Landscapes at the edge of silence. Original photography printed on museum-grade canvas — made to order, shipped to your door.</p>
       <div class="hero-actions">
         <a href="#" class="btn-primary" onclick="nav('gallery')">Explore the Collection</a>
@@ -1098,9 +884,17 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
   <div class="featured-grid" id="featured-grid"></div>
 
+  <!-- ON THE WALL -->
+  <div class="on-the-wall">
+    <div class="sec-kicker">On the Wall</div>
+    <h2 class="sec-title" style="margin-top:8px;margin-bottom:8px">In Real Spaces</h2>
+    <p style="font-size:0.85rem;color:var(--text-mute);margin-bottom:32px">How Hoffshots looks when it comes home.</p>
+    <div class="wall-grid" id="wall-grid"></div>
+  </div>
+
   <div class="philosophy">
     <div class="philosophy-text wood">
-      <p class="philo-quote">"I photograph the world between the people — the breath before crowds, the streets at 5am, the view  that only exists in that light."</p>
+      <p class="philo-quote">"I photograph the world between the people — the breath before crowds, the streets at 5am, the view that only exists in that light."</p>
       <p class="philo-body">Every piece in the Hoffshots collection is a moment of travel distilled into stillness. No people, no noise — just the scene as it existed in the space between heartbeats. Printed with purpose on museum-grade canvas with archival inks.</p>
       <div class="philo-sig">— Hoff</div>
     </div>
@@ -1111,7 +905,7 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
-<!-- ══════════ PAGE: GALLERY ══════════ -->
+<!-- ══════════ GALLERY ══════════ -->
 <div id="page-gallery" class="page">
   <div class="gallery-page-head">
     <div class="sec-kicker">The Collection</div>
@@ -1121,11 +915,25 @@ footer.wood { padding: 56px 48px 28px; }
   <div class="gallery-grid" id="gallery-grid"></div>
 </div>
 
-<!-- ══════════ PAGE: ABOUT ══════════ -->
+<!-- ══════════ JOURNAL ══════════ -->
+<div id="page-journal" class="page">
+  <div class="blog-wrap" id="blog-index">
+    <div class="sec-kicker">Field Notes</div>
+    <h2 class="sec-title" style="margin-top:8px">The Journal</h2>
+    <p class="blog-intro">Dispatches from the road. The early mornings, the wrong turns, the light that only lasts four minutes. These are the stories behind the photographs.</p>
+    <div class="blog-post-list" id="blog-post-list"></div>
+  </div>
+  <div class="blog-single" id="blog-single">
+    <a href="#" class="blog-back" onclick="showBlogIndex()">Back to Journal</a>
+    <div id="blog-single-content"></div>
+  </div>
+</div>
+
+<!-- ══════════ ABOUT ══════════ -->
 <div id="page-about" class="page">
   <div class="about-split">
     <div class="about-visual">
-      <img src="sales_ready/YourPhotoFilename.jpeg" alt="Hoffshots — the artist" style="width:100%;height:100%;object-fit:cover;min-height:400px">
+      <img src="sales_ready/YourPhotoFilename.jpeg" alt="Hoffshots — the artist" style="width:100%;height:100%;object-fit:cover;min-height:400px" onerror="this.outerHTML='<div class=\'art-ph\' style=\'min-height:500px\'>Artist portrait</div>'">
     </div>
     <div class="about-content wood">
       <div class="sec-kicker">About the Artist</div>
@@ -1143,50 +951,30 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
-<!-- ══════════ PAGE: CUSTOM ══════════ -->
+<!-- ══════════ CUSTOM ══════════ -->
 <div id="page-custom" class="page">
   <div class="custom-wrap">
     <div class="sec-kicker">Custom Commission</div>
     <h2 class="sec-title" style="margin-top:8px">Request a Custom Piece</h2>
     <p class="custom-intro">Need a size outside the standard range? What about a custom new capture of your liking? A specific crop, very large format, or commercial installation? Tell me what you're envisioning and I'll quote you directly.</p>
     <div class="form-grid">
-      <div class="form-field">
-        <label class="form-label">First Name</label>
-        <input class="form-input" type="text" placeholder="First name">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Last Name</label>
-        <input class="form-input" type="text" placeholder="Last name">
-      </div>
-      <div class="form-field full">
-        <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" placeholder="you@email.com">
-      </div>
+      <div class="form-field"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name"></div>
+      <div class="form-field"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name"></div>
+      <div class="form-field full"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="you@email.com"></div>
       <div class="form-field full">
         <label class="form-label">Image You're Interested In</label>
-        <select class="form-input form-sel" id="custom-sel">
-          <option value="">— Select from gallery —</option>
-        </select>
+        <select class="form-input form-sel" id="custom-sel"><option value="">— Select from gallery —</option></select>
       </div>
-      <div class="form-field">
-        <label class="form-label">Desired Width (inches)</label>
-        <input class="form-input" type="number" placeholder="e.g. 48">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Desired Height (inches)</label>
-        <input class="form-input" type="number" placeholder="e.g. 36">
-      </div>
-      <div class="form-field full">
-        <label class="form-label">Additional Notes</label>
-        <textarea class="form-textarea" placeholder="Tell me about the space, crop preferences, frame requests, or anything else..."></textarea>
-      </div>
+      <div class="form-field"><label class="form-label">Desired Width (inches)</label><input class="form-input" type="number" placeholder="e.g. 48"></div>
+      <div class="form-field"><label class="form-label">Desired Height (inches)</label><input class="form-input" type="number" placeholder="e.g. 36"></div>
+      <div class="form-field full"><label class="form-label">Additional Notes</label><textarea class="form-textarea" placeholder="Tell me about the space, crop preferences, frame requests, or anything else..."></textarea></div>
     </div>
     <button class="form-submit" onclick="submitCustom()">Send Commission Request</button>
     <p class="form-note">I respond to all commission requests within 72 hours with a quote and timeline. Payment is collected only after you approve the final spec.</p>
   </div>
 </div>
 
-<!-- ══════════ PAGE: FAQ ══════════ -->
+<!-- ══════════ FAQ ══════════ -->
 <div id="page-faq" class="page">
   <div class="faq-wrap">
     <div class="sec-kicker">Support</div>
@@ -1195,7 +983,7 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
-<!-- ══════════ PAGE: CHECKOUT ══════════ -->
+<!-- ══════════ CHECKOUT ══════════ -->
 <div id="page-checkout" class="page">
   <div class="checkout-wrap">
     <div class="sec-kicker" style="margin-bottom:8px">Secure Checkout</div>
@@ -1221,7 +1009,7 @@ footer.wood { padding: 56px 48px 28px; }
           <div class="checkout-sec-title" style="margin-top:28px">Payment</div>
           <div class="form-field">
             <label class="form-label">Card Details</label>
-            <div id="stripe-card-element" style="background:var(--iron-md);border:1px solid var(--iron-border);padding:14px 16px;min-height:46px;"></div>
+            <div id="stripe-card-element" style="background:var(--iron-md);border:1px solid var(--iron-border);padding:14px 16px;min-height:46px;transition:border-color 0.2s;"></div>
             <div id="stripe-card-errors" style="color:#e05a4a;font-size:0.78rem;margin-top:6px;min-height:18px;"></div>
           </div>
           <div class="secure-note">🔒 Secured by Stripe. Card info never touches our server.</div>
@@ -1245,10 +1033,10 @@ footer.wood { padding: 56px 48px 28px; }
   </div>
 </div>
 
-<!-- ══════════ PAGE: CONFIRMED ══════════ -->
+<!-- ══════════ CONFIRMED ══════════ -->
 <div id="page-confirmed" class="page">
   <div style="max-width:600px;margin:0 auto;padding:120px 48px 80px;text-align:center;">
-    <div style="font-size:3rem;margin-bottom:24px;color:var(--amber)">✓</div>
+    <div style="font-size:3rem;margin-bottom:24px;color:var(--amber);animation:scaleIn 0.5s var(--ease)">✓</div>
     <div class="sec-kicker" style="justify-content:center;margin-bottom:16px;">Order Confirmed</div>
     <h2 class="sec-title" style="margin-bottom:20px;">Thank you for your order.</h2>
     <p style="font-size:0.95rem;color:var(--text-mute);line-height:2.0;margin-bottom:32px;">Your canvas print is now in production. You'll receive a shipping confirmation with tracking within 3–5 business days.</p>
@@ -1269,6 +1057,7 @@ footer.wood { padding: 56px 48px 28px; }
       <ul class="footer-links">
         <li><a href="#" onclick="nav('home')">Home</a></li>
         <li><a href="#" onclick="nav('gallery')">Gallery</a></li>
+        <li><a href="#" onclick="nav('journal')">The Journal</a></li>
         <li><a href="#" onclick="nav('about')">About the Artist</a></li>
         <li><a href="#" onclick="nav('custom')">Custom Commission</a></li>
         <li><a href="#" onclick="nav('faq')">FAQ</a></li>
@@ -1292,165 +1081,191 @@ footer.wood { padding: 56px 48px 28px; }
 </footer>
 
 <script>
-/* ── ARTWORK DATA ────────────────────────────────────────────
-   UPDATE: Replace src paths with your actual filenames from sales_ready/
-   Your manifest.json has all titles, categories, descriptions ready to copy in.
-   ──────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   ARTWORK DATA — edit titles, descriptions, prices here
+   ══════════════════════════════════════════════════════════ */
 const ART = [
+  { id:3,  title:"Amsterdam",      src:"sales_ready/Amsterdam.jpeg",          cat:"Urban",        desc:"The city between moments — narrow facades leaning toward each other across cobblestone, a quiet street that hasn't decided what century it belongs to.",                                                                    tags:["amsterdam","netherlands","urban","europe","travel"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:5,  title:"Curaçao",        src:"sales_ready/Curacao.jpeg",            cat:"Landscape",    desc:"Where Caribbean light hits colonial colour and neither apologises. Willemstad's waterfront in the silence before the day begins its noise.",                                                                               tags:["curacao","caribbean","island","landscape","travel"],  sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:6,  title:"Dead Sea",       src:"sales_ready/Dead Sea.jpeg",           cat:"Landscape",    desc:"The lowest point on earth and somehow the stillest. A horizon of salt and mineral silence where the water refuses to move and the sky refuses to end.",                                                                   tags:["dead sea","israel","landscape","water","middle east"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:7,  title:"Diane",          src:"sales_ready/Diane.jpeg",              cat:"Architecture", desc:"Marble in repose. The goddess caught in the moment before movement — sculpture that makes stillness feel like a held breath.",                                                                                            tags:["sculpture","marble","classical","art","museum"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:8,  title:"Elizabeth",      src:"sales_ready/Elizabeth.jpeg",          cat:"Architecture", desc:"The bridge that earned its name. Steel suspension arching over the Danube — Budapest's most elegant engineering, best seen when the city is still sleeping.",                                                             tags:["budapest","bridge","hungary","architecture","danube"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:10, title:"Haifa",          src:"sales_ready/Haifa.jpeg",              cat:"Urban",        desc:"The port city that climbs Mount Carmel in tiers of light and stone. A view earned by elevation — where three faiths share a skyline without argument.",                                                                   tags:["haifa","israel","port","urban","mediterranean"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:11, title:"Hercules",       src:"sales_ready/Hercules.jpeg",           cat:"Architecture", desc:"Stone and myth at the edge of the known world. The monument that outlasted the empire that built it — two pillars marking where the map once ended.",                                                                     tags:["hercules","gibraltar","monument","ancient","europe"],  sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:12, title:"Kalambaka",      src:"sales_ready/Kalambaka.jpeg",          cat:"Landscape",    desc:"The monasteries of Meteora balance on pinnacles of rock as if gravity made an exception for faith. A landscape that should not exist and yet absolutely does.",                                                          tags:["meteora","greece","monastery","landscape","europe"],   sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:17, title:"Paris",          src:"sales_ready/Paris.jpeg",              cat:"Urban",        desc:"The city that invented the idea of itself. Paris without its crowd is just light on stone — and that turns out to be enough.",                                                                                            tags:["paris","france","urban","architecture","europe"],     sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:20, title:"Rocky Mountains", src:"sales_ready/Rocky Mountains.jpg",   cat:"Landscape",    desc:"The continent's spine at a moment of total stillness. The Rockies without scale — just rock, sky, and the particular silence that altitude makes.",                                                                       tags:["rocky mountains","colorado","landscape","mountains","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:22, title:"St Mary Glacier", src:"sales_ready/St Mary Glacier.jpeg",  cat:"Landscape",    desc:"Ice that remembers a different climate. St Mary Glacier in Colorado — the stillness of ancient water paused on its slow return to the sea.",                                                                             tags:["glacier","colorado","landscape","ice","mountain"],    sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:25, title:"Virgin Islands",  src:"sales_ready/Virgin_Islands.jpeg",   cat:"Landscape",    desc:"The water here is not blue — it is every colour that blue forgot it could be. A Caribbean scene that resets your entire understanding of the word turquoise.",                                                           tags:["virgin islands","caribbean","tropical","water","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:27, title:"Winged Victory",  src:"sales_ready/Winged Victory.jpeg",   cat:"Architecture", desc:"The Nike of Samothrace — headless, armless, and more alive than almost anything in the Louvre. Marble that captured forward motion two thousand years before photography.",                                              tags:["winged victory","louvre","paris","sculpture","greece"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:28, title:"Zagreb",          src:"sales_ready/Zagreb.jpeg",           cat:"Urban",        desc:"The Croatian capital before the day claims it. Cathedral spires over terracotta rooftops — a Central European city that kept its dignity through everything.",                                                             tags:["zagreb","croatia","cathedral","urban","europe"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] }
+];
+
+/* ══════════════════════════════════════════════════════════
+   BLOG / JOURNAL DATA
+   To edit a post: change the values between the quotes.
+   date.month / date.day / date.year  — the post date
+   location                           — shown as subtitle
+   title                              — the headline
+   excerpt                            — the preview blurb on index
+   body[]                             — each paragraph is one string
+   pullquote                          — the big italic quote mid-story
+   img                                — path to photo, or null
+   linkedArt                          — ART id to link a purchase CTA, or null
+   ══════════════════════════════════════════════════════════ */
+const POSTS = [
   {
-    id:3, title:"Amsterdam",
-    src:"sales_ready/Amsterdam.jpeg",
-    cat:"Urban",
-    desc:"The city between moments — narrow facades leaning toward each other across cobblestone, a quiet street that hasn't decided what century it belongs to.",
-    tags:["amsterdam","street","netherlands","urban","europe","travel","historic"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'fuego-2024',
+    date:{ month:'November', day:'14', year:'2024' },
+    location:'Antigua, Guatemala',
+    title:'Standing at the Edge of Volcan de Fuego',
+    excerpt:'The ground vibrated before I heard it. A low, rolling boom that you feel in your sternum more than your ears. Fuego does not ask for your attention — it simply takes it.',
+    img:null,
+    imgAlt:'Volcan de Fuego erupting at dusk, Antigua Guatemala',
+    linkedArt:null,
+    ctaTitle:'The Antigua collection is coming.',
+    ctaSub:'Fuego canvas prints will be available in the gallery soon.',
+    body:[
+      "Nobody tells you about the sound. You research the hike, you check the weather, you hire a guide and you pack your camera with two spare batteries because you know the cold drains them faster than anything. But nothing prepares you for the moment Fuego speaks.",
+      "I had been on the ridge for forty minutes, waiting for the light to drop behind the caldera when the first eruption hit. The ground vibrated before I heard it — a low, rolling boom that you feel in your sternum more than your ears. Then the column rose. Black and grey smoke punching straight up into the evening sky, lit from below by lava that glowed the color of a dying coal.",
+      "My guide, a quiet man from Antigua named Diego, just nodded. He had seen this hundreds of times. I had seen it once and I was not breathing normally.",
+      "The thing about Fuego is that it is not the violent chaos you expect. Between eruptions, the mountain is almost serene. Birds move through the tree line below. The air smells of sulfur and pine in the same breath. You forget, for long stretches, that you are standing next to something genuinely reminding you how temporary everything is.",
+      "I shot until the light was completely gone. Diego walked me back down in the dark with a headlamp and the occasional distant glow of another eruption lighting the clouds from beneath like a paper lantern.",
+      "I have been to twenty-six countries. I have stood in some genuinely extraordinary places. Fuego is the only location where I felt the landscape was looking back."
+    ],
+    pullquote:"The ground vibrated before I heard it. A low, rolling boom that you feel in your sternum more than your ears."
   },
   {
-    id:5, title:"Curaçao",
-    src:"sales_ready/Curacao.jpeg",
-    cat:"Landscape",
-    desc:"Where Caribbean light hits colonial colour and neither apologises. Willemstad's waterfront in the silence before the day begins its noise.",
-    tags:["curacao","caribbean","colorful","island","landscape","travel","tropical"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'zermatt-2023',
+    date:{ month:'January', day:'08', year:'2023' },
+    location:'Zermatt, Switzerland',
+    title:'The Matterhorn at First Light',
+    excerpt:'You cannot photograph the Matterhorn casually. It demands a certain seriousness — an early alarm, cold fingers, and the willingness to stand in the dark and wait.',
+    img:'sales_ready/Matterhorn.jpeg',
+    imgAlt:'The Matterhorn rising above Zermatt at dawn',
+    linkedArt:null,
+    ctaTitle:'Switzerland — in the gallery.',
+    ctaSub:'The Alps at altitude. 16×24" and 24×36" — made to order.',
+    body:[
+      "The first bus from Zermatt to Schwarzsee leaves before the sun. In January that means boarding in the dark, in silence, with a small group of other people who have all made the same quiet calculation: that the mountain is worth the cold.",
+      "The Matterhorn does not disappoint. But it also does not perform on a schedule. I spent two mornings on that ridge watching clouds wrap around the peak, obscuring it completely, then releasing it without warning. The light changes in seconds. What looks flat and grey will turn amber and then gold before you can properly compose the shot.",
+      "Zermatt itself is a town that has made peace with being secondary to what towers above it. No cars are allowed in the village, which gives it an unusual quiet for a tourist destination. You hear the bells from horse-drawn sleighs long before you see them. The whole place operates at the mountain's pace, not its own.",
+      "I got the shot on the second morning. Forty minutes before sunrise, the clouds cleared and the peak caught the first light while the valley was still dark. It lasted six minutes. I shot continuously and deleted most of what I took.",
+      "What survived is what you see in the gallery. The Matterhorn does not look like that most of the time. It looks like that when it decides to."
+    ],
+    pullquote:"You cannot photograph the Matterhorn casually. It demands a certain seriousness from you."
   },
   {
-    id:6, title:"Dead Sea",
-    src:"sales_ready/Dead Sea.jpeg",
-    cat:"Landscape",
-    desc:"The lowest point on earth and somehow the stillest. A horizon of salt and mineral silence where the water refuses to move and the sky refuses to end.",
-    tags:["dead sea","israel","jordan","landscape","salt","water","middle east","travel"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'prague-2022',
+    date:{ month:'September', day:'22', year:'2022' },
+    location:'Prague, Czech Republic',
+    title:'Prague Before It Wakes Up',
+    excerpt:'The Charles Bridge has 30,000 visitors on a summer day. At 4:45 in the morning, it has one. I made sure that morning was mine.',
+    img:'sales_ready/Prague.jpeg',
+    imgAlt:'Charles Bridge at dawn, Prague',
+    linkedArt:null,
+    ctaTitle:'Prague — in the gallery.',
+    ctaSub:'The bridge at dawn. 16×24" and 24×36" — made to order.',
+    body:[
+      "Every photographer who visits Prague knows about the Charles Bridge problem. It is one of the most photogenic structures in Europe — 14th century stone, 30 baroque statues, a view of the castle that looks painted rather than real. It is also, for eighteen hours a day, completely overrun.",
+      "The solution is simple and costs nothing except sleep. I set my alarm for 4:15am and walked to the bridge in the dark, the old town cobblestones still wet from overnight rain, my breath visible in the September air.",
+      "The bridge was empty. Not almost empty — completely empty. The statues stood in the early mist like they had been standing there since 1357, which they had. The Vltava moved below without urgency. The castle complex glowed on the hill with a warmth that felt deliberate.",
+      "I had the bridge to myself for forty-five minutes before the first other photographer arrived, then a tour guide with six followers, then the morning began in earnest. But those forty-five minutes felt private in a way that is hard to manufacture in a city this beloved.",
+      "Prague rewards the early riser like few other cities. The architecture does not change — the crowds do. Find your window and step into it."
+    ],
+    pullquote:"The Charles Bridge has 30,000 visitors on a summer day. At 4:45 in the morning, it has one."
   },
   {
-    id:7, title:"Diane",
-    src:"sales_ready/Diane.jpeg",
-    cat:"Architecture",
-    desc:"Marble in repose. The goddess caught in the moment before movement — sculpture that makes stillness feel like a held breath.",
-    tags:["sculpture","marble","classical","art","museum","europe","architecture","fine art"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'budapest-2022',
+    date:{ month:'September', day:'17', year:'2022' },
+    location:'Budapest, Hungary',
+    title:'The Elizabeth Bridge and the Danube at Dusk',
+    excerpt:'Budapest plays two completely different cities depending on the time of day. The day version belongs to everyone. The evening version feels like it belongs only to you.',
+    img:'sales_ready/Elizabeth.jpeg',
+    imgAlt:'Elizabeth Bridge over the Danube, Budapest at dusk',
+    linkedArt:8,
+    ctaTitle:'Elizabeth Bridge — available as a canvas print.',
+    ctaSub:'Budapest at dusk. 16×24" and 24×36" — made to order.',
+    body:[
+      "I came to Budapest for three days and stayed for six. This happens more than I plan for, but Budapest is particularly effective at making you revise your itinerary.",
+      "The city is built around contrast — Buda on one side of the Danube, Pest on the other, connected by bridges that have been bombed, rebuilt, bombed again, and rebuilt again with the kind of civic stubbornness that becomes its own form of beauty. The Elizabeth Bridge is the youngest of them, rebuilt in its current form in 1964, and it is the most elegant — white suspension cables arching over water that goes silver in the late afternoon.",
+      "I photographed it from the Buda embankment in the hour before sunset. The city was doing what cities do at that hour — slowing slightly, the light going warmer, the tourist energy giving way to something more residential and real. A couple was arguing quietly on the bridge. A woman walked a very small dog. A tram passed and its brakes made a sound like a question.",
+      "The photograph is not about the bridge, exactly. It is about that specific hour when a city stops performing and starts simply existing.",
+      "Budapest will do this to you if you give it enough time. Come for three days. Stay for six."
+    ],
+    pullquote:"Budapest plays two completely different cities depending on the time of day. The evening version feels like it belongs only to you."
   },
   {
-    id:8, title:"Elizabeth",
-    src:"sales_ready/Elizabeth.jpeg",
-    cat:"Architecture",
-    desc:"The bridge that earned its name. Steel suspension arching over the Danube — Budapest's most elegant engineering, best seen when the city is still sleeping.",
-    tags:["budapest","bridge","hungary","architecture","danube","europe","travel","suspension"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'amsterdam-2021',
+    date:{ month:'June', day:'03', year:'2021' },
+    location:'Amsterdam, Netherlands',
+    title:'Amsterdam at 5am: The City Nobody Sees',
+    excerpt:'There is a version of Amsterdam that exists only in the early hours — before the bicycle commuters, before the tour boats. I went looking for it.',
+    img:'sales_ready/Amsterdam.jpeg',
+    imgAlt:'Amsterdam canal street at dawn',
+    linkedArt:3,
+    ctaTitle:'Amsterdam — available as a canvas print.',
+    ctaSub:'The city before the city. 16×24" and 24×36" — made to order.',
+    body:[
+      "Amsterdam in June means long days and short nights, which means that 5am is already light and the city is already waking faster than you would like. To find the Amsterdam I was looking for — the one without the crowds, without the tour groups, without the boats stacked six deep on the Prinsengracht — you have to be out by 4:30.",
+      "I walked the Jordaan district for two hours before a single cafe opened. The canal houses stood in the early light with a patience that felt geological. Their reflections in the water were perfect and still, the kind of mirror that only exists when no boats have disturbed the surface yet.",
+      "Amsterdam is a city that is very good at being photographed, which means most photographs of it look the same. The angle from the Magere Brug. The Rijksmuseum at golden hour. The bikes stacked against the bridge rail. These are beautiful photographs and I have taken all of them.",
+      "But the city I was looking for was narrower and quieter than that. A cobblestone street at the corner of two canals, the houseboats dark and sleeping, a bicycle abandoned against a brick wall, the whole scene holding its breath.",
+      "That is the Amsterdam that made it onto canvas. Not the postcard — the pause before the postcard."
+    ],
+    pullquote:"There is a version of Amsterdam that exists only in the early hours. I went looking for it."
   },
   {
-    id:10, title:"Haifa",
-    src:"sales_ready/Haifa.jpeg",
-    cat:"Urban",
-    desc:"The port city that climbs Mount Carmel in tiers of light and stone. A view earned by elevation — where three faiths share a skyline without argument.",
-    tags:["haifa","israel","port","cityscape","urban","middle east","travel","mediterranean"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'lucerne-2020',
+    date:{ month:'February', day:'14', year:'2020' },
+    location:'Lucerne, Switzerland',
+    title:'The Lion Who Needed No Audience',
+    excerpt:'Mark Twain called it the most mournful and moving piece of stone in the world. I visited on a Tuesday in February and had it almost entirely to myself.',
+    img:'sales_ready/Lucerne.jpg',
+    imgAlt:'The Lion Monument carved into rock, Lucerne Switzerland',
+    linkedArt:null,
+    ctaTitle:'Lucerne — in the gallery.',
+    ctaSub:'Switzerland from the road. 16×24" and 24×36" — made to order.',
+    body:[
+      "The Lion Monument in Lucerne is not large. That is the first thing that surprises you. You have seen photographs of it and read Twain's famous line and you arrive expecting something monumental in scale. What you find is a dying lion, perhaps eight feet tall, carved directly into a limestone cliff face in a quiet garden near the old city walls.",
+      "The lion is dying from a spear wound to the side. His shield, bearing the fleur-de-lis of the French monarchy he died defending, is still gripped in one massive paw. His face carries something that sculptor Bertel Thorvaldsen managed to make genuinely moving in stone. Exhaustion and dignity at the same time.",
+      "I was there in February, off-season, on a Tuesday. A handful of other visitors passed through in the hour I spent there. Nobody spoke above a murmur, which seemed right. The monument does not announce itself. It simply exists in its small garden and waits for you to understand what you are looking at.",
+      "The lion was carved to commemorate the Swiss Guards who died defending Louis XVI during the French Revolution. It has been there since 1821. It will almost certainly be there long after everything I have ever photographed has been forgotten.",
+      "Some subjects don't need context or composition tricks. They just need you to stand in front of them and be quiet."
+    ],
+    pullquote:"Mark Twain called it the most mournful and moving piece of stone in the world. I found out he was right."
   },
   {
-    id:11, title:"Hercules",
-    src:"sales_ready/Hercules.jpeg",
-    cat:"Architecture",
-    desc:"Stone and myth at the edge of the known world. The monument that outlasted the empire that built it — two pillars marking where the map once ended.",
-    tags:["hercules","gibraltar","monument","ancient","architecture","europe","travel","myth"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:12, title:"Kalambaka",
-    src:"sales_ready/Kalambaka.jpeg",
-    cat:"Landscape",
-    desc:"The monasteries of Meteora balance on pinnacles of rock as if gravity made an exception for faith. A landscape that should not exist and yet absolutely does.",
-    tags:["meteora","greece","monastery","rock","landscape","kalambaka","europe","travel"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:17, title:"Paris",
-    src:"sales_ready/Paris.jpeg",
-    cat:"Urban",
-    desc:"The city that invented the idea of itself. Paris without its crowd is just light on stone — and that turns out to be enough.",
-    tags:["paris","france","urban","architecture","europe","travel","iconic","cityscape"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:20, title:"Rocky Mountains",
-    src:"sales_ready/Rocky Mountains.jpg",
-    cat:"Landscape",
-    desc:"The continent's spine at a moment of total stillness. The Rockies without scale — just rock, sky, and the particular silence that altitude makes.",
-    tags:["rocky mountains","colorado","landscape","mountains","usa","nature","travel","wilderness"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:22, title:"St Mary Glacier",
-    src:"sales_ready/St Mary Glacier.jpeg",
-    cat:"Landscape",
-    desc:"Ice that remembers a different climate. St Mary Glacier in Colorado — the stillness of ancient water paused on its slow return to the sea.",
-    tags:["glacier","colorado","landscape","ice","mountain","usa","nature","travel"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:25, title:"Virgin Islands",
-    src:"sales_ready/Virgin_Islands.jpeg",
-    cat:"Landscape",
-    desc:"The water here is not blue — it is every colour that blue forgot it could be. A Caribbean scene that resets your entire understanding of the word turquoise.",
-    tags:["virgin islands","caribbean","tropical","landscape","water","island","travel","usa"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:27, title:"Winged Victory",
-    src:"sales_ready/Winged Victory.jpeg",
-    cat:"Architecture",
-    desc:"The Nike of Samothrace — headless, armless, and more alive than almost anything in the Louvre. Marble that captured forward motion two thousand years before photography.",
-    tags:["winged victory","louvre","paris","sculpture","greece","ancient","art","museum"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
-  },
-  {
-    id:28, title:"Zagreb",
-    src:"sales_ready/Zagreb.jpeg",
-    cat:"Urban",
-    desc:"The Croatian capital before the day claims it. Cathedral spires over terracotta rooftops — a Central European city that kept its dignity through everything.",
-    tags:["zagreb","croatia","cathedral","urban","europe","travel","rooftops","architecture"],
-    sizes:[
-      {label:'16×24"', detail:'Standard · signature-sized wall piece',    price:89},
-      {label:'24×36"', detail:'Gallery · statement style installation', price:149}
-    ]
+    id:'hamburg-2019',
+    date:{ month:'October', day:'29', year:'2019' },
+    location:'Hamburg, Germany',
+    title:"Hamburg in the Rain: The City That Doesn't Mind",
+    excerpt:"Hamburg has a relationship with grey weather that is almost affectionate. It does not apologize for the clouds. It simply keeps going, and the light it produces is unlike anything a clear sky can offer.",
+    img:null,
+    imgAlt:'Hamburg harbor in autumn rain',
+    linkedArt:null,
+    ctaTitle:'Hamburg work coming to the gallery.',
+    ctaSub:'Field work from northern Germany. Available soon.',
+    body:[
+      "I arrived in Hamburg on a Thursday in late October with a forecast of four straight days of rain, which turned out to be completely accurate. I considered this a problem for approximately the first two hours and then realized I had misunderstood the situation entirely.",
+      "Hamburg in the rain is a different city from Hamburg in the sun. The Speicherstadt warehouse district — those dark brick buildings on the canal with the green copper rooftops — was built to look exactly as it looks on a wet October morning. Moody, massive, a little severe. The reflections in the water between the warehouses are twice as vivid when the surface is disturbed by light rain.",
+      "The harbor is where Hamburg makes its case most effectively. The port has been here since 1189. The cranes and container ships are modern but they operate in the same physical space as centuries of commerce, the same water, the same grey northern sky that has presided over all of it.",
+      "I walked the Landungsbrücken piers in the afternoon with a coffee that went cold before I finished it, watching the ferries cross and the light change in ways that only overcast skies allow — diffuse, even, without shadows, the kind of light that flatters industrial architecture the way dramatic light flatters cathedrals.",
+      "Hamburg taught me to stop waiting for good weather and start understanding what the available weather actually offers. It is a lesson I have applied in every city since."
+    ],
+    pullquote:"Hamburg has a relationship with grey weather that is almost affectionate. It does not apologize for the clouds."
   }
+];
+
+/* ══════════════════════════════════════════════════════════
+   ON THE WALL — add your in-home photos here
+   src: path to your photo, caption: short quote or room name
+   Leave src as null and it shows a placeholder
+   ══════════════════════════════════════════════════════════ */
+const WALL_PHOTOS = [
+  { src: null, caption: "Your space, coming soon." },
+  { src: null, caption: "Real walls. Real rooms." },
+  { src: null, caption: "Made to order. Built to last." }
 ];
 
 /* ── STATE ───────────────────────────────────────────────── */
@@ -1468,11 +1283,14 @@ window.addEventListener('scroll', () => {
 function nav(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('[id^="nl-"]').forEach(a => a.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
+  const page = document.getElementById('page-' + id);
+  if (!page) return false;
+  page.classList.add('active');
   const nl = document.getElementById('nl-' + id);
   if (nl) nl.classList.add('active');
   window.scrollTo(0,0);
   if (id === 'checkout') renderCheckout();
+  if (id === 'journal') showBlogIndex();
   return false;
 }
 
@@ -1483,6 +1301,22 @@ function toggleMobileNav() {
   const open = mn.classList.toggle('open');
   hb.classList.toggle('open', open);
   document.body.style.overflow = open ? 'hidden' : '';
+}
+
+/* ── SCROLL REVEAL ───────────────────────────────────────── */
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.g-card, .feat-card, .blog-card, .wall-item').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
 }
 
 /* ── HERO STRIP ──────────────────────────────────────────── */
@@ -1517,11 +1351,27 @@ function toggleMobileNav() {
       </div>`;
     grid.appendChild(card);
   });
-  // Philosophy image
   const ph = document.getElementById('philosophy-img');
   if (ART[11]) {
     ph.innerHTML = `<img src="${ART[11].src}" alt="${ART[11].title}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='${ART[11].title}'">`;
   }
+})();
+
+/* ── ON THE WALL ─────────────────────────────────────────── */
+(function buildWall() {
+  const grid = document.getElementById('wall-grid');
+  WALL_PHOTOS.forEach(photo => {
+    const item = document.createElement('div');
+    item.className = 'wall-item';
+    if (photo.src) {
+      item.innerHTML = `
+        <img src="${photo.src}" alt="${photo.caption}" onerror="this.outerHTML='<div class=wall-ph><div class=wall-ph-icon>◻</div><div class=wall-ph-text>${photo.caption}</div></div>'">
+        <div class="wall-caption">${photo.caption}</div>`;
+    } else {
+      item.innerHTML = `<div class="wall-ph"><div class="wall-ph-icon">◻</div><div class="wall-ph-text">${photo.caption}</div></div>`;
+    }
+    grid.appendChild(item);
+  });
 })();
 
 /* ── GALLERY ─────────────────────────────────────────────── */
@@ -1534,11 +1384,8 @@ function buildGallery(filter) {
     c.className = 'g-card';
     c.innerHTML = `
       <div class="g-img-wrap" onclick="openPreview(${art.id})">
-        <img src="${art.src}" alt="${art.title}"
-             onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
-        <div class="g-zoom-hint">
-          <span class="g-zoom-label">View Full Image</span>
-        </div>
+        <img src="${art.src}" alt="${art.title}" onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
+        <div class="g-zoom-hint"><span class="g-zoom-label">View Full Image</span></div>
         <div class="g-cat-badge">${art.cat}</div>
       </div>
       <div class="g-panel">
@@ -1559,6 +1406,7 @@ function buildGallery(filter) {
     grid.appendChild(c);
   });
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === (filter||'All')));
+  setTimeout(initReveal, 50);
 }
 
 (function buildFilters() {
@@ -1574,7 +1422,6 @@ function buildGallery(filter) {
   buildGallery();
 })();
 
-/* ── CUSTOM SELECT POPULATE ──────────────────────────────── */
 (function populateCustomSel() {
   const sel = document.getElementById('custom-sel');
   ART.forEach(art => {
@@ -1584,7 +1431,7 @@ function buildGallery(filter) {
   });
 })();
 
-/* ── IMAGE FULL PREVIEW ──────────────────────────────────── */
+/* ── IMAGE PREVIEW ───────────────────────────────────────── */
 function openPreview(id) {
   const art = ART.find(a => a.id === id);
   if (!art) return;
@@ -1616,12 +1463,7 @@ function openLB(id) {
   art.sizes.forEach((s,i) => {
     const d = document.createElement('div');
     d.className = 'lb-size-opt' + (i===1?' selected':'');
-    d.innerHTML = `
-      <div>
-        <div class="lb-size-name">${s.label}</div>
-        <div class="lb-size-detail">${s.detail}</div>
-      </div>
-      <div class="lb-size-price">$${s.price}</div>`;
+    d.innerHTML = `<div><div class="lb-size-name">${s.label}</div><div class="lb-size-detail">${s.detail}</div></div><div class="lb-size-price">$${s.price}</div>`;
     d.onclick = () => {
       document.querySelectorAll('.lb-size-opt').forEach(el => el.classList.remove('selected'));
       d.classList.add('selected');
@@ -1632,6 +1474,18 @@ function openLB(id) {
   });
   document.getElementById('lb-price').textContent = '$' + art.sizes[1].price;
   document.querySelectorAll('.wrap-opt').forEach((b,i) => b.classList.toggle('selected', i===0));
+  // You may also like
+  const alsoGrid = document.getElementById('lb-also-grid');
+  alsoGrid.innerHTML = '';
+  const related = ART.filter(a => a.id !== id && a.cat === art.cat).slice(0,3);
+  const fill = related.length < 3 ? ART.filter(a => a.id !== id && a.cat !== art.cat).slice(0, 3 - related.length) : [];
+  [...related, ...fill].slice(0,3).forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'lb-also-item';
+    item.onclick = () => openLB(a.id);
+    item.innerHTML = `<img src="${a.src}" alt="${a.title}" onerror="this.style.display='none'"><div class="lb-also-title">${a.title}</div>`;
+    alsoGrid.appendChild(item);
+  });
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1662,6 +1516,14 @@ function addItem(art, size, wrap) {
   cart.push({art, size, wrap, uid: Date.now() + Math.random()});
   renderCart();
   showToast('"' + art.title + '" added to cart');
+  // Auto-open cart drawer
+  const d = document.getElementById('cart-drawer');
+  const o = document.getElementById('cart-overlay');
+  if (!d.classList.contains('open')) {
+    d.classList.add('open');
+    o.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 }
 function removeItem(uid) {
   cart = cart.filter(i => i.uid !== uid);
@@ -1683,8 +1545,7 @@ function renderCart() {
     const el = document.createElement('div');
     el.className = 'c-item';
     el.innerHTML = `
-      <img class="c-item-img" src="${item.art.src}" alt="${item.art.title}"
-           onerror="this.style.background='${getComputedStyle(document.documentElement).getPropertyValue('--plank')}'">
+      <img class="c-item-img" src="${item.art.src}" alt="${item.art.title}" onerror="this.style.background='var(--plank)'">
       <div>
         <div class="c-item-name">${item.art.title}</div>
         <div class="c-item-meta">${item.size.label} · ${item.wrap}</div>
@@ -1704,11 +1565,9 @@ function toggleCart() {
   document.body.style.overflow = open ? 'hidden' : '';
 }
 
-/* ── STRIPE + WORKER CONFIG ──────────────────────────────── */
-// After deploying your Cloudflare Worker, paste its URL here:
+/* ── STRIPE CONFIG ───────────────────────────────────────── */
 const WORKER_URL = 'https://hoffshots-checkout.brianchristopherhoff.workers.dev';
 const STRIPE_PK  = 'pk_live_51TBRblFnWUk0EAeTcPlCV1TW3FDbGq8BTpV1PS377gmmgak1j81GwGJFI1bwtR37SIKzE7kboLrddzhUdSi1TAzh00lHe47sJM';
-
 let stripe = null;
 let stripeCard = null;
 
@@ -1716,33 +1575,13 @@ function initStripe() {
   if (stripe) return;
   stripe = Stripe(STRIPE_PK);
   const elements = stripe.elements({
-    appearance: {
-      theme: 'night',
-      variables: {
-        colorPrimary: '#C8852A',
-        colorBackground: '#252220',
-        colorText: '#F0E8DA',
-        colorDanger: '#e05a4a',
-        fontFamily: 'DM Sans, system-ui, sans-serif',
-        borderRadius: '0px'
-      }
-    }
+    appearance: { theme:'night', variables:{ colorPrimary:'#C8852A', colorBackground:'#252220', colorText:'#F0E8DA', colorDanger:'#e05a4a', fontFamily:'DM Sans, system-ui, sans-serif', borderRadius:'0px' } }
   });
   stripeCard = elements.create('card', {
-    style: {
-      base: {
-        color: '#F0E8DA',
-        fontFamily: '"DM Sans", system-ui, sans-serif',
-        fontSize: '16px',
-        '::placeholder': { color: '#6A5A4A' }
-      },
-      invalid: { color: '#e05a4a' }
-    }
+    style: { base:{ color:'#F0E8DA', fontFamily:'"DM Sans", system-ui, sans-serif', fontSize:'16px', '::placeholder':{ color:'#6A5A4A' } }, invalid:{ color:'#e05a4a' } }
   });
   stripeCard.mount('#stripe-card-element');
-  stripeCard.on('change', e => {
-    document.getElementById('stripe-card-errors').textContent = e.error ? e.error.message : '';
-  });
+  stripeCard.on('change', e => { document.getElementById('stripe-card-errors').textContent = e.error ? e.error.message : ''; });
 }
 
 /* ── CHECKOUT ────────────────────────────────────────────── */
@@ -1753,11 +1592,7 @@ function renderCheckout() {
   cart.forEach(item => {
     const el = document.createElement('div');
     el.className = 'o-item';
-    el.innerHTML = `
-      <img class="o-item-img" src="${item.art.src}" alt="${item.art.title}"
-           onerror="this.style.background='var(--plank)'">
-      <div><div class="o-item-name">${item.art.title}</div><div class="o-item-size">${item.size.label} · ${item.wrap}</div></div>
-      <div class="o-item-price">$${item.size.price}</div>`;
+    el.innerHTML = `<img class="o-item-img" src="${item.art.src}" alt="${item.art.title}" onerror="this.style.background='var(--plank)'"><div><div class="o-item-name">${item.art.title}</div><div class="o-item-size">${item.size.label} · ${item.wrap}</div></div><div class="o-item-price">$${item.size.price}</div>`;
     items.appendChild(el);
   });
   const fmt = '$' + total.toFixed(2);
@@ -1768,11 +1603,10 @@ function renderCheckout() {
 }
 
 async function processPayment() {
-  const btn      = document.getElementById('pay-btn');
-  const btnText  = document.getElementById('pay-btn-text');
-  const btnLoad  = document.getElementById('pay-btn-loading');
-  const errorEl  = document.getElementById('checkout-error');
-
+  const btn = document.getElementById('pay-btn');
+  const btnText = document.getElementById('pay-btn-text');
+  const btnLoad = document.getElementById('pay-btn-loading');
+  const errorEl = document.getElementById('checkout-error');
   const fields = {
     firstName: document.getElementById('co-fname').value.trim(),
     lastName:  document.getElementById('co-lname').value.trim(),
@@ -1783,104 +1617,46 @@ async function processPayment() {
     zip:       document.getElementById('co-zip').value.trim(),
     country:   document.getElementById('co-country').value.trim() || 'US'
   };
-
-  if (Object.values(fields).some(v => !v)) {
-    errorEl.textContent = 'Please fill in all shipping fields.';
-    errorEl.style.display = 'block'; return;
-  }
-  if (!fields.email.includes('@')) {
-    errorEl.textContent = 'Please enter a valid email address.';
-    errorEl.style.display = 'block'; return;
-  }
-  if (!cart.length) {
-    errorEl.textContent = 'Your cart is empty.';
-    errorEl.style.display = 'block'; return;
-  }
-
-  btn.disabled = true;
-  btnText.style.display = 'none';
-  btnLoad.style.display = 'inline';
-  errorEl.style.display = 'none';
-
+  if (Object.values(fields).some(v => !v)) { errorEl.textContent='Please fill in all shipping fields.'; errorEl.style.display='block'; return; }
+  if (!fields.email.includes('@')) { errorEl.textContent='Please enter a valid email address.'; errorEl.style.display='block'; return; }
+  if (!cart.length) { errorEl.textContent='Your cart is empty.'; errorEl.style.display='block'; return; }
+  btn.disabled=true; btnText.style.display='none'; btnLoad.style.display='inline'; errorEl.style.display='none';
   try {
-    // Step 1 — create Stripe payment intent via Worker
-    const intentRes = await fetch(`${WORKER_URL}/api/payment-intent`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        cart: cart.map(i => ({
-          title: i.art.title, src: i.art.src,
-          size: i.size.label, wrap: i.wrap, price: i.size.price
-        }))
-      })
-    });
+    const intentRes = await fetch(WORKER_URL+'/api/payment-intent', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ cart:cart.map(i=>({title:i.art.title,src:i.art.src,size:i.size.label,wrap:i.wrap,price:i.size.price})) }) });
     const intentData = await intentRes.json();
     if (intentData.error) throw new Error(intentData.error);
-
-    // Step 2 — confirm card charge with Stripe.js
-    const { paymentIntent, error: stripeErr } = await stripe.confirmCardPayment(
-      intentData.clientSecret,
-      { payment_method: {
-          card: stripeCard,
-          billing_details: { name: `${fields.firstName} ${fields.lastName}`, email: fields.email }
-        }
-      }
-    );
+    const {paymentIntent,error:stripeErr} = await stripe.confirmCardPayment(intentData.clientSecret, { payment_method:{ card:stripeCard, billing_details:{name:`${fields.firstName} ${fields.lastName}`,email:fields.email} } });
     if (stripeErr) throw new Error(stripeErr.message);
     if (paymentIntent.status !== 'succeeded') throw new Error('Payment not completed.');
-
-    // Step 3 — fulfill via Worker → Printful
-    const fulfillRes = await fetch(`${WORKER_URL}/api/fulfill`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        paymentIntentId: paymentIntent.id,
-        shipping: fields,
-        cart: cart.map(i => ({
-          title: i.art.title, src: i.art.src,
-          size: i.size.label, wrap: i.wrap, price: i.size.price
-        }))
-      })
-    });
+    const fulfillRes = await fetch(WORKER_URL+'/api/fulfill', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ paymentIntentId:paymentIntent.id, shipping:fields, cart:cart.map(i=>({title:i.art.title,src:i.art.src,size:i.size.label,wrap:i.wrap,price:i.size.price})) }) });
     const fulfillData = await fulfillRes.json();
     if (!fulfillData.success) throw new Error(fulfillData.error || 'Fulfillment failed.');
-
-    // Step 4 — success
-    cart = [];
-    renderCart();
-    document.getElementById('confirm-email-note').textContent =
-      `Confirmation sent to ${fields.email}`;
+    cart=[]; renderCart();
+    document.getElementById('confirm-email-note').textContent = `Confirmation sent to ${fields.email}`;
     nav('confirmed');
-
-  } catch (err) {
+  } catch(err) {
     errorEl.textContent = err.message || 'Something went wrong. Please try again.';
-    errorEl.style.display = 'block';
-    btn.disabled = false;
-    btnText.style.display = 'inline';
-    btnLoad.style.display = 'none';
+    errorEl.style.display='block';
+    btn.disabled=false; btnText.style.display='inline'; btnLoad.style.display='none';
   }
 }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 const FAQS = [
-  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7-10 business days, plus 2–5 days shipping.'},
+  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7–10 business days, plus 2–5 days shipping.'},
   {q:'What canvas material do you use?', a:'Museum-grade poly-cotton canvas with a satin finish. Archival pigment inks rated 75+ years. Each canvas is hand-stretched over kiln-dried pine stretcher bars.'},
   {q:'Can I order a custom size?', a:'Yes — use the Custom Commission page or click "Commission a Custom Size" on any gallery piece. I respond within 24 hours with a quote. Custom orders use the same archival canvas.'},
   {q:'Do you ship internationally?', a:'Yes. International shipping is available to most countries. Shipping cost is calculated at fulfillment. International orders arrive in 10–20 business days. Customs duties are the buyer\'s responsibility.'},
   {q:'What is your return policy?', a:'Because every piece is made to order I cannot accept returns for change of mind. If your print arrives damaged, send a photo within 72 hours of delivery and I will replace it at no cost.'},
   {q:'Is my payment information secure?', a:'All payments are processed by Stripe. Your card information is never stored on Hoffshots servers. Stripe is PCI DSS Level 1 compliant.'},
-  {q:'How do I know what size to order?', a:'Measure your wall space first. As a guide: 16×24 is a decent wall piece; 24×36 makes a statement. Not sure? Go big or go home'}
+  {q:'How do I know what size to order?', a:'Measure your wall space first. 16×24 is a solid wall piece; 24×36 makes a statement. Not sure? Go big or go home.'}
 ];
 (function buildFAQ() {
   const list = document.getElementById('faq-list');
   FAQS.forEach(f => {
     const item = document.createElement('div');
     item.className = 'faq-item';
-    item.innerHTML = `
-      <button class="faq-q" onclick="toggleFAQ(this.parentElement)">
-        ${f.q} <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">${f.a}</div>`;
+    item.innerHTML = `<button class="faq-q" onclick="toggleFAQ(this.parentElement)">${f.q} <span class="faq-icon">+</span></button><div class="faq-a">${f.a}</div>`;
     list.appendChild(item);
   });
 })();
@@ -1890,28 +1666,94 @@ function toggleFAQ(item) {
   if (!wasOpen) item.classList.add('open');
 }
 
-/* ── CUSTOM FORM ─────────────────────────────────────────── */
-function submitCustom() {
-  showToast('Request sent — I\'ll be in touch within 24 hours.');
+/* ── BLOG ────────────────────────────────────────────────── */
+function buildBlogIndex() {
+  const list = document.getElementById('blog-post-list');
+  list.innerHTML = '';
+  POSTS.forEach(post => {
+    const card = document.createElement('div');
+    card.className = 'blog-card';
+    card.onclick = () => showPost(post.id);
+    card.innerHTML = `
+      <div class="blog-date-col">
+        <div class="blog-date-month">${post.date.month}</div>
+        <div class="blog-date-day">${post.date.day}</div>
+        <div class="blog-date-year">${post.date.year}</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-loc">${post.location}</div>
+        <div class="blog-card-title">${post.title}</div>
+        <div class="blog-card-excerpt">${post.excerpt}</div>
+        <div class="blog-card-read">Read the story</div>
+      </div>`;
+    list.appendChild(card);
+  });
+  setTimeout(initReveal, 50);
 }
+
+function showPost(id) {
+  const post = POSTS.find(p => p.id === id);
+  if (!post) return;
+  document.getElementById('blog-index').style.display = 'none';
+  const single = document.getElementById('blog-single');
+  single.classList.add('visible');
+  // Build CTA
+  let ctaHtml = '';
+  if (post.linkedArt) {
+    const art = ART.find(a => a.id === post.linkedArt);
+    if (art) ctaHtml = `<div class="blog-cta-box"><div><div class="blog-cta-text">${post.ctaTitle}</div><div class="blog-cta-sub">${post.ctaSub}</div></div><button class="btn-primary" onclick="closeLB();openLB(${art.id})">View & Order →</button></div>`;
+  } else if (post.ctaTitle) {
+    ctaHtml = `<div class="blog-cta-box"><div><div class="blog-cta-text">${post.ctaTitle}</div><div class="blog-cta-sub">${post.ctaSub}</div></div><button class="btn-outline" onclick="nav('gallery')">Browse the Gallery →</button></div>`;
+  }
+  // Build image
+  let imgHtml = '';
+  if (post.img) imgHtml = `<div class="blog-hero-img"><img src="${post.img}" alt="${post.imgAlt}" onerror="this.parentElement.textContent='${post.imgAlt}'"></div>`;
+  // Build body with pullquote after paragraph 2
+  let bodyHtml = '';
+  post.body.forEach((para, i) => {
+    bodyHtml += `<p>${para}</p>`;
+    if (i === 1 && post.pullquote) bodyHtml += `<div class="blog-pullquote">"${post.pullquote}"</div>`;
+  });
+  document.getElementById('blog-single-content').innerHTML = `
+    <div class="blog-post-eyebrow">${post.location} · ${post.date.month} ${post.date.year}</div>
+    <h1 class="blog-post-title">${post.title}</h1>
+    <div class="blog-post-meta">${post.date.month} ${post.date.day}, ${post.date.year} · Field Notes from Hoffshots</div>
+    ${imgHtml}
+    <div class="blog-body">${bodyHtml}</div>
+    ${ctaHtml}`;
+  window.scrollTo(0,0);
+}
+
+function showBlogIndex() {
+  document.getElementById('blog-index').style.display = '';
+  const single = document.getElementById('blog-single');
+  single.classList.remove('visible');
+  single.innerHTML = '<a href="#" class="blog-back" onclick="showBlogIndex()">Back to Journal</a><div id="blog-single-content"></div>';
+  window.scrollTo(0,0);
+  buildBlogIndex();
+}
+
+/* ── CUSTOM FORM ─────────────────────────────────────────── */
+function submitCustom() { showToast('Request sent — I\'ll be in touch within 24 hours.'); }
 
 /* ── TOAST ───────────────────────────────────────────────── */
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-/* ── ESC KEY ─────────────────────────────────────────────── */
+/* ── ESC ─────────────────────────────────────────────────── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    closePreview();
-    closeLB();
+    closePreview(); closeLB();
     if (document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
     if (document.getElementById('mobile-nav').classList.contains('open')) toggleMobileNav();
   }
 });
+
+/* ── INIT REVEAL on home load ────────────────────────────── */
+setTimeout(initReveal, 300);
 </script>
 </body>
 </html>
