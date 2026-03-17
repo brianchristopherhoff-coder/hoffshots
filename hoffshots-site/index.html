@@ -1488,7 +1488,7 @@ function toggleMobileNav() {
 /* ── HERO STRIP ──────────────────────────────────────────── */
 (function buildHeroStrip() {
   const strip = document.getElementById('hero-strip');
-  ART.slice(0,3).forEach(art => {
+  ART.slice(4,7).forEach(art => {
     const cell = document.createElement('div');
     cell.className = 'hero-strip-cell';
     const img = document.createElement('img');
@@ -1519,7 +1519,7 @@ function toggleMobileNav() {
   });
   // Philosophy image
   const ph = document.getElementById('philosophy-img');
-  if (ART[2]) {
+  if (ART[11]) {
     ph.innerHTML = `<img src="${ART[2].src}" alt="${ART[2].title}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='${ART[2].title}'">`;
   }
 })();
