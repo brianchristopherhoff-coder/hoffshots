@@ -238,74 +238,396 @@ nav.scrolled {
 }
 .see-all:hover { color: var(--amber); border-color: var(--amber); }
 
-/* ── FEATURED GRID ───────────────────────────────────────── */
-.featured-grid {
-  display: grid; grid-template-columns: 1.55fr 1fr 1fr;
-  grid-template-rows: auto auto; gap: 4px; padding: 0 48px;
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.feat-card { position: relative; overflow: hidden; background: var(--plank); }
-.feat-card:first-child { grid-row: 1 / 3; }
-.feat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.65s var(--ease); }
-.feat-card:first-child img { min-height: 560px; }
-.feat-card:not(:first-child) img { height: 230px; }
-.feat-card:hover img { transform: scale(1.04); }
+
+/* ── FEATURED CAROUSEL ───────────────────────────────────── */
+.featured-carousel-wrap {
+  padding: 0 48px;
+  overflow: hidden;
+  position: relative;
+}
+.featured-carousel-wrap::before,
+.featured-carousel-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+  pointer-events: none;
+}
+.featured-carousel-wrap::before {
+  left: 48px;
+  background: linear-gradient(to right, var(--iron) 0%, transparent 100%);
+}
+.featured-carousel-wrap::after {
+  right: 48px;
+  background: linear-gradient(to left, var(--iron) 0%, transparent 100%);
+}
+.featured-carousel-track {
+  display: flex;
+  gap: 4px;
+  animation: scrollLeft 28s linear infinite;
+  width: max-content;
+}
+.featured-carousel-track:hover { animation-play-state: paused; }
+.feat-slide {
+  position: relative;
+  overflow: hidden;
+  background: var(--plank);
+  flex-shrink: 0;
+  width: calc((100vw - 96px) / 3);
+  max-width: 520px;
+  height: 420px;
+  cursor: pointer;
+}
+.feat-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.65s var(--ease);
+}
+.feat-slide:hover img { transform: scale(1.04); }
 .feat-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(18,12,6,0.92) 0%, transparent 52%);
   opacity: 0; transition: opacity 0.3s;
   display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
 }
-.feat-card:hover .feat-overlay { opacity: 1; }
+.feat-slide:hover .feat-overlay { opacity: 1; }
 .feat-cat { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
 .feat-name { font-family: var(--ff-display); font-size: 1.35rem; font-weight: 400; color: var(--cream); margin-bottom: 14px; }
 .feat-btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--oak); background: var(--amber); padding: 9px 18px; width: fit-content;
+  transition: background 0.2s, transform 0.12s;
 }
 .feat-btn:hover { background: var(--amber-lt); }
+.feat-btn:active { transform: scale(0.97); }
 
-/* ── ON THE WALL (social proof) ──────────────────────────── */
-.on-the-wall { padding: 72px 48px; }
-.wall-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
-.wall-item { position: relative; overflow: hidden; background: var(--plank); aspect-ratio: 4/3; }
-.wall-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s var(--ease); }
-.wall-item:hover img { transform: scale(1.04); }
-.wall-ph {
-  width: 100%; height: 100%; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 12px;
-  background: var(--iron-md); border: 1px dashed var(--iron-border);
-  color: var(--text-dim); text-align: center; padding: 24px;
+/* ── ON THE WALL — SOCIAL INVITE ─────────────────────────── */
+.on-the-wall {
+  padding: 64px 48px;
+  background: var(--oak);
+  background-image:
+    repeating-linear-gradient(88deg, transparent 0px, transparent 6px, rgba(255,255,255,0.012) 6px, rgba(255,255,255,0.012) 7px),
+    repeating-linear-gradient(91deg, transparent 0px, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 32px);
+  border-top: 1px solid rgba(200,133,42,0.15);
+  border-bottom: 1px solid rgba(200,133,42,0.15);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
 }
-.wall-ph-icon { font-size: 2rem; opacity: 0.3; }
-.wall-ph-text { font-size: 0.78rem; line-height: 1.6; }
-.wall-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(18,12,6,0.88), transparent);
-  padding: 20px 16px 14px;
-  font-family: var(--ff-display); font-style: italic;
-  font-size: 0.88rem; color: var(--cream-dk);
+.on-the-wall-text { max-width: 480px; }
+.on-the-wall-title {
+  font-family: var(--ff-display); font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400; color: var(--cream); line-height: 1.2; margin-bottom: 14px;
+}
+.on-the-wall-title em { font-style: italic; color: var(--amber-lt); }
+.on-the-wall-sub { font-size: 0.88rem; color: var(--text-mute); line-height: 1.9; margin-bottom: 24px; }
+.ig-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  border: 1px solid rgba(200,133,42,0.5);
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber);
+  transition: all 0.2s;
+}
+.ig-btn:hover { background: rgba(200,133,42,0.08); border-color: var(--amber); color: var(--cream); }
+.ig-btn::before { content: '◈'; font-size: 1rem; }
+.on-the-wall-coords {
+  font-family: var(--ff-display); font-size: 0.78rem; font-style: italic;
+  color: var(--text-dim); letter-spacing: 0.06em; margin-top: 12px;
 }
 
-/* ── PHILOSOPHY ──────────────────────────────────────────── */
-.philosophy { display: grid; grid-template-columns: 1fr 1fr; margin: 72px 0 0; }
-.philosophy-text { padding: 72px 64px; }
-.philosophy-text.wood { padding: 72px 64px; }
+/* ── PHILOSOPHY (scaled) ─────────────────────────────────── */
+.philosophy { display: grid; grid-template-columns: 1fr 1fr; margin: 0; }
+.philosophy-text { padding: 64px 56px; }
+.philosophy-text.wood { padding: 64px 56px; }
 .philo-quote {
-  font-family: var(--ff-display); font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-  font-weight: 400; font-style: italic; color: var(--cream); line-height: 1.45;
-  margin-bottom: 28px; border-left: 3px solid var(--amber); padding-left: 24px;
+  font-family: var(--ff-display); font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 400; font-style: italic; color: var(--cream); line-height: 1.55;
+  margin-bottom: 22px; border-left: 3px solid var(--amber); padding-left: 20px;
 }
-.philo-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.0; max-width: 400px; }
-.philo-sig { margin-top: 36px; font-family: var(--ff-display); font-size: 1.2rem; color: var(--amber); }
-.philosophy-visual { overflow: hidden; min-height: 460px; position: relative; }
-.philosophy-visual img { width: 100%; height: 100%; object-fit: cover; }
+.philo-body { font-size: 0.88rem; color: var(--text-mute); line-height: 2.0; max-width: 380px; }
+.philo-sig { margin-top: 28px; font-family: var(--ff-display); font-size: 1.1rem; color: var(--amber); }
+.philosophy-visual { overflow: hidden; min-height: 340px; max-height: 380px; position: relative; }
+.philosophy-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .philosophy-visual .iron-plate {
   position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(to right, var(--amber) 0%, transparent 60%);
 }
 
-/* ── GALLERY ─────────────────────────────────────────────── */
+/* ── FOOTER OVERHAUL ─────────────────────────────────────── */
+footer {
+  background: #0E0B07;
+  background-image:
+    repeating-linear-gradient(88deg, transparent 0px, transparent 8px, rgba(255,255,255,0.018) 8px, rgba(255,255,255,0.018) 9px),
+    repeating-linear-gradient(91deg, transparent 0px, transparent 28px, rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 30px),
+    repeating-linear-gradient(89deg, transparent 0px, transparent 60px, rgba(255,255,255,0.022) 60px, rgba(255,255,255,0.022) 62px);
+  border-top: 2px solid var(--amber);
+  padding: 0;
+}
+footer.wood { padding: 0; background: #0E0B07; }
+.footer-top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 40px 48px 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-brand-block {}
+.footer-logo-large {
+  font-family: var(--ff-display); font-size: 2.4rem; font-weight: 400;
+  letter-spacing: 0.1em; color: var(--cream); display: block; margin-bottom: 6px;
+  transition: opacity 0.2s;
+}
+.footer-logo-large:hover { opacity: 0.75; }
+.footer-logo-large span { color: var(--amber); }
+.footer-tagline-large {
+  font-family: var(--ff-display); font-style: italic;
+  font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em;
+}
+.footer-social-row { display: flex; gap: 16px; align-items: center; }
+.footer-social-link {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-dim); padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s;
+}
+.footer-social-link:hover { color: var(--amber); border-color: rgba(200,133,42,0.4); }
+.footer-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px; padding: 36px 48px 36px; margin-bottom: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.footer-col-head {
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.footer-col-head::before { content: ''; width: 16px; height: 1px; background: var(--amber); }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-links a {
+  font-size: 0.82rem; color: rgba(154,136,112,0.7);
+  transition: color 0.2s, letter-spacing 0.2s;
+  letter-spacing: 0.02em;
+}
+.footer-links a:hover { color: var(--cream); letter-spacing: 0.05em; }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  padding: 18px 48px;
+  font-size: 0.72rem; color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+.footer-coords {
+  font-family: var(--ff-display); font-style: italic;
+  font-size: 0.72rem; color: rgba(106,90,74,0.45);
+  letter-spacing: 0.06em;
+}
+
+/* ── VAULT BANNER OVERHAUL ───────────────────────────────── */
+.vault-banner {
+  margin: 0 48px 40px;
+  background: linear-gradient(135deg, #1A0C02 0%, #2A1404 50%, #1A0C02 100%);
+  border: 1px solid var(--amber);
+  border-left: 4px solid var(--amber);
+  padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 40px rgba(200,133,42,0.12), inset 0 0 60px rgba(200,133,42,0.04);
+}
+.vault-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 40px, rgba(200,133,42,0.04) 40px, rgba(200,133,42,0.04) 41px),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 40px, rgba(200,133,42,0.02) 40px, rgba(200,133,42,0.02) 41px);
+}
+.vault-banner::after {
+  content: '◈';
+  position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+  font-size: 6rem; color: rgba(200,133,42,0.06);
+  pointer-events: none; z-index: 0;
+}
+.vault-banner-left { position: relative; z-index: 1; }
+.vault-label {
+  font-size: 0.58rem; letter-spacing: 0.36em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.vault-label::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+.vault-heading {
+  font-family: var(--ff-display); font-size: 1.6rem; font-weight: 400;
+  color: var(--cream); line-height: 1.15; margin-bottom: 6px;
+}
+.vault-sub { font-size: 0.82rem; color: var(--text-mute); }
+.vault-countdown { position: relative; z-index: 1; display: flex; gap: 12px; }
+.vault-unit { display: flex; flex-direction: column; align-items: center; }
+.vault-num {
+  font-family: var(--ff-display); font-size: 2.2rem; font-weight: 400;
+  color: var(--amber); line-height: 1; min-width: 52px; text-align: center;
+  text-shadow: 0 0 20px rgba(200,133,42,0.4);
+}
+.vault-unit-label { font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+.vault-sep { font-family: var(--ff-display); font-size: 1.8rem; color: rgba(200,133,42,0.4); align-self: flex-start; padding-top: 2px; }
+.vault-closed-banner {
+  margin: 0 48px 40px;
+  background: linear-gradient(135deg, #1A0C02 0%, #2A1404 50%, #1A0C02 100%);
+  border: 1px solid var(--amber);
+  border-left: 4px solid var(--amber);
+  padding: 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 40px rgba(200,133,42,0.1), inset 0 0 60px rgba(200,133,42,0.03);
+}
+.vault-closed-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 40px, rgba(200,133,42,0.03) 40px, rgba(200,133,42,0.03) 41px);
+}
+.vault-closed-icon { font-size: 2.4rem; opacity: 0.35; position: relative; z-index: 1; }
+.vault-closed-head {
+  font-family: var(--ff-display); font-size: 1.8rem; font-weight: 400;
+  color: var(--cream); margin-bottom: 6px; position: relative; z-index: 1;
+}
+.vault-closed-sub {
+  font-size: 0.82rem; color: var(--text-mute);
+  position: relative; z-index: 1; max-width: 400px;
+}
+.vault-open-countdown { display: flex; gap: 12px; position: relative; z-index: 1; }
+
+/* ── BLOG SIDEBAR FRAMES ─────────────────────────────────── */
+.blog-outer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  gap: 0;
+}
+.blog-sidebar {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 96px 0 80px;
+  align-items: center;
+}
+.blog-sidebar-frame {
+  width: 64px; height: 88px;
+  border: 1px solid var(--iron-border);
+  background: var(--plank);
+  overflow: hidden; position: relative;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+}
+.blog-sidebar-frame:hover { border-color: rgba(200,133,42,0.4); }
+.blog-sidebar-frame img { width: 100%; height: 100%; object-fit: cover; }
+.blog-sidebar-frame.empty {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--iron-md);
+}
+.blog-sidebar-frame.empty::after {
+  content: '+'; font-size: 1.2rem; color: var(--text-dim);
+}
+.blog-sidebar-divider {
+  width: 1px; flex: 1; min-height: 20px;
+  background: linear-gradient(to bottom, transparent, rgba(200,133,42,0.15), transparent);
+}
+
+/* ── ABOUT PAGE OVERHAUL ─────────────────────────────────── */
+.about-hero {
+  position: relative;
+  min-height: 60vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  overflow: hidden;
+}
+.about-visual { overflow: hidden; position: relative; }
+.about-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+.about-visual:hover img { transform: scale(1.04); }
+.about-visual-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--iron-md) 100%);
+}
+.about-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+.about-content.wood { padding: 72px 64px; }
+.about-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 28px; margin-top: 16px; }
+.about-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.1; margin-bottom: 18px; }
+.about-sig { font-family: var(--ff-display); font-size: 1.3rem; color: var(--amber); margin-top: 28px; }
+.about-stats-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: #0E0B07;
+  border-top: 2px solid var(--amber);
+}
+.stat-cell {
+  padding: 36px 40px;
+  border-right: 1px solid rgba(200,133,42,0.1);
+  position: relative;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: transparent; transition: background 0.3s;
+}
+.stat-cell:hover::before { background: var(--amber); }
+.stat-num { font-family: var(--ff-display); font-size: 2.8rem; font-weight: 400; color: var(--amber); transition: transform 0.3s; }
+.stat-cell:hover .stat-num { transform: scale(1.06); }
+.stat-label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mute); margin-top: 6px; }
+.about-full-bleed {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+}
+.about-countries {
+  padding: 64px 56px;
+  background: var(--iron-md);
+}
+.about-countries-title {
+  font-family: var(--ff-display); font-size: 1.4rem; color: var(--cream);
+  margin-bottom: 20px;
+}
+.about-countries-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.country-tag {
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mute); padding: 5px 12px;
+  border: 1px solid var(--iron-border);
+  transition: all 0.2s;
+}
+.country-tag:hover { border-color: var(--amber); color: var(--amber); }
+.about-philosophy {
+  padding: 64px 56px;
+  background: var(--oak-md);
+  background-image: repeating-linear-gradient(88deg, transparent 0px, transparent 6px, rgba(255,255,255,0.015) 6px, rgba(255,255,255,0.015) 7px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+/* mobile fixes */
+@media (max-width: 768px) {
+  .featured-carousel-wrap::before { left: 0; }
+  .featured-carousel-wrap::after { right: 0; }
+  .featured-carousel-wrap { padding: 0 20px; }
+  .feat-slide { width: 82vw; height: 300px; }
+  .on-the-wall { padding: 40px 20px; flex-direction: column; }
+  .philosophy { grid-template-columns: 1fr; }
+  .philosophy-text.wood { padding: 40px 24px; }
+  .philosophy-visual { min-height: 240px; max-height: 240px; }
+  .footer-top-bar { padding: 28px 20px 24px; }
+  .footer-grid { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
+  .footer-bottom { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .vault-banner, .vault-closed-banner { margin: 0 20px 32px; padding: 24px 20px; }
+  .vault-num { font-size: 1.6rem; min-width: 40px; }
+  .vault-closed-banner { flex-direction: column; align-items: flex-start; }
+  .blog-outer { grid-template-columns: 0 1fr 0; }
+  .blog-sidebar { display: none; }
+  .about-hero { grid-template-columns: 1fr; }
+  .about-visual { min-height: 280px; max-height: 280px; }
+  .about-stats-strip { grid-template-columns: 1fr 1fr; }
+  .stat-cell:nth-child(3), .stat-cell:nth-child(4) { border-top: 1px solid rgba(200,133,42,0.1); }
+  .about-full-bleed { grid-template-columns: 1fr; }
+  .about-countries, .about-philosophy { padding: 40px 24px; }
+}
+
 .gallery-page-head { padding: 96px 48px 0; }
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; padding: 24px 48px 40px; }
 .filter-btn {
@@ -522,24 +844,7 @@ nav.scrolled {
 .cart-cont { display: block; text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); padding: 8px; transition: color 0.2s; }
 .cart-cont:hover { color: var(--cream); }
 
-/* ── ABOUT ───────────────────────────────────────────────── */
-.about-split { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); padding-top: 80px; }
-.about-visual { overflow: hidden; }
-.about-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
-.about-visual:hover img { transform: scale(1.04); }
-.about-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
-.about-content.wood { padding: 72px 64px; }
-.about-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 28px; margin-top: 16px; }
-.about-body { font-size: 0.95rem; color: var(--text-mute); line-height: 2.1; margin-bottom: 18px; }
-.about-sig { font-family: var(--ff-display); font-size: 1.3rem; color: var(--amber); margin-top: 28px; }
-.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
-.stat-cell { padding: 40px 44px; border-right: 1px solid rgba(200,133,42,0.12); border-top: 1px solid rgba(200,133,42,0.12); }
-.stat-cell:last-child { border-right: none; }
-.stat-num { font-family: var(--ff-display); font-size: 3rem; font-weight: 400; color: var(--amber); transition: transform 0.3s; }
-.stat-cell:hover .stat-num { transform: scale(1.08); }
-.stat-label { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin-top: 6px; }
-
-/* ── CUSTOM ──────────────────────────────────────────────── */
+/* ── TOAST ───────────────────────────────────────────────── */
 .custom-wrap { padding: 96px 48px 80px; max-width: 820px; margin: 0 auto; }
 .custom-intro { font-size: 0.95rem; color: var(--text-mute); line-height: 2.0; margin: 16px 0 44px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -661,21 +966,7 @@ nav.scrolled {
 .blog-cta-text { font-family: var(--ff-display); font-size: 1.2rem; color: var(--cream); }
 .blog-cta-sub { font-size: 0.78rem; color: var(--text-mute); margin-top: 6px; }
 
-/* ── FOOTER ──────────────────────────────────────────────── */
-footer { border-top: 1px solid rgba(200,133,42,0.15); padding: 56px 48px 28px; }
-footer.wood { padding: 56px 48px 28px; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-logo { font-family: var(--ff-display); font-size: 1.5rem; color: var(--cream); margin-bottom: 14px; display: block; transition: opacity 0.2s; }
-.footer-logo:hover { opacity: 0.8; }
-.footer-logo span { color: var(--amber); }
-.footer-tagline { font-family: var(--ff-display); font-style: italic; font-size: 1rem; color: var(--text-mute); }
-.footer-col-head { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 0.85rem; color: var(--text-mute); transition: color 0.2s, padding-left 0.2s; }
-.footer-links a:hover { color: var(--cream); padding-left: 4px; }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-top: 22px; border-top: 1px solid rgba(200,133,42,0.1); font-size: 0.75rem; color: var(--text-dim); }
-
-/* ── TOAST ───────────────────────────────────────────────── */
+/* ── GALLERY ─────────────────────────────────────────────── */
 .toast {
   position: fixed; bottom: 32px; left: 50%;
   transform: translateX(-50%) translateY(16px);
@@ -713,11 +1004,6 @@ footer.wood { padding: 56px 48px 28px; }
   .img-preview { padding: 0; }
   .img-preview img { max-width: 100vw; max-height: 100vh; }
   .img-preview-caption { font-size: 0.85rem; padding: 6px 16px; }
-  .featured-grid { grid-template-columns: 1fr; grid-template-rows: auto; padding: 0 20px; }
-  .feat-card:first-child { grid-row: auto; }
-  .feat-card:first-child img { min-height: 280px; height: 280px; }
-  .feat-card:not(:first-child) img { height: 200px; }
-  .feat-overlay { opacity: 1; }
   .philosophy { grid-template-columns: 1fr; }
   .philosophy-text.wood { padding: 48px 24px; }
   .philosophy-visual { min-height: 280px; }
@@ -731,11 +1017,6 @@ footer.wood { padding: 56px 48px 28px; }
   .cart-head { padding: 20px; }
   .cart-body { padding: 16px 20px; }
   .cart-foot { padding: 16px 20px; }
-  .about-split { grid-template-columns: 1fr; padding-top: 72px; }
-  .about-visual { min-height: 300px; max-height: 300px; }
-  .about-content.wood { padding: 40px 24px; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  .stat-cell:nth-child(3) { grid-column: 1 / -1; border-right: none; }
   .custom-wrap, .faq-wrap { padding: 80px 20px 60px; }
   .form-grid { grid-template-columns: 1fr; }
   .checkout-wrap { padding: 80px 20px 60px; }
@@ -749,12 +1030,9 @@ footer.wood { padding: 56px 48px 28px; }
   .blog-date-col { flex-direction: row; align-items: baseline; gap: 10px; }
   .blog-date-day { font-size: 2rem; }
   .blog-cta-box { flex-direction: column; align-items: flex-start; }
-  .wall-grid { grid-template-columns: 1fr; }
-  .on-the-wall { padding: 48px 20px; }
 }
 @media (max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr; }
   .stat-cell { border-right: none; }
   .filter-btn { font-size: 0.72rem; padding: 9px 16px; }
 }
@@ -1049,14 +1327,36 @@ footer.wood { padding: 56px 48px 28px; }
     </div>
     <a href="#" class="see-all" onclick="nav('gallery')">View All →</a>
   </div>
-  <div class="featured-grid" id="featured-grid"></div>
+  <div class="featured-carousel-wrap">
+    <div class="featured-carousel-track" id="featured-carousel-track"></div>
+  </div>
 
-  <!-- ON THE WALL -->
+  <!-- ON THE WALL — SOCIAL INVITE -->
   <div class="on-the-wall">
-    <div class="sec-kicker">On the Wall</div>
-    <h2 class="sec-title" style="margin-top:8px;margin-bottom:8px">In Real Spaces</h2>
-    <p style="font-size:0.85rem;color:var(--text-mute);margin-bottom:32px">How Hoffshots looks when it comes home.</p>
-    <div class="wall-grid" id="wall-grid"></div>
+    <div class="on-the-wall-text">
+      <div class="sec-kicker" style="margin-bottom:12px">On the Wall · In Real Spaces</div>
+      <h2 class="on-the-wall-title">Your wall deserves<br>to be <em>seen</em>.</h2>
+      <p class="on-the-wall-sub">Got a Hoffshots piece on your wall? Tag us or send us your photo — the best spaces earn a permanent place right here. We want to see what this looks like in the wild.</p>
+      <a href="https://www.instagram.com/thehoffshots" target="_blank" rel="noopener" class="ig-btn">@thehoffshots on Instagram</a>
+      <div class="on-the-wall-coords">44.1125° N · 103.0682° W</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+      <div style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);text-align:right;margin-bottom:4px">Follow the journey</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end">
+        <div style="padding:16px 20px;border:1px solid var(--iron-border);text-align:center;min-width:100px">
+          <div style="font-family:var(--ff-display);font-size:1.6rem;color:var(--amber)">46</div>
+          <div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-top:4px">US States</div>
+        </div>
+        <div style="padding:16px 20px;border:1px solid var(--iron-border);text-align:center;min-width:100px">
+          <div style="font-family:var(--ff-display);font-size:1.6rem;color:var(--amber)">40+</div>
+          <div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-top:4px">Countries</div>
+        </div>
+        <div style="padding:16px 20px;border:1px solid var(--iron-border);text-align:center;min-width:100px">
+          <div style="font-family:var(--ff-display);font-size:1.6rem;color:var(--amber)">250+</div>
+          <div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-dim);margin-top:4px">Gallery Prints</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="philosophy">
@@ -1085,37 +1385,86 @@ footer.wood { padding: 56px 48px 28px; }
 
 <!-- ══════════ JOURNAL ══════════ -->
 <div id="page-journal" class="page">
-  <div class="blog-wrap" id="blog-index">
-    <div class="sec-kicker">Field Notes</div>
-    <h2 class="sec-title" style="margin-top:8px">The Journal</h2>
-    <p class="blog-intro">Dispatches from the road. The early mornings, the wrong turns, the light that only lasts four minutes. These are the stories behind the photographs.</p>
-    <div class="blog-post-list" id="blog-post-list"></div>
-  </div>
-  <div class="blog-single" id="blog-single">
-    <a href="#" class="blog-back" onclick="showBlogIndex()">Back to Journal</a>
-    <div id="blog-single-content"></div>
+  <div class="blog-outer">
+    <div class="blog-sidebar">
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+    </div>
+    <div>
+      <div class="blog-wrap" id="blog-index">
+        <div class="sec-kicker">Field Notes</div>
+        <h2 class="sec-title" style="margin-top:8px">The Journal</h2>
+        <p class="blog-intro">Notes from the road. Forty countries, forty-six states, five continents. The food, the wrong turns, the 4am streets. These are the words behind the photographs.</p>
+        <div class="blog-post-list" id="blog-post-list"></div>
+      </div>
+      <div class="blog-single" id="blog-single">
+        <a href="#" class="blog-back" onclick="showBlogIndex()">Back to Journal</a>
+        <div id="blog-single-content"></div>
+      </div>
+    </div>
+    <div class="blog-sidebar">
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+      <div class="blog-sidebar-divider"></div>
+      <div class="blog-sidebar-frame empty"></div>
+    </div>
   </div>
 </div>
 
 <!-- ══════════ ABOUT ══════════ -->
 <div id="page-about" class="page">
-  <div class="about-split">
+  <div class="about-hero">
     <div class="about-visual">
-      <img src="sales_ready/YourPhotoFilename.jpeg" alt="Hoffshots — the artist" style="width:100%;height:100%;object-fit:cover;min-height:400px" onerror="this.outerHTML='<div class=\'art-ph\' style=\'min-height:500px\'>Artist portrait</div>'">
+      <img src="sales_ready/YourPhotoFilename.jpeg" alt="Hoffshots" onerror="this.style.display='none'">
+      <div class="about-visual-overlay"></div>
     </div>
     <div class="about-content wood">
       <div class="sec-kicker">About the Artist</div>
-      <h2 class="about-title">Discovering our world one frame at a time</h2>
-      <p class="about-body">Hoffshots is the lens through which one traveler interprets the built and natural world — without the distraction of the people in it. Architecture, open landscapes, quiet urban moments caught before the city wakes.</p>
-      <p class="about-body">Each image begins as a personal discovery — a doorway, a skyline, a road disappearing into the horizon. The camera is the notebook. The canvas is how it comes home with you.</p>
-      <p class="about-body">All prints are made to order on premium stretched canvas with archival pigment inks, fulfilled and shipped directly. Every order is unique. Nothing sits in a warehouse.</p>
-      <div class="about-sig">Hoffshots</div>
+      <h2 class="about-title">The world is too good<br>not to photograph it.</h2>
+      <p class="about-body">Forty countries. Forty-six states. Ten of them called home at some point. Hoffshots is what happens when you stop being a tourist and start being a witness — to architecture that outlasted empires, landscapes that refuse to be described, and the light that only exists at 5am in a city that doesn't know you're watching.</p>
+      <p class="about-body">Every print starts on a device and ends on your wall. Minimal editing. No filters. No people. Just the scene in the window between moments.</p>
+      <p class="about-body">Made to order. Museum-grade canvas. Shipped directly. Nothing sits in a warehouse. Everything is personal.</p>
+      <div class="about-sig">— Hoff</div>
     </div>
   </div>
-  <div class="about-stats">
-    <div class="stat-cell wood"><div class="stat-num">24+</div><div class="stat-label">Original works</div></div>
-    <div class="stat-cell wood"><div class="stat-num">38</div><div class="stat-label">Countries photographed</div></div>
-    <div class="stat-cell wood"><div class="stat-num">100%</div><div class="stat-label">Made to order</div></div>
+  <div class="about-stats-strip">
+    <div class="stat-cell"><div class="stat-num">250+</div><div class="stat-label">Gallery-worthy prints</div></div>
+    <div class="stat-cell"><div class="stat-num">40+</div><div class="stat-label">Countries photographed</div></div>
+    <div class="stat-cell"><div class="stat-num">46</div><div class="stat-label">US States explored</div></div>
+    <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">Made to order</div></div>
+  </div>
+  <div class="about-full-bleed">
+    <div class="about-countries">
+      <div class="about-countries-title">Places that shaped the collection</div>
+      <div class="about-countries-grid">
+        <span class="country-tag">Netherlands</span><span class="country-tag">Hungary</span>
+        <span class="country-tag">Czech Republic</span><span class="country-tag">Switzerland</span>
+        <span class="country-tag">Germany</span><span class="country-tag">Israel</span>
+        <span class="country-tag">Greece</span><span class="country-tag">Croatia</span>
+        <span class="country-tag">France</span><span class="country-tag">Scotland</span>
+        <span class="country-tag">Guatemala</span><span class="country-tag">Cura&ccedil;ao</span>
+        <span class="country-tag">US Virgin Islands</span><span class="country-tag">Gibraltar</span>
+        <span class="country-tag">Belgium</span><span class="country-tag">Luxembourg</span>
+        <span class="country-tag">Iceland</span><span class="country-tag">Mexico</span>
+        <span class="country-tag">Haiti</span><span class="country-tag">Canada</span>
+        <span class="country-tag">St. Lucia</span><span class="country-tag">Tortola</span>
+        <span class="country-tag">Colorado</span><span class="country-tag">Rocky Mountain West</span>
+        <span class="country-tag">+ 16 more</span>
+      </div>
+    </div>
+    <div class="about-philosophy">
+      <div class="sec-kicker" style="margin-bottom:16px">The Philosophy</div>
+      <p class="philo-quote" style="font-size:clamp(1.1rem,1.8vw,1.4rem)">"I photograph the world between the people — the breath before crowds, the streets at 5am, the view that only exists in that light."</p>
+      <p style="font-size:0.88rem;color:var(--text-mute);line-height:2.0;max-width:380px">Archival pigment inks. Museum-grade poly-cotton canvas. Hand-stretched over kiln-dried pine. Built to outlast the room it hangs in.</p>
+    </div>
   </div>
 </div>
 
@@ -1152,28 +1501,28 @@ footer.wood { padding: 56px 48px 28px; }
     <!-- COMING SOON TEASER -->
     <div style="margin-top:72px;padding-top:56px;border-top:1px solid var(--iron-border)">
       <div class="sec-kicker" style="margin-bottom:10px">What's Next</div>
-      <h3 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;color:var(--cream);margin-bottom:20px;line-height:1.2">Something is being built.<br><em style="color:var(--amber-lt)">Something worth waiting for.</em></h3>
-      <p style="font-size:0.9rem;color:var(--text-mute);line-height:2.0;max-width:540px;margin-bottom:40px">Hoffshots started as a store. It's becoming something more — a way to move through the world differently. To discover the places where great photographs happen before anyone else does, and to earn your way into them.</p>
+      <h3 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;color:var(--cream);margin-bottom:20px;line-height:1.2">A new trip is being built.<br><em style="color:var(--amber-lt)">A journey worth waiting for.</em></h3>
+      <p style="font-size:0.9rem;color:var(--text-mute);line-height:2.0;max-width:540px;margin-bottom:40px">Hoffshots started as a store. It's becoming something more — a way to move through the world differently. To discover the places where great photographs happen. Capturing life before anyone else does.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:40px;max-width:760px">
         <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
           <div style="font-size:1.4rem;margin-bottom:10px">◎</div>
           <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Find the Shot</div>
-          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Move through real cities. Discover photogenic locations others walk past. Arrive at a coordinate and unlock something.</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Move through real cities. Discover photogenic locations others walk past.</div>
         </div>
         <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
           <div style="font-size:1.4rem;margin-bottom:10px">◈</div>
-          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Earn Your Place</div>
-          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">A prestige system built on discovery. No pay-to-win. The currency is showing up. Ranks, collections, and a Shot of the Day that resets every 24 hours.</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Setup the View</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Details loading soon...Check back for more details.</div>
         </div>
         <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
           <div style="font-size:1.4rem;margin-bottom:10px">⊟</div>
-          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Hoffshots Unlocks</div>
-          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Complete a Collection in the app, unlock a canvas print unavailable anywhere else. The store and the adventure connect.</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Earn Unlocks</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Capture your world.</div>
         </div>
       </div>
       <div style="background:var(--oak);border:1px solid rgba(200,133,42,0.25);padding:32px 36px;max-width:500px;display:flex;flex-direction:column;gap:14px">
         <div style="font-family:var(--ff-display);font-size:1.1rem;color:var(--cream)">Be first to know when it launches.</div>
-        <div style="font-size:0.78rem;color:var(--text-mute)">No timeline. No promises. Just a quiet note when it's ready.</div>
+        <div style="font-size:0.78rem;color:var(--text-mute)">No timeline. No promises. Just more to come</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <input class="form-input" id="app-notify-email" type="email" placeholder="you@email.com" style="flex:1;min-width:180px">
           <button class="btn-primary" style="white-space:nowrap;padding:13px 24px" onclick="notifyApp()">Notify Me</button>
@@ -1342,12 +1691,17 @@ footer.wood { padding: 56px 48px 28px; }
 </div>
 
 <!-- FOOTER -->
-<footer class="wood">
-  <div class="footer-grid">
-    <div>
-      <a class="footer-logo" href="#" onclick="nav('home')">HOFF<span>SHOTS</span></a>
-      <p class="footer-tagline">"The world, as I find it."</p>
+<footer>
+  <div class="footer-top-bar">
+    <div class="footer-brand-block">
+      <a class="footer-logo-large" href="#" onclick="nav('home')">HOFF<span>SHOTS</span></a>
+      <div class="footer-tagline-large">"The world, as I find it."</div>
     </div>
+    <div class="footer-social-row">
+      <a href="https://www.instagram.com/thehoffshots" target="_blank" class="footer-social-link">◈ &nbsp;Instagram</a>
+    </div>
+  </div>
+  <div class="footer-grid">
     <div>
       <div class="footer-col-head">Navigate</div>
       <ul class="footer-links">
@@ -1358,22 +1712,33 @@ footer.wood { padding: 56px 48px 28px; }
         <li><a href="#" onclick="nav('commercial')">Spaces & Bundles</a></li>
         <li><a href="#" onclick="nav('collector')">Collector's Club</a></li>
         <li><a href="#" onclick="nav('custom')">Custom Commission</a></li>
-        <li><a href="#" onclick="nav('faq')">FAQ</a></li>
+        <li><a href="#" onclick="nav('faq')">FAQ & What's Next</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-head">Print Details</div>
+      <div class="footer-col-head">The Print</div>
       <ul class="footer-links">
         <li><a href="#">Museum-grade canvas</a></li>
         <li><a href="#">Archival pigment inks</a></li>
+        <li><a href="#">Hand-stretched on pine</a></li>
         <li><a href="#">Made to order</a></li>
         <li><a href="#">Ships in 5–7 days</a></li>
-        <li><a href="#">Curated with Care</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Collect</div>
+      <ul class="footer-links">
+        <li><a href="#" onclick="nav('collector')">Collector's Club</a></li>
+        <li><a href="#" onclick="nav('commercial')">Spaces Bundles</a></li>
+        <li><a href="#" onclick="nav('gallery')">The Vault</a></li>
+        <li><a href="#" onclick="nav('custom')">Custom Commissions</a></li>
+        <li><a href="https://www.instagram.com/thehoffshots" target="_blank">@thehoffshots</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2019 Hoffshots. All rights reserved.</span>
+    <span>&copy; 2019 Hoffshots. All rights reserved.</span>
+    <span class="footer-coords">44.1125&deg; N &middot; 103.0682&deg; W</span>
     <span>hoffshots.com</span>
   </div>
 </footer>
@@ -1413,153 +1778,126 @@ const ART = [
    ══════════════════════════════════════════════════════════ */
 const POSTS = [
   {
-    id:'fuego-2024',
-    date:{ month:'November', day:'14', year:'2024' },
+    id:'antigua-2025',
+    date:{ month:'September', day:'19', year:'2025' },
     location:'Antigua, Guatemala',
-    title:'Standing at the Edge of Volcan de Fuego',
-    excerpt:'The ground vibrated before I heard it. A low, rolling boom that you feel in your sternum more than your ears. Fuego does not ask for your attention — it simply takes it.',
+    title:'Guatemala: Country Forty',
+    excerpt:'The smoke from the volcano was constant but unhurried — just a faint column rising above the mountains like the land clearing its throat. Guatemala does not announce itself. It earns you slowly.',
     img:null,
-    imgAlt:'Volcan de Fuego erupting at dusk, Antigua Guatemala',
+    imgAlt:'Antigua Guatemala colonial architecture and volcano',
     linkedArt:null,
-    ctaTitle:'The Antigua collection is coming.',
-    ctaSub:'Fuego canvas prints will be available in the gallery soon.',
+    ctaTitle:'Latin American collection — coming soon.',
+    ctaSub:'Guatemala, Mexico, the Caribbean — a body of work from the Americas is in development.',
     body:[
-      "Nobody tells you about the sound. You research the hike, you check the weather, you hire a guide and you pack your camera with two spare batteries because you know the cold drains them faster than anything. But nothing prepares you for the moment Fuego speaks.",
-      "I had been on the ridge for forty minutes, waiting for the light to drop behind the caldera when the first eruption hit. The ground vibrated before I heard it — a low, rolling boom that you feel in your sternum more than your ears. Then the column rose. Black and grey smoke punching straight up into the evening sky, lit from below by lava that glowed the color of a dying coal.",
-      "My guide, a quiet man from Antigua named Diego, just nodded. He had seen this hundreds of times. I had seen it once and I was not breathing normally.",
-      "The thing about Fuego is that it is not the violent chaos you expect. Between eruptions, the mountain is almost serene. Birds move through the tree line below. The air smells of sulfur and pine in the same breath. You forget, for long stretches, that you are standing next to something genuinely reminding you how temporary everything is.",
-      "I shot until the light was completely gone. Diego walked me back down in the dark with a headlamp and the occasional distant glow of another eruption lighting the clouds from beneath like a paper lantern.",
-      "I have been to twenty-six countries. I have stood in some genuinely extraordinary places. Fuego is the only location where I felt the landscape was looking back."
+      "I landed in Guatemala City on a Thursday evening. By Friday morning I was in Antigua, which is the kind of city that makes you feel mildly ashamed of anywhere you've been before. Cobblestone streets. Pastel facades half-collapsed into each other. The ruins of colonial churches standing open to the sky because the earthquakes won and nobody had the heart to fully clear them. Antigua is forty countries visited for me — it felt like the right place to mark that.",
+      "The volcanoes frame the city on three sides. Agua to the south, Acatenango to the west, and Fuego just beyond it, occasionally puffing smoke into the afternoon like someone left a pot on the stove. I did not hike them. This trip was not about the summit. It was about the streets, the markets, the food.",
+      "The food. Guatemala does not get enough credit for its food. Pepián — a rich seed-based stew with a depth that takes days to understand. Kaq ik turkey broth. Street corn with lime and chili that costs forty cents and makes you angry at every other corn you've ever eaten. I ate very well in Guatemala. I photographed very little of it, which is the correct choice.",
+      "From Antigua I went to Guatemala City for a day — underrated, genuinely alive, the kind of city that rewards curiosity — and then north to Tikal. If you have not stood at the top of Temple IV at Tikal and looked out over the jungle canopy with the calls of howler monkeys echoing below you, you do not yet understand what the word 'ancient' means. The Mayans built a city in the jungle that the jungle then reclaimed and the jungle is winning, but the stones are still there and they are extraordinary.",
+      "Guatemala is friendly in a way that feels unrehearsed. The locals in Antigua — shopkeepers, bartenders, the woman who sold me textiles in the market — were curious about where I was from and genuinely pleased I was there. Country forty. I will go back for country forty-one."
     ],
-    pullquote:"The ground vibrated before I heard it. A low, rolling boom that you feel in your sternum more than your ears."
+    pullquote:"Antigua is forty countries visited for me — it felt like the right place to mark that."
   },
   {
-    id:'zermatt-2023',
-    date:{ month:'January', day:'08', year:'2023' },
-    location:'Zermatt, Switzerland',
-    title:'The Matterhorn at First Light',
-    excerpt:'You cannot photograph the Matterhorn casually. It demands a certain seriousness — an early alarm, cold fingers, and the willingness to stand in the dark and wait.',
-    img:'sales_ready/Matterhorn.jpeg',
-    imgAlt:'The Matterhorn rising above Zermatt at dawn',
-    linkedArt:null,
-    ctaTitle:'Switzerland — in the gallery.',
-    ctaSub:'The Alps at altitude. 16×24" and 24×36" — made to order.',
-    body:[
-      "The first bus from Zermatt to Schwarzsee leaves before the sun. In January that means boarding in the dark, in silence, with a small group of other people who have all made the same quiet calculation: that the mountain is worth the cold.",
-      "The Matterhorn does not disappoint. But it also does not perform on a schedule. I spent two mornings on that ridge watching clouds wrap around the peak, obscuring it completely, then releasing it without warning. The light changes in seconds. What looks flat and grey will turn amber and then gold before you can properly compose the shot.",
-      "Zermatt itself is a town that has made peace with being secondary to what towers above it. No cars are allowed in the village, which gives it an unusual quiet for a tourist destination. You hear the bells from horse-drawn sleighs long before you see them. The whole place operates at the mountain's pace, not its own.",
-      "I got the shot on the second morning. Forty minutes before sunrise, the clouds cleared and the peak caught the first light while the valley was still dark. It lasted six minutes. I shot continuously and deleted most of what I took.",
-      "What survived is what you see in the gallery. The Matterhorn does not look like that most of the time. It looks like that when it decides to."
-    ],
-    pullquote:"You cannot photograph the Matterhorn casually. It demands a certain seriousness from you."
-  },
-  {
-    id:'prague-2022',
-    date:{ month:'September', day:'22', year:'2022' },
-    location:'Prague, Czech Republic',
-    title:'Prague Before It Wakes Up',
-    excerpt:'The Charles Bridge has 30,000 visitors on a summer day. At 4:45 in the morning, it has one. I made sure that morning was mine.',
-    img:'sales_ready/Prague.jpeg',
-    imgAlt:'Charles Bridge at dawn, Prague',
-    linkedArt:null,
-    ctaTitle:'Prague — in the gallery.',
-    ctaSub:'The bridge at dawn. 16×24" and 24×36" — made to order.',
-    body:[
-      "Every photographer who visits Prague knows about the Charles Bridge problem. It is one of the most photogenic structures in Europe — 14th century stone, 30 baroque statues, a view of the castle that looks painted rather than real. It is also, for eighteen hours a day, completely overrun.",
-      "The solution is simple and costs nothing except sleep. I set my alarm for 4:15am and walked to the bridge in the dark, the old town cobblestones still wet from overnight rain, my breath visible in the September air.",
-      "The bridge was empty. Not almost empty — completely empty. The statues stood in the early mist like they had been standing there since 1357, which they had. The Vltava moved below without urgency. The castle complex glowed on the hill with a warmth that felt deliberate.",
-      "I had the bridge to myself for forty-five minutes before the first other photographer arrived, then a tour guide with six followers, then the morning began in earnest. But those forty-five minutes felt private in a way that is hard to manufacture in a city this beloved.",
-      "Prague rewards the early riser like few other cities. The architecture does not change — the crowds do. Find your window and step into it."
-    ],
-    pullquote:"The Charles Bridge has 30,000 visitors on a summer day. At 4:45 in the morning, it has one."
-  },
-  {
-    id:'budapest-2022',
-    date:{ month:'September', day:'17', year:'2022' },
+    id:'budapest-2025',
+    date:{ month:'March', day:'10', year:'2025' },
     location:'Budapest, Hungary',
-    title:'The Elizabeth Bridge and the Danube at Dusk',
-    excerpt:'Budapest plays two completely different cities depending on the time of day. The day version belongs to everyone. The evening version feels like it belongs only to you.',
+    title:'Budapest After Dark',
+    excerpt:'Everything is better with your best friend along. The wandering is looser, the bars stay open longer, and the wrong turns become the stories you actually tell later.',
     img:'sales_ready/Elizabeth.jpeg',
     imgAlt:'Elizabeth Bridge over the Danube, Budapest at dusk',
     linkedArt:8,
     ctaTitle:'Elizabeth Bridge — available as a canvas print.',
     ctaSub:'Budapest at dusk. 16×24" and 24×36" — made to order.',
     body:[
-      "I came to Budapest for three days and stayed for six. This happens more than I plan for, but Budapest is particularly effective at making you revise your itinerary.",
-      "The city is built around contrast — Buda on one side of the Danube, Pest on the other, connected by bridges that have been bombed, rebuilt, bombed again, and rebuilt again with the kind of civic stubbornness that becomes its own form of beauty. The Elizabeth Bridge is the youngest of them, rebuilt in its current form in 1964, and it is the most elegant — white suspension cables arching over water that goes silver in the late afternoon.",
-      "I photographed it from the Buda embankment in the hour before sunset. The city was doing what cities do at that hour — slowing slightly, the light going warmer, the tourist energy giving way to something more residential and real. A couple was arguing quietly on the bridge. A woman walked a very small dog. A tram passed and its brakes made a sound like a question.",
-      "The photograph is not about the bridge, exactly. It is about that specific hour when a city stops performing and starts simply existing.",
-      "Budapest will do this to you if you give it enough time. Come for three days. Stay for six."
+      "Travelling with your best friend changes the physics of a trip. You move slower, talk to more people, say yes to things you would have walked past alone. Budapest with company is a different city from Budapest solo — more chaotic, significantly more fun, and considerably less sleep.",
+      "The nightlife in Budapest is legitimately inexhaustible. The ruin bars of the VII district — Szimpla Kert being the famous one, but there are a dozen others that are quieter and better — occupy abandoned buildings and courtyards with a studied chaos that somehow never feels forced. We met a Hungarian architect named Gábor who explained the whole neighbourhood to us over the course of three hours and several drinks. This is what happens when you travel with someone who talks to strangers.",
+      "We took a night cruise on the Danube. Parliament lit up from the water is one of those sights that earns its reputation. The building is baroque and enormous and it reflects off the river in a way that feels designed rather than accidental. We walked the embankment afterward, past Parliament and through the streets of Pest at midnight. The city at that hour belongs to locals.",
+      "The Airbnb was top-floor. Views across the rooftops to Buda castle. Worth every cent — if you go to Budapest, go high. The city rewards elevation.",
+      "The shops and markets in the central market hall are worth a morning — paprika in every form, honey wines, handmade ceramics. I bought nothing I needed and everything I wanted. Budapest is very good at that."
     ],
-    pullquote:"Budapest plays two completely different cities depending on the time of day. The evening version feels like it belongs only to you."
+    pullquote:"The nightlife in Budapest is legitimately inexhaustible. We met a Hungarian architect who explained the whole neighbourhood over three hours and several drinks."
   },
   {
-    id:'amsterdam-2021',
-    date:{ month:'June', day:'03', year:'2021' },
-    location:'Amsterdam, Netherlands',
-    title:'Amsterdam at 5am: The City Nobody Sees',
-    excerpt:'There is a version of Amsterdam that exists only in the early hours — before the bicycle commuters, before the tour boats. I went looking for it.',
+    id:'colorado-2021',
+    date:{ month:'September', day:'26', year:'2021' },
+    location:'Colorado, USA',
+    title:'Colorado: The Ramen Was Better Than the Mountains',
+    excerpt:'Everyone already knows what the Rockies look like. What nobody told me about was the bowl of ramen in Boulder that I am still thinking about four years later.',
+    img:'sales_ready/Rocky Mountains.jpg',
+    imgAlt:'Rocky Mountains Colorado at altitude',
+    linkedArt:20,
+    ctaTitle:'Rocky Mountains — available as a canvas print.',
+    ctaSub:'The continent's spine. 16×24" and 24×36" — made to order.',
+    body:[
+      "Here is the problem with photographing the Rocky Mountains: everyone has already done it. Everyone. Your grandfather had a postcard of Pike's Peak. There are ten thousand calendar images of the same view from the same overlook at the same golden hour. What can you bring to a subject that has been photographed continuously since photography existed?",
+      "The honest answer is: not much, and that is fine. I went to Colorado to be there, not to take pictures of it. The pictures I took were for me — confirmation that I stood in that particular silence at that particular altitude and felt the particular thing you feel when the scale of landscape exceeds your ability to process it. That is enough.",
+      "St Mary Glacier in early September still held enough ice to photograph. It is shrinking — this is visible and documented and quietly devastating if you let it be. I did not let it be, mostly. I shot the ice, shot the lake below, shot the mountain above. Good light. Good morning.",
+      "Denver is a proper city that is consistently undersold by its own residents, who are too busy talking about the mountains to mention that the food and the art scene are both genuinely excellent. Boulder is smaller, more self-conscious, beautiful in the way of places that know they are beautiful.",
+      "The ramen. In Boulder. I will not name the restaurant because it will seem like hyperbole and I have a reputation to maintain, but there was a bowl of tonkotsu ramen in Boulder, Colorado that I ate in silence with the focused attention I usually reserve for photographs I am not sure I will be able to take again. That is the highest compliment I have. The Rockies are iconic. The ramen was transcendent."
+    ],
+    pullquote:"What can you bring to a subject that has been photographed continuously since photography existed? The honest answer is: not much, and that is fine."
+  },
+  {
+    id:'scotland-2023',
+    date:{ month:'May', day:'23', year:'2023' },
+    location:'Scotland',
+    title:'Scotland: The Lochs and the Skyfall House',
+    excerpt:'The weather was threatening all day and delivered nothing. A perfect overcast grey hung over every loch we visited — which turned out to be exactly right.',
+    img:null,
+    imgAlt:'Scottish loch on overcast day',
+    linkedArt:null,
+    ctaTitle:'Scotland collection — coming to the gallery.',
+    ctaSub:'The Highlands, the lochs, the grey light. In development.',
+    body:[
+      "I joined a guided tour across Scotland for reasons that made sense at the time and turned out to be the right call. It is the kind of country where having someone else navigate means you can spend the journey actually looking out the window, which is the correct use of your attention in Scotland.",
+      "We covered several lochs — by land and by boat. Loch Ness is the famous one and it earns the attention; it is enormous and dark and the low cloud that sat on the water when we were there gave it a seriousness that matched its reputation. But the smaller lochs, the unnamed ones we passed on the road between stops, were the ones I kept photographing. Quiet water. Hills going into fog. The particular green that Scotland does better than anywhere I've been.",
+      "The weather was threatening all day and delivered nothing. This is the best possible Scotland weather — overcast, dramatically lit, no direct sun to flatten everything, and just cold enough to feel appropriately Scottish. Every frame was usable. I have never been more grateful for clouds.",
+      "On the last day, we drove through a valley to a solitary stone house on a hillside. No road to it. Just the house, the field, the mountains behind. Our guide mentioned it almost in passing: that is the house from the end of Skyfall, the Bond film. The final scene where the old house burns. I had not made that connection when I was setting up the shot, but I felt it afterward — there is a quality of exposure in that landscape that the cinematographer understood and I was just trying to catch.",
+      "Scotland is patient with cameras. It has been photographed for centuries and it remains impossible to exhaust."
+    ],
+    pullquote:"The weather was threatening all day and delivered nothing. A perfect overcast grey — every frame was usable."
+  },
+  {
+    id:'europe-2018',
+    date:{ month:'April', day:'04', year:'2018' },
+    location:'Europe — 20 Countries, 5 Weeks',
+    title:'The Backpack and the Train',
+    excerpt:'Five weeks. Twenty countries. Twelve to fifteen miles of walking per day. Every major city. Every famous statue. Every overcrowded square I had on my list, and a hundred streets that were not on any list.',
     img:'sales_ready/Amsterdam.jpeg',
-    imgAlt:'Amsterdam canal street at dawn',
+    imgAlt:'Amsterdam canal at dawn',
     linkedArt:3,
     ctaTitle:'Amsterdam — available as a canvas print.',
     ctaSub:'The city before the city. 16×24" and 24×36" — made to order.',
     body:[
-      "Amsterdam in June means long days and short nights, which means that 5am is already light and the city is already waking faster than you would like. To find the Amsterdam I was looking for — the one without the crowds, without the tour groups, without the boats stacked six deep on the Prinsengracht — you have to be out by 4:30.",
-      "I walked the Jordaan district for two hours before a single cafe opened. The canal houses stood in the early light with a patience that felt geological. Their reflections in the water were perfect and still, the kind of mirror that only exists when no boats have disturbed the surface yet.",
-      "Amsterdam is a city that is very good at being photographed, which means most photographs of it look the same. The angle from the Magere Brug. The Rijksmuseum at golden hour. The bikes stacked against the bridge rail. These are beautiful photographs and I have taken all of them.",
-      "But the city I was looking for was narrower and quieter than that. A cobblestone street at the corner of two canals, the houseboats dark and sleeping, a bicycle abandoned against a brick wall, the whole scene holding its breath.",
-      "That is the Amsterdam that made it onto canvas. Not the postcard — the pause before the postcard."
+      "The itinerary, if you can call it that, was mostly train tickets and intention. Amsterdam to Brussels, Brussels to Luxembourg City, Luxembourg to Frankfurt, Frankfurt to Liechtenstein, then south into Switzerland — Zermatt, the Matterhorn on the second attempt, the impossible village with no cars — and then east across the rest of what Europe had on offer. Twenty countries. Thirty-six days. One bag.",
+      "The Hague has Vermeer. Rotterdam has architecture that survived the bombing and became something extraordinary in the rebuilding. Amsterdam at 4am has canal reflections that hold still long enough to photograph. Brussels has the Grand Place at any hour and it is never bad. These are cities that have been doing this for centuries and they have not become less interesting.",
+      "I walked twelve to fifteen miles every day. This is not an achievement; it is just how cities are meant to be navigated if you have time. You see the side streets. You see what exists between the monuments. You end up in a neighbourhood at 9am on a Tuesday where the only other people are residents going about their lives and the coffee is local and real.",
+      "Every monument, every landmark, every statue that had a name, I saw it. The Manneken Pis in Brussels. The Atomium. The Eiffel Tower from the angle nobody photographs. Matterhorn in alpenglow. The Charles Bridge empty at sunrise. Zermatt at altitude. The thing about famous things is that they are famous for a reason — they are usually genuinely extraordinary — and the challenge for a photographer is not to find the famous view but to find the view inside the famous view that nobody else has framed.",
+      "I came home twenty countries later with a full card, a worn-out pair of shoes, and a better understanding of what I was actually interested in photographing. Not the monuments. The light on the stone around them. Not the crowds. The absence of crowds. That trip is still in the work."
     ],
-    pullquote:"There is a version of Amsterdam that exists only in the early hours. I went looking for it."
+    pullquote:"Twenty countries. Thirty-six days. One bag. The challenge is not to find the famous view — but the view inside the famous view."
   },
   {
-    id:'lucerne-2020',
-    date:{ month:'February', day:'14', year:'2020' },
-    location:'Lucerne, Switzerland',
-    title:'The Lion Who Needed No Audience',
-    excerpt:'Mark Twain called it the most mournful and moving piece of stone in the world. I visited on a Tuesday in February and had it almost entirely to myself.',
-    img:'sales_ready/Lucerne.jpg',
-    imgAlt:'The Lion Monument carved into rock, Lucerne Switzerland',
-    linkedArt:null,
-    ctaTitle:'Lucerne — in the gallery.',
-    ctaSub:'Switzerland from the road. 16×24" and 24×36" — made to order.',
+    id:'caribbean-islands',
+    date:{ month:'Various', day:'—', year:'2015–2022' },
+    location:'Caribbean — Curaçao, Tortola, Haiti, St. Lucia',
+    title:'Islands: Light That Does Not Apologize',
+    excerpt:'Caribbean light is not subtle. It is direct, high-noon honest, and it makes everything look exactly like what it is. That is harder to photograph than it sounds.',
+    img:'sales_ready/Curacao.jpeg',
+    imgAlt:'Curaçao waterfront, Willemstad',
+    linkedArt:5,
+    ctaTitle:'Curaçao — available as a canvas print.',
+    ctaSub:'Willemstad at first light. 16×24" and 24×36" — made to order.',
     body:[
-      "The Lion Monument in Lucerne is not large. That is the first thing that surprises you. You have seen photographs of it and read Twain's famous line and you arrive expecting something monumental in scale. What you find is a dying lion, perhaps eight feet tall, carved directly into a limestone cliff face in a quiet garden near the old city walls.",
-      "The lion is dying from a spear wound to the side. His shield, bearing the fleur-de-lis of the French monarchy he died defending, is still gripped in one massive paw. His face carries something that sculptor Bertel Thorvaldsen managed to make genuinely moving in stone. Exhaustion and dignity at the same time.",
-      "I was there in February, off-season, on a Tuesday. A handful of other visitors passed through in the hour I spent there. Nobody spoke above a murmur, which seemed right. The monument does not announce itself. It simply exists in its small garden and waits for you to understand what you are looking at.",
-      "The lion was carved to commemorate the Swiss Guards who died defending Louis XVI during the French Revolution. It has been there since 1821. It will almost certainly be there long after everything I have ever photographed has been forgotten.",
-      "Some subjects don't need context or composition tricks. They just need you to stand in front of them and be quiet."
+      "Caribbean light is not a challenge in the way that low European winter light is a challenge. It is a different kind of challenge — too much of the right thing. High sun, sharp shadows, water that goes every shade of blue-green simultaneously. The instinct is to photograph it directly and the direct photograph is usually the wrong one.",
+      "Curaçao has Willemstad, which is the photogenic capital of the southern Caribbean. The Dutch colonial facades along the waterfront in colours that make no architectural sense and perfect visual sense. I shot it at first light on two separate trips and it was better the second time, when I understood which buildings were catching the early east light and which were not.",
+      "Tortola is smaller, quieter, less photographed, and better for it. Haiti is genuinely different from every other island — more complicated, more beautiful, more difficult to hold in a frame without it becoming something other than what you meant. St. Lucia from the water, approaching the Pitons by boat, is one of those views that makes you put the camera down for thirty seconds and just look.",
+      "The Caribbean collection is ongoing. I return regularly. The light does not apologize for being what it is, and after a while you stop wanting it to."
     ],
-    pullquote:"Mark Twain called it the most mournful and moving piece of stone in the world. I found out he was right."
-  },
-  {
-    id:'hamburg-2019',
-    date:{ month:'October', day:'29', year:'2019' },
-    location:'Hamburg, Germany',
-    title:"Hamburg in the Rain: The City That Doesn't Mind",
-    excerpt:"Hamburg has a relationship with grey weather that is almost affectionate. It does not apologize for the clouds. It simply keeps going, and the light it produces is unlike anything a clear sky can offer.",
-    img:null,
-    imgAlt:'Hamburg harbor in autumn rain',
-    linkedArt:null,
-    ctaTitle:'Hamburg work coming to the gallery.',
-    ctaSub:'Field work from northern Germany. Available soon.',
-    body:[
-      "I arrived in Hamburg on a Thursday in late October with a forecast of four straight days of rain, which turned out to be completely accurate. I considered this a problem for approximately the first two hours and then realized I had misunderstood the situation entirely.",
-      "Hamburg in the rain is a different city from Hamburg in the sun. The Speicherstadt warehouse district — those dark brick buildings on the canal with the green copper rooftops — was built to look exactly as it looks on a wet October morning. Moody, massive, a little severe. The reflections in the water between the warehouses are twice as vivid when the surface is disturbed by light rain.",
-      "The harbor is where Hamburg makes its case most effectively. The port has been here since 1189. The cranes and container ships are modern but they operate in the same physical space as centuries of commerce, the same water, the same grey northern sky that has presided over all of it.",
-      "I walked the Landungsbrücken piers in the afternoon with a coffee that went cold before I finished it, watching the ferries cross and the light change in ways that only overcast skies allow — diffuse, even, without shadows, the kind of light that flatters industrial architecture the way dramatic light flatters cathedrals.",
-      "Hamburg taught me to stop waiting for good weather and start understanding what the available weather actually offers. It is a lesson I have applied in every city since."
-    ],
-    pullquote:"Hamburg has a relationship with grey weather that is almost affectionate. It does not apologize for the clouds."
+    pullquote:"Caribbean light is direct, high-noon honest. It makes everything look exactly like what it is. That is harder to photograph than it sounds."
   }
 ];
 
-/* ══════════════════════════════════════════════════════════
-   ON THE WALL — add your in-home photos here
-   src: path to your photo, caption: short quote or room name
-   Leave src as null and it shows a placeholder
-   ══════════════════════════════════════════════════════════ */
 const WALL_PHOTOS = [
   { src: null, caption: "Your space, coming soon." },
   { src: null, caption: "Real walls. Real rooms." },
@@ -1632,45 +1970,34 @@ function initReveal() {
 })();
 
 /* ── FEATURED GRID ───────────────────────────────────────── */
-(function buildFeatured() {
-  const grid = document.getElementById('featured-grid');
-  ART.slice(0,5).forEach((art,i) => {
-    const card = document.createElement('div');
-    card.className = 'feat-card';
-    card.innerHTML = `
+/* ── FEATURED CAROUSEL ───────────────────────────────────── */
+(function buildFeaturedCarousel() {
+  const track = document.getElementById('featured-carousel-track');
+  if (!track) return;
+  // Use first 5 pieces, duplicated for seamless loop
+  const pieces = ART.slice(0, 5);
+  const all = [...pieces, ...pieces]; // duplicate for infinite loop
+  all.forEach(art => {
+    const slide = document.createElement('div');
+    slide.className = 'feat-slide';
+    slide.innerHTML = `
       <img src="${art.src}" alt="${art.title}"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-           style="width:100%;${i===0?'min-height:560px':'height:230px'};object-fit:cover">
-      <div class="art-ph" style="display:none;${i===0?'min-height:560px':'height:230px'}">${art.title}</div>
+           onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
       <div class="feat-overlay">
         <div class="feat-cat">${art.cat}</div>
         <div class="feat-name">${art.title}</div>
         <button class="feat-btn" onclick="openLB(${art.id})">View & Order →</button>
       </div>`;
-    grid.appendChild(card);
+    track.appendChild(slide);
   });
+  // Philosophy image
   const ph = document.getElementById('philosophy-img');
   if (ART[11]) {
-    ph.innerHTML = `<img src="${ART[11].src}" alt="${ART[11].title}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='${ART[11].title}'">`;
+    ph.innerHTML = `<img src="${ART[11].src}" alt="${ART[11].title}" style="width:100%;height:100%;object-fit:cover;object-position:center" onerror="this.parentElement.textContent='${ART[11].title}'">`;
   }
 })();
 
-/* ── ON THE WALL ─────────────────────────────────────────── */
-(function buildWall() {
-  const grid = document.getElementById('wall-grid');
-  WALL_PHOTOS.forEach(photo => {
-    const item = document.createElement('div');
-    item.className = 'wall-item';
-    if (photo.src) {
-      item.innerHTML = `
-        <img src="${photo.src}" alt="${photo.caption}" onerror="this.outerHTML='<div class=wall-ph><div class=wall-ph-icon>◻</div><div class=wall-ph-text>${photo.caption}</div></div>'">
-        <div class="wall-caption">${photo.caption}</div>`;
-    } else {
-      item.innerHTML = `<div class="wall-ph"><div class="wall-ph-icon">◻</div><div class="wall-ph-text">${photo.caption}</div></div>`;
-    }
-    grid.appendChild(item);
-  });
-})();
+
 
 /* ── GALLERY filters init — called after all JS loaded ───── */
 function initGalleryFilters() {
@@ -1909,18 +2236,17 @@ async function processPayment() {
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 const FAQS = [
-  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7–10 business days, plus 2–5 days shipping. International orders add 5–10 days. You\'ll receive a tracking email from Printful once your order ships.'},
+  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7–10 business days, plus 2–5 days shipping. International orders add 5–10 days. You'll receive a tracking email from Printful once your order ships.'},
   {q:'What canvas material do you use?', a:'Museum-grade poly-cotton canvas with a satin finish. Archival pigment inks rated 75+ years of indoor display. Each canvas is hand-stretched over kiln-dried pine stretcher bars with tight corners and a solid black backing.'},
   {q:'Can I order a custom size?', a:'Yes — use the Custom Commission page or click "Commission a Custom Size" on any gallery piece. I respond within 24 hours with a quote. Custom orders use the same archival canvas and are fulfilled by the same print partner.'},
-  {q:'Do you ship internationally?', a:'Yes. International shipping is available to most countries. Shipping cost is calculated at fulfillment. International orders arrive in 10–20 business days. Customs duties and import taxes are the buyer\'s responsibility.'},
+  {q:'Do you ship internationally?', a:'Yes. International shipping is available to most countries. Shipping cost is calculated at fulfillment. International orders arrive in 10–20 business days. Customs duties and import taxes are the buyer's responsibility.'},
   {q:'What is your return policy?', a:'Because every piece is made to order I cannot accept returns for change of mind. If your print arrives damaged, send a photo within 72 hours of delivery and I will replace it at no cost — no questions asked.'},
-  {q:'Is my payment information secure?', a:'All payments are processed by Stripe, one of the world\'s most trusted payment platforms. Your card information never touches Hoffshots servers. Stripe is PCI DSS Level 1 compliant.'},
+  {q:'Is my payment information secure?', a:'All payments are processed by Stripe, one of the world's most trusted payment platforms. Your card information never touches Hoffshots servers. Stripe is PCI DSS Level 1 compliant.'},
   {q:'How do I know what size to order?', a:'Measure your wall space first. As a guide: a 16×24" is confident on most walls and works beautifully in clusters; a 24×36" is a statement piece that anchors a room. Use the "Visualize on My Wall" button on any gallery card to see your chosen piece in a real room before ordering.'},
-  {q:'What does "Rotating" mean in the gallery?', a:'The Hoffshots gallery is a living marketplace. A selection of pieces rotate in and out on a regular cycle — typically every few weeks. This keeps the collection fresh for returning visitors and creates natural scarcity. If you see a piece you love, don\'t wait too long. It may not be available in the next cycle.'},
-  {q:'What is The Vault?', a:'The Vault is a 72-hour window that opens every 60 days where a small number of exclusive or limited pieces become available. Outside of that window they\'re hidden from the gallery entirely. The countdown timer on the gallery page shows exactly when the next window opens. Collector\'s Club members get 48-hour advance access before the public.'},
-  {q:'What are the Spaces bundles?', a:'The Spaces section offers curated sets of three prints designed to work together on a wall — for offices, Airbnbs, hotels, and homes that want a cohesive look without the guesswork. Each bundle is priced at a significant saving versus individual pieces. For larger commercial installations of 5+ pieces, use the inquiry form on the Spaces page and I\'ll respond within 48 hours with a custom quote.'},
-  {q:'What is the Collector\'s Club?', a:'The Collector\'s Club is an annual membership for serious collectors. Members receive a limited-edition canvas print every quarter — sizes and locations not available in the public gallery — plus an annual discount on a Hero piece. Enrollment opens seasonally. Leave your email on the Collector\'s Club page to be notified when the next season opens.'},
-  {q:'Is there a Hoffshots mobile app?', a:'Something is coming. I\'m not ready to say more yet — but if you\'ve explored the journal and you understand what Hoffshots is about, you\'ll understand why a mobile experience makes sense. Stay close.'}
+  {q:'What is The Vault?', a:'The Vault is your chance to grab an exclusive Hoffshot. Select quantities become available for a limited time. Watch the countdown on the gallery page — when it opens, it does not stay open long.'},
+  {q:'What are the Spaces bundles?', a:'The Spaces section offers curated sets of prints designed to work together on a wall — for offices, Airbnbs, hotels, and homes that want a cohesive look without the guesswork. Each bundle is priced at a significant saving versus individual pieces. For larger commercial installations of 5+ pieces, use the inquiry form on the Spaces page and I'll respond within 48 hours with a custom quote.'},
+  {q:'What is the Collector's Club?', a:'The Collector's Club is an annual membership for serious collectors. Members receive a limited-edition canvas print every quarter — sizes and locations not available in the public gallery — plus an annual discount on a Hero piece. Enrollment opens seasonally. Leave your email on the Collector's Club page to be notified when the next season opens.'},
+  {q:'Is there a Hoffshots mobile app?', a:'Something is coming. I'm not ready to say more yet — but if you've explored the journal and you understand what Hoffshots is about, you'll understand why a mobile experience makes sense. Stay close.'}
 ];
 (function buildFAQ() {
   const list = document.getElementById('faq-list');
@@ -2153,7 +2479,7 @@ function buildVaultBanner() {
       <div class="vault-closed-banner">
         <div class="vault-closed-icon">⊟</div>
         <div class="vault-closed-head">The Vault</div>
-        <div class="vault-closed-sub">Every 60 days, three exclusive pieces become available for 72 hours only. Next window opens in:</div>
+        <div class="vault-closed-sub">A new itinerary lands in:</div>
         <div class="vault-open-countdown" id="vault-countdown"></div>
       </div>`;
   }
@@ -2483,7 +2809,7 @@ const BUNDLES = [
     tag: 'Most Popular',
     desc: 'Three architectural icons from across Europe. Amsterdam, Hercules, and Zagreb — a cohesive narrative of ancient stone and quiet streets. Designed for a single wall in a lobby or living room.',
     artIds: [3, 11, 28],
-    bundlePrice: 349,
+    bundlePrice: 389,
     setting: 'Lobby · Office · Living Room'
   },
   {
@@ -2492,16 +2818,16 @@ const BUNDLES = [
     tag: 'Interior Design Favourite',
     desc: 'Three landscapes that share a mood — vast, minimal, and unhurried. Curaçao, Rocky Mountains, and Virgin Islands. Works in horizontal line or staggered arrangement.',
     artIds: [5, 20, 25],
-    bundlePrice: 349,
+    bundlePrice: 389,
     setting: 'Bedroom · Spa · Airbnb'
   },
   {
     id: 'contrast-kit',
     name: 'The Contrast Kit',
     tag: 'Gallery Wall Ready',
-    desc: 'Architecture meets landscape. A deliberate tension between the built and the natural — London, Kalambaka, and Paris. Three works that make each other more interesting.',
+    desc: 'Architecture meets landscape. A deliberate tension between the built and the natural — Elizabeth Bridge, Kalambaka, and Paris. Three works that make each other more interesting.',
     artIds: [8, 12, 17],
-    bundlePrice: 349,
+    bundlePrice: 389,
     setting: 'Conference Room · Hotel Suite · Home Office'
   }
 ];
@@ -2556,19 +2882,6 @@ function submitCommercialInquiry() {
 }
 
 /* ── COLLECTOR'S CLUB ────────────────────────────────────── */
-function joinCollectorsClub() {
-  const name = document.getElementById('cc-name').value.trim();
-  const email = document.getElementById('cc-email').value.trim();
-  const address = document.getElementById('cc-address').value.trim();
-  if (!name || !email || !address) { showToast('Please fill in all fields.'); return; }
-  if (!email.includes('@')) { showToast('Please enter a valid email.'); return; }
-  // In production: POST to Worker → create Stripe subscription
-  // For now: show success state
-  document.getElementById('collector-form').style.display = 'none';
-  document.getElementById('collector-success').classList.add('show');
-  showToast('Welcome to the Collector\'s Club, ' + name.split(' ')[0] + '!');
-}
-
 /* ── INIT ALL ────────────────────────────────────────────── */
 buildVaultBanner();
 buildBundles();
