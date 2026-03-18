@@ -1239,8 +1239,8 @@ footer.wood { padding: 56px 48px 28px; }
       <div class="collector-badge">Hoffshots Collector's Club</div>
       <h2 class="collector-title">Art That Finds You.<br>Four Times a Year.</h2>
       <p class="collector-sub">Join a small group of collectors who receive a limited-edition Hoffshots canvas print every quarter — locations you haven't seen in the gallery, sizes made exclusively for members. Plus one Hero piece discount annually.</p>
-      <div class="collector-price">$299 <span style="font-size:1rem;color:var(--text-mute)">/year</span></div>
-      <div class="collector-price-sub">Four size prints · One hero discount · First access to new work</div>
+      <div class="collector-price">$149 <span style="font-size:1rem;color:var(--text-mute)">/year</span></div>
+      <div class="collector-price-sub">Four prints · One hero discount · First access to new work</div>
       <div class="collector-perks">
         <div class="collector-perk">
           <div class="perk-icon">◻</div>
@@ -1250,7 +1250,7 @@ footer.wood { padding: 56px 48px 28px; }
         <div class="collector-perk">
           <div class="perk-icon">◈</div>
           <div class="perk-title">Hero Piece Discount</div>
-          <div class="perk-desc">Once per year, 25% off any 24×36" gallery print. For the piece you've really been waiting for.</div>
+          <div class="perk-desc">Once per year, 25% off any 24×36" gallery print. For the piece you've been waiting for.</div>
         </div>
         <div class="collector-perk">
           <div class="perk-icon">◉</div>
@@ -1272,14 +1272,14 @@ footer.wood { padding: 56px 48px 28px; }
           <input class="form-input" id="cc-address" type="text" placeholder="Street, City, State, ZIP">
         </div>
         <button class="btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="joinCollectorsClub()">
-          Join the Collector's Club — $299/yr
+          Join the Collector's Club — $149/yr
         </button>
         <p style="font-size:0.72rem;color:var(--text-dim);text-align:center;line-height:1.7">Annual membership. Cancel anytime. First print ships within 30 days of joining.</p>
       </div>
       <div class="collector-success" id="collector-success">
         <div class="collector-success-icon">✓</div>
         <div class="sec-title" style="margin-bottom:12px">Welcome to the Club.</div>
-        <p style="font-size:0.88rem;color:var(--text-mute);line-height:1.9">You're in. Watch your inbox — I'll be in touch personally with details about your membership and what's coming your way.</p>
+        <p style="font-size:0.88rem;color:var(--text-mute);line-height:1.9">You're in. Your first quarterly print ships within 30 days. Watch your inbox — I'll be in touch personally with details about your membership and what's coming your way.</p>
       </div>
     </div>
   </div>
@@ -1636,44 +1636,12 @@ function initReveal() {
   });
 })();
 
-/* ── GALLERY ─────────────────────────────────────────────── */
-function buildGallery(filter) {
-  const grid = document.getElementById('gallery-grid');
-  grid.innerHTML = '';
-  const filtered = (!filter || filter==='All') ? ART : ART.filter(a => a.cat === filter);
-  filtered.forEach(art => {
-    const c = document.createElement('div');
-    c.className = 'g-card';
-    c.innerHTML = `
-      <div class="g-img-wrap" onclick="openPreview(${art.id})">
-        <img src="${art.src}" alt="${art.title}" onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
-        <div class="g-zoom-hint"><span class="g-zoom-label">View Full Image</span></div>
-        <div class="g-cat-badge">${art.cat}</div>
-      </div>
-      <div class="g-panel">
-        <div class="g-title">${art.title}</div>
-        <div class="g-desc">${art.desc}</div>
-        <div>
-          <div class="g-size-label">Canvas Size</div>
-          <select class="g-select" id="gs-${art.id}">
-            ${art.sizes.map((s,i)=>`<option value="${i}">${s.label} — $${s.price}</option>`).join('')}
-          </select>
-        </div>
-        <div class="g-btn-row">
-          <button class="g-add-btn" onclick="addFromGallery(${art.id})">Add to Cart</button>
-          <button class="g-preview-btn" onclick="openLB(${art.id})">Order Options</button>
-        </div>
-        <a href="#" class="g-custom-link" onclick="event.preventDefault();nav('custom')">Commission a Custom Size →</a>
-      </div>`;
-    grid.appendChild(c);
-  });
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === (filter||'All')));
-  setTimeout(initReveal, 50);
-}
-
-(function buildFilters() {
+/* ── GALLERY filters init — called after all JS loaded ───── */
+function initGalleryFilters() {
   const cats = ['All', ...new Set(ART.map(a => a.cat))];
   const row = document.getElementById('filter-row');
+  if (!row) return;
+  row.innerHTML = '';
   cats.forEach(cat => {
     const b = document.createElement('button');
     b.className = 'filter-btn' + (cat==='All' ? ' active' : '');
@@ -1682,7 +1650,7 @@ function buildGallery(filter) {
     row.appendChild(b);
   });
   buildGallery();
-})();
+}
 
 (function populateCustomSel() {
   const sel = document.getElementById('custom-sel');
@@ -2529,10 +2497,11 @@ function joinCollectorsClub() {
   showToast('Welcome to the Collector\'s Club, ' + name.split(' ')[0] + '!');
 }
 
-/* ── INIT NEW FEATURES ───────────────────────────────────── */
+/* ── INIT ALL ────────────────────────────────────────────── */
 buildVaultBanner();
 buildBundles();
-
+initGalleryFilters();
+setTimeout(initReveal, 300);
 
 </script>
 </body>
