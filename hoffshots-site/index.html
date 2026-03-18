@@ -933,7 +933,7 @@ footer.wood { padding: 56px 48px 28px; }
     <li><a href="#" onclick="nav('gallery')" id="nl-gallery">Gallery</a></li>
     <li><a href="#" onclick="nav('journal')" id="nl-journal">Journal</a></li>
     <li><a href="#" onclick="nav('about')" id="nl-about">About</a></li>
-    <li><a href="#" onclick="nav('commercial')" id="nl-commercial">Commercial</a></li>
+    <li><a href="#" onclick="nav('commercial')" id="nl-commercial">Spaces</a></li>
     <li><a href="#" onclick="nav('collector')" id="nl-collector">Collector's Club</a></li>
     <li><a href="#" onclick="nav('faq')" id="nl-faq">FAQs</a></li>
     <li>
@@ -953,7 +953,7 @@ footer.wood { padding: 56px 48px 28px; }
   <a href="#" onclick="nav('gallery');toggleMobileNav()">Gallery</a>
   <a href="#" onclick="nav('journal');toggleMobileNav()">Journal</a>
   <a href="#" onclick="nav('about');toggleMobileNav()">About</a>
-  <a href="#" onclick="nav('commercial');toggleMobileNav()">Commercial</a>
+  <a href="#" onclick="nav('commercial');toggleMobileNav()">Spaces</a>
   <a href="#" onclick="nav('collector');toggleMobileNav()">Collector's Club</a>
   <a href="#" onclick="nav('faq');toggleMobileNav()">FAQ</a>
   <a href="#" onclick="nav('custom');toggleMobileNav()">Custom Commission</a>
@@ -1148,6 +1148,39 @@ footer.wood { padding: 56px 48px 28px; }
     <div class="sec-kicker">Support</div>
     <h2 class="sec-title" style="margin-top:8px;margin-bottom:36px">FAQ</h2>
     <div id="faq-list"></div>
+
+    <!-- COMING SOON TEASER -->
+    <div style="margin-top:72px;padding-top:56px;border-top:1px solid var(--iron-border)">
+      <div class="sec-kicker" style="margin-bottom:10px">What's Next</div>
+      <h3 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:400;color:var(--cream);margin-bottom:20px;line-height:1.2">Something is being built.<br><em style="color:var(--amber-lt)">Something worth waiting for.</em></h3>
+      <p style="font-size:0.9rem;color:var(--text-mute);line-height:2.0;max-width:540px;margin-bottom:40px">Hoffshots started as a store. It's becoming something more — a way to move through the world differently. To discover the places where great photographs happen before anyone else does, and to earn your way into them.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:40px;max-width:760px">
+        <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
+          <div style="font-size:1.4rem;margin-bottom:10px">◎</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Find the Shot</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Move through real cities. Discover photogenic locations others walk past. Arrive at a coordinate and unlock something.</div>
+        </div>
+        <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
+          <div style="font-size:1.4rem;margin-bottom:10px">◈</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Earn Your Place</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">A prestige system built on discovery. No pay-to-win. The currency is showing up. Ranks, collections, and a Shot of the Day that resets every 24 hours.</div>
+        </div>
+        <div style="padding:24px;background:var(--iron-md);border:1px solid var(--iron-border)">
+          <div style="font-size:1.4rem;margin-bottom:10px">⊟</div>
+          <div style="font-family:var(--ff-display);font-size:1rem;color:var(--cream);margin-bottom:6px">Hoffshots Unlocks</div>
+          <div style="font-size:0.78rem;color:var(--text-mute);line-height:1.75">Complete a Collection in the app, unlock a canvas print unavailable anywhere else. The store and the adventure connect.</div>
+        </div>
+      </div>
+      <div style="background:var(--oak);border:1px solid rgba(200,133,42,0.25);padding:32px 36px;max-width:500px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:var(--ff-display);font-size:1.1rem;color:var(--cream)">Be first to know when it launches.</div>
+        <div style="font-size:0.78rem;color:var(--text-mute)">No timeline. No promises. Just a quiet note when it's ready.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <input class="form-input" id="app-notify-email" type="email" placeholder="you@email.com" style="flex:1;min-width:180px">
+          <button class="btn-primary" style="white-space:nowrap;padding:13px 24px" onclick="notifyApp()">Notify Me</button>
+        </div>
+        <div id="app-notify-confirm" style="display:none;font-size:0.78rem;color:var(--amber)">✓ You're on the list. I'll be in touch.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1221,11 +1254,11 @@ footer.wood { padding: 56px 48px 28px; }
       <button class="room-viz-close" onclick="closeViz()">✕</button>
     </div>
     <div class="room-viz-controls">
-      <button class="room-viz-btn active" onclick="setVizScene(this,'wall')">Wall Mount</button>
-      <button class="room-viz-btn" onclick="setVizScene(this,'lean')">Tabletop Lean</button>
+      <button class="room-viz-btn active" onclick="setVizScene(this,'study')">Study Wall</button>
+      <button class="room-viz-btn" onclick="setVizScene(this,'living')">Living Room</button>
       <span style="width:1px;height:24px;background:var(--iron-border);margin:0 4px;"></span>
       <button class="room-viz-btn active" id="rv-size-btn" onclick="toggleVizSize()">16×24"</button>
-      <span class="room-viz-size-label" id="rv-size-note">Switch size to compare</span>
+      <span class="room-viz-size-label" id="rv-size-note">Toggle size to compare</span>
     </div>
     <canvas id="room-canvas" height="480"></canvas>
     <div class="room-viz-note">Illustrated for scale reference · Actual colors may vary by monitor</div>
@@ -1239,8 +1272,9 @@ footer.wood { padding: 56px 48px 28px; }
       <div class="collector-badge">Hoffshots Collector's Club</div>
       <h2 class="collector-title">Art That Finds You.<br>Four Times a Year.</h2>
       <p class="collector-sub">Join a small group of collectors who receive a limited-edition Hoffshots canvas print every quarter — locations you haven't seen in the gallery, sizes made exclusively for members. Plus one Hero piece discount annually.</p>
-      <div class="collector-price">$149 <span style="font-size:1rem;color:var(--text-mute)">/year</span></div>
-      <div class="collector-price-sub">Four prints · One hero discount · First access to new work</div>
+      <div class="collector-price">$499 <span style="font-size:1rem;color:var(--text-mute)">/year</span></div>
+      <div class="collector-price-sub" style="color:rgba(200,133,42,0.5);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase">⊟ &nbsp;Enrollment paused — new season opening soon&nbsp; ⊟</div>
+      <div style="height:32px"></div>
       <div class="collector-perks">
         <div class="collector-perk">
           <div class="perk-icon">◻</div>
@@ -1271,15 +1305,17 @@ footer.wood { padding: 56px 48px 28px; }
           <label class="form-label">Shipping Address</label>
           <input class="form-input" id="cc-address" type="text" placeholder="Street, City, State, ZIP">
         </div>
-        <button class="btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="joinCollectorsClub()">
-          Join the Collector's Club — $149/yr
+        <button class="btn-outline" style="width:100%;justify-content:center;margin-top:8px;opacity:0.45;cursor:not-allowed;pointer-events:none" disabled>
+          Enrollment Currently Paused
         </button>
-        <p style="font-size:0.72rem;color:var(--text-dim);text-align:center;line-height:1.7">Annual membership. Cancel anytime. First print ships within 30 days of joining.</p>
+        <p style="font-size:0.72rem;color:var(--text-dim);text-align:center;line-height:1.7;margin-top:4px">Leave your email to be first notified when the season opens.</p>
+        <input class="form-input" id="cc-notify" type="email" placeholder="you@email.com" style="text-align:center">
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="notifyCollector()">Notify Me When Enrollment Opens</button>
       </div>
       <div class="collector-success" id="collector-success">
         <div class="collector-success-icon">✓</div>
-        <div class="sec-title" style="margin-bottom:12px">Welcome to the Club.</div>
-        <p style="font-size:0.88rem;color:var(--text-mute);line-height:1.9">You're in. Your first quarterly print ships within 30 days. Watch your inbox — I'll be in touch personally with details about your membership and what's coming your way.</p>
+        <div class="sec-title" style="margin-bottom:12px">You're on the list.</div>
+        <p style="font-size:0.88rem;color:var(--text-mute);line-height:1.9">I'll reach out personally when enrollment opens for the next season. Good things come to those who wait.</p>
       </div>
     </div>
   </div>
@@ -1288,9 +1324,9 @@ footer.wood { padding: 56px 48px 28px; }
 <!-- ══════════ COMMERCIAL ══════════ -->
 <div id="page-commercial" class="page">
   <div class="commercial-wrap">
-    <div class="sec-kicker">For Spaces That Mean Business</div>
-    <h2 class="sec-title" style="margin-top:8px">Commercial & Office Collections</h2>
-    <p class="commercial-intro">Curated sets for lobbies, offices, Airbnbs, and hospitality spaces. Instead of choosing one piece, choose an atmosphere. Every bundle is designed to work together on a wall — complementary locations, consistent scale, unified mood.</p>
+    <div class="sec-kicker">For Spaces That Mean Something</div>
+    <h2 class="sec-title" style="margin-top:8px">Curated for Your Space</h2>
+    <p class="commercial-intro">Whether it's a lobby that needs presence, an Airbnb that needs soul, or an office that needs to say something — these bundles were built for spaces that take art seriously. One decision. Three prints. Done.</p>
     <div class="bundle-grid" id="bundle-grid"></div>
     <div class="commercial-inquiry">
       <div class="inquiry-head">Larger Installation?</div>
@@ -1319,7 +1355,7 @@ footer.wood { padding: 56px 48px 28px; }
         <li><a href="#" onclick="nav('gallery')">Gallery</a></li>
         <li><a href="#" onclick="nav('journal')">The Journal</a></li>
         <li><a href="#" onclick="nav('about')">About the Artist</a></li>
-        <li><a href="#" onclick="nav('commercial')">Commercial Bundles</a></li>
+        <li><a href="#" onclick="nav('commercial')">Spaces & Bundles</a></li>
         <li><a href="#" onclick="nav('collector')">Collector's Club</a></li>
         <li><a href="#" onclick="nav('custom')">Custom Commission</a></li>
         <li><a href="#" onclick="nav('faq')">FAQ</a></li>
@@ -1873,13 +1909,18 @@ async function processPayment() {
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 const FAQS = [
-  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7–10 business days, plus 2–5 days shipping.'},
-  {q:'What canvas material do you use?', a:'Museum-grade poly-cotton canvas with a satin finish. Archival pigment inks rated 75+ years. Each canvas is hand-stretched over kiln-dried pine stretcher bars.'},
-  {q:'Can I order a custom size?', a:'Yes — use the Custom Commission page or click "Commission a Custom Size" on any gallery piece. I respond within 24 hours with a quote. Custom orders use the same archival canvas.'},
-  {q:'Do you ship internationally?', a:'Yes. International shipping is available to most countries. Shipping cost is calculated at fulfillment. International orders arrive in 10–20 business days. Customs duties are the buyer\'s responsibility.'},
-  {q:'What is your return policy?', a:'Because every piece is made to order I cannot accept returns for change of mind. If your print arrives damaged, send a photo within 72 hours of delivery and I will replace it at no cost.'},
-  {q:'Is my payment information secure?', a:'All payments are processed by Stripe. Your card information is never stored on Hoffshots servers. Stripe is PCI DSS Level 1 compliant.'},
-  {q:'How do I know what size to order?', a:'Measure your wall space first. 16×24 is a solid wall piece; 24×36 makes a statement. Not sure? Go big or go home.'}
+  {q:'How long does it take to receive my order?', a:'All prints are made to order. Standard production is 7–10 business days, plus 2–5 days shipping. International orders add 5–10 days. You\'ll receive a tracking email from Printful once your order ships.'},
+  {q:'What canvas material do you use?', a:'Museum-grade poly-cotton canvas with a satin finish. Archival pigment inks rated 75+ years of indoor display. Each canvas is hand-stretched over kiln-dried pine stretcher bars with tight corners and a solid black backing.'},
+  {q:'Can I order a custom size?', a:'Yes — use the Custom Commission page or click "Commission a Custom Size" on any gallery piece. I respond within 24 hours with a quote. Custom orders use the same archival canvas and are fulfilled by the same print partner.'},
+  {q:'Do you ship internationally?', a:'Yes. International shipping is available to most countries. Shipping cost is calculated at fulfillment. International orders arrive in 10–20 business days. Customs duties and import taxes are the buyer\'s responsibility.'},
+  {q:'What is your return policy?', a:'Because every piece is made to order I cannot accept returns for change of mind. If your print arrives damaged, send a photo within 72 hours of delivery and I will replace it at no cost — no questions asked.'},
+  {q:'Is my payment information secure?', a:'All payments are processed by Stripe, one of the world\'s most trusted payment platforms. Your card information never touches Hoffshots servers. Stripe is PCI DSS Level 1 compliant.'},
+  {q:'How do I know what size to order?', a:'Measure your wall space first. As a guide: a 16×24" is confident on most walls and works beautifully in clusters; a 24×36" is a statement piece that anchors a room. Use the "Visualize on My Wall" button on any gallery card to see your chosen piece in a real room before ordering.'},
+  {q:'What does "Rotating" mean in the gallery?', a:'The Hoffshots gallery is a living marketplace. A selection of pieces rotate in and out on a regular cycle — typically every few weeks. This keeps the collection fresh for returning visitors and creates natural scarcity. If you see a piece you love, don\'t wait too long. It may not be available in the next cycle.'},
+  {q:'What is The Vault?', a:'The Vault is a 72-hour window that opens every 60 days where a small number of exclusive or limited pieces become available. Outside of that window they\'re hidden from the gallery entirely. The countdown timer on the gallery page shows exactly when the next window opens. Collector\'s Club members get 48-hour advance access before the public.'},
+  {q:'What are the Spaces bundles?', a:'The Spaces section offers curated sets of three prints designed to work together on a wall — for offices, Airbnbs, hotels, and homes that want a cohesive look without the guesswork. Each bundle is priced at a significant saving versus individual pieces. For larger commercial installations of 5+ pieces, use the inquiry form on the Spaces page and I\'ll respond within 48 hours with a custom quote.'},
+  {q:'What is the Collector\'s Club?', a:'The Collector\'s Club is an annual membership for serious collectors. Members receive a limited-edition canvas print every quarter — sizes and locations not available in the public gallery — plus an annual discount on a Hero piece. Enrollment opens seasonally. Leave your email on the Collector\'s Club page to be notified when the next season opens.'},
+  {q:'Is there a Hoffshots mobile app?', a:'Something is coming. I\'m not ready to say more yet — but if you\'ve explored the journal and you understand what Hoffshots is about, you\'ll understand why a mobile experience makes sense. Stay close.'}
 ];
 (function buildFAQ() {
   const list = document.getElementById('faq-list');
@@ -1963,7 +2004,25 @@ function showBlogIndex() {
   buildBlogIndex();
 }
 
-/* ── CUSTOM FORM ─────────────────────────────────────────── */
+/* ── COLLECTOR NOTIFY ────────────────────────────────────── */
+function notifyCollector() {
+  const email = document.getElementById('cc-notify');
+  if (!email || !email.value.includes('@')) { showToast('Please enter a valid email.'); return; }
+  document.getElementById('collector-form').style.display = 'none';
+  document.getElementById('collector-success').classList.add('show');
+  showToast('You\'re on the list.');
+}
+
+/* ── APP NOTIFY ──────────────────────────────────────────── */
+function notifyApp() {
+  const email = document.getElementById('app-notify-email');
+  if (!email || !email.value.includes('@')) { showToast('Please enter a valid email.'); return; }
+  document.getElementById('app-notify-confirm').style.display = 'block';
+  email.style.display = 'none';
+  showToast('You\'re on the list.');
+}
+
+
 function submitCustom() { showToast('Request sent — I\'ll be in touch within 24 hours.'); }
 
 /* ── TOAST ───────────────────────────────────────────────── */
@@ -1984,36 +2043,55 @@ document.addEventListener('keydown', e => {
 
 /* ══════════════════════════════════════════════════════════
    GALLERY ROTATION CONFIG
-   rotate: true  = this piece can rotate out
-   vault:  true  = hidden, only shows during vault windows
-   CYCLE_DAYS: how many days before rotation changes
-   VISIBLE_COUNT: how many rotation pieces show at once
+   ──────────────────────────────────────────────────────────
+   HOW IT WORKS:
+   - All artwork lives in the ART array below
+   - Pieces marked rotate:true are in the "rotation pool"
+   - Every CYCLE_DAYS, a new set of VISIBLE_COUNT pieces
+     from that pool become visible — automatically, no work needed
+   - Permanent pieces (rotate:false) always show
+   - vault:true pieces only appear during vault windows
+
+   YOUR VISION: 8 permanent + 8 rotating = ~16 total visible
+   Rotating pool cycles every 6 weeks. Old pieces come back
+   periodically as the pool cycles through — natural scarcity.
+
+   TO ADD NEW ARTWORK: Add to ART array with rotate:true and
+   the gallery handles the rest automatically.
    ══════════════════════════════════════════════════════════ */
 const ROTATION_CONFIG = {
-  CYCLE_DAYS: 21,       // rotation changes every 21 days
-  VISIBLE_COUNT: 4,     // how many rotating pieces show at once
+  CYCLE_DAYS: 42,       // 6-week rotation cycle
+  VISIBLE_COUNT: 8,     // how many rotating pieces show at once
   VAULT_CYCLE_DAYS: 60, // vault opens on 60-day cycle
   VAULT_WINDOW_HRS: 72  // vault stays open 72 hours
 };
 
-// Mark which pieces rotate and which are vault-only
-// Add  rotate:true  to pieces that cycle in/out
-// Add  vault:true   to pieces that only appear during vault windows
+/* ──────────────────────────────────────────────────────────
+   ART FLAGS — control visibility per piece
+   rotate: false = always visible (permanent fixture)
+   rotate: true  = part of rotating pool (cycles in/out)
+   vault:  true  = hidden except during vault 72hr windows
+
+   CURRENT STATE: All pieces permanent while gallery grows.
+   Once you reach 20+ pieces, set rotate:true on ~half of them
+   to activate the marketplace rotation mechanic.
+   ──────────────────────────────────────────────────────────*/
 const ART_FLAGS = {
   3:  { rotate: false },
-  5:  { rotate: true  },
-  6:  { rotate: true  },
+  5:  { rotate: false },
+  6:  { rotate: false },
   7:  { rotate: false },
-  8:  { rotate: true  },
+  8:  { rotate: false },
   10: { rotate: false },
-  11: { rotate: true  },
+  11: { rotate: false },
   12: { rotate: false },
   17: { rotate: false },
-  20: { rotate: true  },
-  22: { rotate: true  },
+  20: { rotate: false },
+  22: { rotate: false },
   25: { rotate: false },
-  27: { rotate: true  },
-  28: { rotate: true  }
+  27: { rotate: false },
+  28: { rotate: false }
+  // New pieces added here — use rotate:true to put in rotation pool
 };
 
 function getVisibleArt() {
@@ -2120,7 +2198,7 @@ function buildGallery(filter) {
         <img src="${art.src}" alt="${art.title}" onerror="this.style.display='none';this.parentElement.style.background='var(--plank)'">
         <div class="g-zoom-hint"><span class="g-zoom-label">View Full Image</span></div>
         <div class="g-cat-badge">${art.cat}</div>
-        ${rotating ? '<div class="g-rotation-badge">Rotating</div>' : ''}
+        ${rotating ? '' : ''}
       </div>
       <div class="g-panel">
         <div class="g-title">${art.title}</div>
@@ -2146,18 +2224,77 @@ function buildGallery(filter) {
 
 /* ── ROOM VISUALIZER ─────────────────────────────────────── */
 let vizArt = null;
-let vizScene = 'wall';
+let vizScene = 'study';
 let vizSizeIndex = 0;
+
+/*
+  ROOM BACKGROUNDS — these are the two reference photos uploaded to the site.
+  Upload these images to sales_ready/ and update the paths below.
+  Scene 'study'  → angled room with desk, lamp, chair (reference image 1)
+  Scene 'living' → forward-facing living room with sofa, mirror (reference image 2)
+
+  ART PLACEMENT COORDINATES (as % of canvas width/height):
+  Each scene defines where the artwork sits and what perspective transform to apply.
+  Study scene: artwork is on angled wall — needs perspective skew
+  Living scene: artwork is centered above sofa — flat placement
+*/
+const VIZ_SCENES = {
+  study: {
+    bgSrc: 'sales_ready/viz_study.jpg',   // ← upload reference image 1 with this name
+    // Artwork placement: four corner points as [x%, y%] of canvas
+    // These are set for a wall angled ~15° — art hangs above desk
+    corners: {
+      '16x24': [
+        [0.52, 0.04],  // top-left
+        [0.81, 0.07],  // top-right
+        [0.82, 0.45],  // bottom-right
+        [0.51, 0.41]   // bottom-left
+      ],
+      '24x36': [
+        [0.44, 0.02],
+        [0.83, 0.06],
+        [0.84, 0.52],
+        [0.43, 0.47]
+      ]
+    },
+    shadowOffset: [6, 8],
+    label: 'Study — angled wall'
+  },
+  living: {
+    bgSrc: 'sales_ready/viz_living.jpg',  // ← upload reference image 2 with this name
+    // Artwork placement: centered above sofa — flat/straight
+    corners: {
+      '16x24': [
+        [0.18, 0.03],
+        [0.52, 0.03],
+        [0.52, 0.40],
+        [0.18, 0.40]
+      ],
+      '24x36': [
+        [0.10, 0.02],
+        [0.57, 0.02],
+        [0.57, 0.44],
+        [0.10, 0.44]
+      ]
+    },
+    shadowOffset: [0, 6],
+    label: 'Living Room — above sofa'
+  }
+};
 
 function openViz(id) {
   vizArt = ART.find(a => a.id === id);
   if (!vizArt) return;
   vizSizeIndex = 0;
+  vizScene = 'study';
   document.getElementById('rv-title').textContent = 'Visualize: ' + vizArt.title;
   document.getElementById('rv-size-btn').textContent = vizArt.sizes[0].label;
+  document.querySelectorAll('.room-viz-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.room-viz-btn').classList.add('active');
+  document.getElementById('rv-size-btn').classList.add('active');
   document.getElementById('room-viz-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  setTimeout(drawRoom, 50);
+  setTimeout(drawRoom, 80);
 }
 
 function closeViz() {
@@ -2167,7 +2304,9 @@ function closeViz() {
 
 function setVizScene(btn, scene) {
   vizScene = scene;
-  document.querySelectorAll('.room-viz-btn').forEach(b => { if(b.textContent === 'Wall Mount' || b.textContent === 'Tabletop Lean') b.classList.remove('active'); });
+  document.querySelectorAll('.room-viz-btn').forEach(b => {
+    if (b.textContent === 'Study Wall' || b.textContent === 'Living Room') b.classList.remove('active');
+  });
   btn.classList.add('active');
   drawRoom();
 }
@@ -2183,225 +2322,158 @@ function drawRoom() {
   const canvas = document.getElementById('room-canvas');
   if (!canvas || !vizArt) return;
   const W = canvas.offsetWidth || 860;
+  const H = Math.round(W * 0.65);
   canvas.width = W;
-  canvas.height = 480;
+  canvas.height = H;
   const ctx = canvas.getContext('2d');
-  const H = 480;
+  const scene = VIZ_SCENES[vizScene];
+  const sizeKey = vizArt.sizes[vizSizeIndex].label.includes('16') ? '16x24' : '24x36';
+  const corners = scene.corners[sizeKey];
 
-  if (vizScene === 'wall') {
-    drawWallScene(ctx, W, H);
-  } else {
-    drawLeanScene(ctx, W, H);
-  }
-}
+  // Draw room background
+  const bgImg = new Image();
+  bgImg.crossOrigin = 'anonymous';
+  bgImg.src = scene.bgSrc;
 
-function drawWallScene(ctx, W, H) {
-  // Background wall
-  ctx.fillStyle = '#2A2420';
-  ctx.fillRect(0, 0, W, H);
-  // Wood grain lines on wall
-  ctx.strokeStyle = 'rgba(255,255,255,0.025)';
-  ctx.lineWidth = 1;
-  for (let x = 0; x < W; x += 18) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H * 0.72); ctx.stroke();
-  }
-  // Floor
-  const floorY = H * 0.72;
-  const grad = ctx.createLinearGradient(0, floorY, 0, H);
-  grad.addColorStop(0, '#1C1208');
-  grad.addColorStop(1, '#0E0A04');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, floorY, W, H - floorY);
-  // Floor grain
-  ctx.strokeStyle = 'rgba(200,133,42,0.04)';
-  for (let x = 0; x < W; x += 28) {
-    ctx.beginPath(); ctx.moveTo(x, floorY); ctx.lineTo(x + 20, H); ctx.stroke();
-  }
-  // Baseboard
-  ctx.fillStyle = '#3B2A1A';
-  ctx.fillRect(0, floorY - 6, W, 8);
-  // Sofa silhouette
-  const sofaW = W * 0.42;
-  const sofaX = (W - sofaW) / 2;
-  const sofaY = floorY - 68;
-  ctx.fillStyle = '#2E2018';
-  ctx.beginPath();
-  ctx.roundRect(sofaX, sofaY, sofaW, 64, [4,4,0,0]);
-  ctx.fill();
-  // Sofa cushions
-  ctx.fillStyle = '#362616';
-  const cushW = sofaW / 3 - 8;
-  [0,1,2].forEach(i => {
-    ctx.beginPath();
-    ctx.roundRect(sofaX + 4 + i * (cushW + 8), sofaY + 6, cushW, 48, 3);
-    ctx.fill();
-  });
-  // Sofa legs
-  ctx.fillStyle = '#C8852A';
-  [[sofaX + 12, floorY - 4],[sofaX + sofaW - 20, floorY - 4]].forEach(([lx, ly]) => {
-    ctx.fillRect(lx, ly, 8, 6);
-  });
-  // Side table
-  const tableX = sofaX + sofaW + 16;
-  const tableY = floorY - 40;
-  ctx.fillStyle = '#2E1E0F';
-  ctx.beginPath(); ctx.roundRect(tableX, tableY, 44, 38, 2); ctx.fill();
-  ctx.fillStyle = '#3B2A1A';
-  ctx.fillRect(tableX + 8, floorY - 2, 4, 2);
-  ctx.fillRect(tableX + 32, floorY - 2, 4, 2);
-  // Small object on table
-  ctx.fillStyle = '#C8852A';
-  ctx.beginPath(); ctx.arc(tableX + 22, tableY - 8, 6, 0, Math.PI * 2); ctx.fill();
+  const drawComposite = () => {
+    // Background
+    ctx.drawImage(bgImg, 0, 0, W, H);
 
-  // Canvas artwork on wall
-  const sizeLabel = vizArt.sizes[vizSizeIndex].label;
-  const is16x24 = sizeLabel.includes('16');
-  const SCALE = W / 10;
-  const artW = is16x24 ? SCALE * 2.4 : SCALE * 3.6;
-  const artH = is16x24 ? SCALE * 3.6 : SCALE * 5.4;
-  const artX = (W - artW) / 2;
-  const artY = sofaY - artH - 24;
+    // Compute pixel corners
+    const pts = corners.map(([px, py]) => [px * W, py * H]);
 
-  // Shadow behind canvas
-  ctx.shadowColor = 'rgba(0,0,0,0.5)';
-  ctx.shadowBlur = 20;
-  ctx.shadowOffsetY = 8;
+    // Load artwork
+    const artImg = new Image();
+    artImg.crossOrigin = 'anonymous';
+    artImg.src = vizArt.src;
 
-  // Draw artwork image
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.src = vizArt.src;
-  img.onload = () => {
-    ctx.shadowColor = 'rgba(0,0,0,0.5)';
-    ctx.shadowBlur = 20;
-    ctx.shadowOffsetY = 8;
-    ctx.drawImage(img, artX, artY, artW, artH);
-    ctx.shadowColor = 'transparent';
-    ctx.shadowBlur = 0;
-    ctx.shadowOffsetY = 0;
-    // Frame
-    ctx.strokeStyle = '#1A1208';
-    ctx.lineWidth = 3;
-    ctx.strokeRect(artX, artY, artW, artH);
-    // Size label
-    ctx.fillStyle = 'rgba(200,133,42,0.85)';
-    ctx.fillRect(artX, artY + artH - 22, artW, 22);
-    ctx.fillStyle = '#1C1208';
-    ctx.font = `500 11px 'DM Sans', sans-serif`;
+    artImg.onload = () => {
+      // Drop shadow behind canvas
+      ctx.save();
+      const [ox, oy] = scene.shadowOffset;
+      ctx.filter = 'blur(12px)';
+      ctx.globalAlpha = 0.45;
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0]+ox, pts[0][1]+oy);
+      pts.slice(1).forEach(p => ctx.lineTo(p[0]+ox, p[1]+oy));
+      ctx.closePath();
+      ctx.fill();
+      ctx.filter = 'none';
+      ctx.globalAlpha = 1;
+      ctx.restore();
+
+      // Perspective transform artwork onto wall
+      drawPerspectiveImage(ctx, artImg, pts, W, H);
+
+      // Canvas edge/depth highlight
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      pts.slice(1).forEach(p => ctx.lineTo(p[0], p[1]));
+      ctx.closePath();
+      ctx.stroke();
+      // Dark frame edge
+      ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      ctx.restore();
+
+      // Size label pill
+      const midX = (pts[2][0] + pts[3][0]) / 2;
+      const midY = (pts[2][1] + pts[3][1]) / 2;
+      const labelText = vizArt.sizes[vizSizeIndex].label + ' canvas';
+      ctx.save();
+      ctx.font = '500 11px "DM Sans", sans-serif';
+      const lw = ctx.measureText(labelText).width + 18;
+      ctx.fillStyle = 'rgba(200,133,42,0.9)';
+      ctx.beginPath();
+      ctx.roundRect(midX - lw/2, midY + 6, lw, 20, 4);
+      ctx.fill();
+      ctx.fillStyle = '#1C1208';
+      ctx.textAlign = 'center';
+      ctx.fillText(labelText, midX, midY + 19);
+      ctx.restore();
+    };
+
+    artImg.onerror = () => {
+      // Fallback: draw amber rect in perspective
+      ctx.save();
+      ctx.fillStyle = 'rgba(200,133,42,0.7)';
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      pts.slice(1).forEach(p => ctx.lineTo(p[0], p[1]));
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    };
+  };
+
+  bgImg.onload = drawComposite;
+  bgImg.onerror = () => {
+    // Background not uploaded yet — draw placeholder room
+    ctx.fillStyle = '#2A2420';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(200,133,42,0.15)';
+    ctx.font = '300 13px "DM Sans", sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(sizeLabel, artX + artW / 2, artY + artH - 8);
+    ctx.fillText('Upload viz_study.jpg or viz_living.jpg to sales_ready/ to enable photo backgrounds', W/2, H/2 - 10);
+    ctx.fillText('See the WALL_PHOTOS section in index.html for instructions', W/2, H/2 + 14);
     ctx.textAlign = 'left';
+    // Still draw the art in a simple rectangle as preview
+    const pts = corners.map(([px, py]) => [px * W, py * H]);
+    const artImg = new Image();
+    artImg.src = vizArt.src;
+    artImg.onload = () => { drawPerspectiveImage(ctx, artImg, pts, W, H); };
   };
-  img.onerror = () => {
-    // Fallback amber rectangle
-    ctx.fillStyle = '#C8852A';
-    ctx.fillRect(artX, artY, artW, artH);
-    ctx.shadowColor = 'transparent';
-    ctx.fillStyle = '#1C1208';
-    ctx.font = `400 14px 'DM Sans', sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.fillText(vizArt.title, artX + artW/2, artY + artH/2);
-    ctx.textAlign = 'left';
-  };
-
-  // Hanging wire hint
-  ctx.strokeStyle = 'rgba(200,133,42,0.3)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(artX + artW * 0.3, artY);
-  ctx.lineTo(W / 2, artY - 10);
-  ctx.lineTo(artX + artW * 0.7, artY);
-  ctx.stroke();
-
-  // Dimensions annotation
-  ctx.fillStyle = 'rgba(154,136,112,0.7)';
-  ctx.font = `300 10px 'DM Sans', sans-serif`;
-  ctx.textAlign = 'right';
-  ctx.fillText(sizeLabel + ' canvas', artX - 6, artY + artH / 2);
-  ctx.textAlign = 'left';
 }
 
-function drawLeanScene(ctx, W, H) {
-  // Wall
-  ctx.fillStyle = '#2A2420';
-  ctx.fillRect(0, 0, W, H * 0.68);
-  for (let x = 0; x < W; x += 18) {
-    ctx.strokeStyle = 'rgba(255,255,255,0.02)';
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H * 0.68); ctx.stroke();
+/* Perspective (4-point) image transform using canvas subdivision */
+function drawPerspectiveImage(ctx, img, pts, W, H) {
+  // Subdivide into a grid for smooth perspective warp
+  const STEPS = 24;
+  const iw = img.naturalWidth;
+  const ih = img.naturalHeight;
+
+  for (let row = 0; row < STEPS; row++) {
+    for (let col = 0; col < STEPS; col++) {
+      const u0 = col / STEPS, u1 = (col+1) / STEPS;
+      const v0 = row / STEPS, v1 = (row+1) / STEPS;
+
+      // Bilinear interpolation for each corner of this sub-quad
+      const bilerp = (u, v) => {
+        const x = (1-u)*(1-v)*pts[0][0] + u*(1-v)*pts[1][0] + u*v*pts[2][0] + (1-u)*v*pts[3][0];
+        const y = (1-u)*(1-v)*pts[0][1] + u*(1-v)*pts[1][1] + u*v*pts[2][1] + (1-u)*v*pts[3][1];
+        return [x, y];
+      };
+
+      const [x0,y0] = bilerp(u0,v0);
+      const [x1,y1] = bilerp(u1,v0);
+      const [x2,y2] = bilerp(u1,v1);
+      const [x3,y3] = bilerp(u0,v1);
+
+      // Source rect in image
+      const sx = u0 * iw, sy = v0 * ih;
+      const sw = (u1-u0)*iw, sh = (v1-v0)*ih;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.lineTo(x2,y2); ctx.lineTo(x3,y3);
+      ctx.closePath();
+      ctx.clip();
+
+      // Use 3-point transform for each quad cell
+      const dx = x1-x0, dy = y1-y0;
+      const ex = x3-x0, ey = y3-y0;
+      ctx.transform(dx/sw, dy/sw, ex/sh, ey/sh, x0 - sx*(dx/sw) - sy*(ex/sh), y0 - sx*(dy/sw) - sy*(ey/sh));
+      ctx.drawImage(img, sx, sy, sw+1, sh+1, sx, sy, sw+1, sh+1);
+      ctx.restore();
+    }
   }
-  // Surface (credenza/table)
-  const surfY = H * 0.68;
-  ctx.fillStyle = '#1C1208';
-  ctx.fillRect(0, surfY, W, H - surfY);
-  // Surface top
-  ctx.fillStyle = '#3B2A1A';
-  ctx.fillRect(W * 0.12, surfY - 10, W * 0.76, 12);
-  // Surface legs
-  ctx.fillStyle = '#2E1E0F';
-  [[W*0.15, surfY+2],[W*0.82, surfY+2]].forEach(([lx, ly]) => {
-    ctx.fillRect(lx, ly, 18, H - surfY - 10);
-  });
-  // Surface grain
-  ctx.strokeStyle = 'rgba(200,133,42,0.04)';
-  for (let x = W*0.12; x < W*0.88; x += 20) {
-    ctx.beginPath(); ctx.moveTo(x, surfY - 10); ctx.lineTo(x, surfY + 2); ctx.stroke();
-  }
-  // Small decorative objects
-  ctx.fillStyle = '#4A3020';
-  ctx.beginPath(); ctx.roundRect(W*0.2, surfY - 42, 22, 34, 2); ctx.fill();
-  ctx.fillStyle = '#C8852A';
-  ctx.beginPath(); ctx.arc(W*0.21, surfY - 48, 5, 0, Math.PI * 2); ctx.fill();
-
-  // Canvas leaning
-  const sizeLabel = vizArt.sizes[vizSizeIndex].label;
-  const is16x24 = sizeLabel.includes('16');
-  const SCALE = W / 11;
-  const artW = is16x24 ? SCALE * 2.4 : SCALE * 3.4;
-  const artH = is16x24 ? SCALE * 3.6 : SCALE * 5.1;
-  const artX = W / 2 - artW / 2 + 20;
-  const artY = surfY - artH - 2;
-  const lean = 0.06;
-
-  ctx.save();
-  ctx.transform(1, 0, lean, 1, artX - artH * lean, artY);
-  ctx.shadowColor = 'rgba(0,0,0,0.6)';
-  ctx.shadowBlur = 24;
-  ctx.shadowOffsetX = -8;
-  ctx.shadowOffsetY = 6;
-
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.src = vizArt.src;
-  img.onload = () => {
-    ctx.save();
-    ctx.transform(1, 0, lean, 1, artX - artH * lean, artY);
-    ctx.shadowColor = 'rgba(0,0,0,0.6)';
-    ctx.shadowBlur = 24;
-    ctx.shadowOffsetX = -8;
-    ctx.shadowOffsetY = 6;
-    ctx.drawImage(img, 0, 0, artW, artH);
-    ctx.shadowColor = 'transparent';
-    ctx.strokeStyle = '#1A1208';
-    ctx.lineWidth = 3;
-    ctx.strokeRect(0, 0, artW, artH);
-    ctx.fillStyle = 'rgba(200,133,42,0.85)';
-    ctx.fillRect(0, artH - 22, artW, 22);
-    ctx.fillStyle = '#1C1208';
-    ctx.font = `500 11px 'DM Sans', sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.fillText(sizeLabel, artW / 2, artH - 8);
-    ctx.restore();
-  };
-  img.onerror = () => {
-    ctx.fillStyle = '#C8852A';
-    ctx.fillRect(0, 0, artW, artH);
-    ctx.shadowColor = 'transparent';
-    ctx.restore();
-  };
-
-  ctx.restore();
 }
+
 
 /* ── COMMERCIAL BUNDLES ──────────────────────────────────── */
 const BUNDLES = [
@@ -2427,7 +2499,7 @@ const BUNDLES = [
     id: 'contrast-kit',
     name: 'The Contrast Kit',
     tag: 'Gallery Wall Ready',
-    desc: 'Architecture meets landscape. A deliberate tension between the built and the natural — Elizabeth Bridge, Kalambaka, and Paris. Three works that make each other more interesting.',
+    desc: 'Architecture meets landscape. A deliberate tension between the built and the natural — London, Kalambaka, and Paris. Three works that make each other more interesting.',
     artIds: [8, 12, 17],
     bundlePrice: 349,
     setting: 'Conference Room · Hotel Suite · Home Office'
