@@ -1748,20 +1748,62 @@ footer.wood { padding: 0; background: #0E0B07; }
    ARTWORK DATA — edit titles, descriptions, prices here
    ══════════════════════════════════════════════════════════ */
 const ART = [
-  { id:3,  title:"Amsterdam",      src:"sales_ready/Amsterdam.jpeg",          cat:"Urban",        desc:"The city between moments — narrow facades leaning toward each other across cobblestone, a quiet street that hasn't decided what century it belongs to.",                                                                    tags:["amsterdam","netherlands","urban","europe","travel"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:5,  title:"Curaçao",        src:"sales_ready/Curacao.jpeg",            cat:"Landscape",    desc:"Where Caribbean light hits colonial colour and neither apologises. Willemstad's waterfront in the silence before the day begins its noise.",                                                                               tags:["curacao","caribbean","island","landscape","travel"],  sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:6,  title:"Dead Sea",       src:"sales_ready/Dead Sea.jpeg",           cat:"Landscape",    desc:"The lowest point on earth and somehow the stillest. A horizon of salt and mineral silence where the water refuses to move and the sky refuses to end.",                                                                   tags:["dead sea","israel","landscape","water","middle east"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:7,  title:"Diane",          src:"sales_ready/Diane.jpeg",              cat:"Architecture", desc:"Marble in repose. The goddess caught in the moment before movement — sculpture that makes stillness feel like a held breath.",                                                                                            tags:["sculpture","marble","classical","art","museum"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:8,  title:"Elizabeth",      src:"sales_ready/Elizabeth.jpeg",          cat:"Architecture", desc:"The bridge that earned its name. Steel suspension arching over the Danube — Budapest's most elegant engineering, best seen when the city is still sleeping.",                                                             tags:["budapest","bridge","hungary","architecture","danube"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:10, title:"Haifa",          src:"sales_ready/Haifa.jpeg",              cat:"Urban",        desc:"The port city that climbs Mount Carmel in tiers of light and stone. A view earned by elevation — where three faiths share a skyline without argument.",                                                                   tags:["haifa","israel","port","urban","mediterranean"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:11, title:"Hercules",       src:"sales_ready/Hercules.jpeg",           cat:"Architecture", desc:"Stone and myth at the edge of the known world. The monument that outlasted the empire that built it — two pillars marking where the map once ended.",                                                                     tags:["hercules","gibraltar","monument","ancient","europe"],  sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:12, title:"Kalambaka",      src:"sales_ready/Kalambaka.jpeg",          cat:"Landscape",    desc:"The monasteries of Meteora balance on pinnacles of rock as if gravity made an exception for faith. A landscape that should not exist and yet absolutely does.",                                                          tags:["meteora","greece","monastery","landscape","europe"],   sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:17, title:"Paris",          src:"sales_ready/Paris.jpeg",              cat:"Urban",        desc:"The city that invented the idea of itself. Paris without its crowd is just light on stone — and that turns out to be enough.",                                                                                            tags:["paris","france","urban","architecture","europe"],     sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:20, title:"Rocky Mountains", src:"sales_ready/Rocky Mountains.jpg",   cat:"Landscape",    desc:"The continent's spine at a moment of total stillness. The Rockies without scale — just rock, sky, and the particular silence that altitude makes.",                                                                       tags:["rocky mountains","colorado","landscape","mountains","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:22, title:"St Mary Glacier", src:"sales_ready/St Mary Glacier.jpeg",  cat:"Landscape",    desc:"Ice that remembers a different climate. St Mary Glacier in Colorado — the stillness of ancient water paused on its slow return to the sea.",                                                                             tags:["glacier","colorado","landscape","ice","mountain"],    sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:25, title:"Virgin Islands",  src:"sales_ready/Virgin_Islands.jpeg",   cat:"Landscape",    desc:"The water here is not blue — it is every colour that blue forgot it could be. A Caribbean scene that resets your entire understanding of the word turquoise.",                                                           tags:["virgin islands","caribbean","tropical","water","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:27, title:"Winged Victory",  src:"sales_ready/Winged Victory.jpeg",   cat:"Architecture", desc:"The Nike of Samothrace — headless, armless, and more alive than almost anything in the Louvre. Marble that captured forward motion two thousand years before photography.",                                              tags:["winged victory","louvre","paris","sculpture","greece"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
-  { id:28, title:"Zagreb",          src:"sales_ready/Zagreb.jpeg",           cat:"Urban",        desc:"The Croatian capital before the day claims it. Cathedral spires over terracotta rooftops — a Central European city that kept its dignity through everything.",                                                             tags:["zagreb","croatia","cathedral","urban","europe"],      sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] }
+  { id:1  , title:"Prague — Týn Church", src:"sales_ready/Prague - Tyn Church Sunset.jpeg", cat:"Architecture", desc:"The twin towers of the Týn Church at sunset, the Old Town Square going warm below them. Prague’s most recognisable silhouette doing its finest hour.", tags:["prague","czech republic","church","sunset","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:2  , title:"Amsterdam — Damrak Night", src:"sales_ready/Amsterdam - Damrak Night.jpeg", cat:"Urban", desc:"Damrak after dark, when the water turns the city’s lights into something better than the lights themselves. The reflection is the photograph.", tags:["amsterdam","netherlands","night","canal","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:3  , title:"Paris — Eiffel Tower", src:"sales_ready/Paris - Eiffel Tower Night.jpeg", cat:"Urban", desc:"The Eiffel Tower at night, when the iron goes electric and the city does what it always does — arrange itself beautifully without trying.", tags:["paris","france","eiffel tower","night","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:4  , title:"Zermatt — Matterhorn", src:"sales_ready/Zermatt - Matterhorn.jpeg", cat:"Landscape", desc:"The Matterhorn above Zermatt, which is the mountain’s job and it has not stopped doing it. One of the most photographed summits on earth — the photograph remains necessary.", tags:["matterhorn","zermatt","switzerland","mountain","alps"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:5  , title:"Meteora — Rock Pillars", src:"sales_ready/Meteora - Rock Pillars.jpeg", cat:"Landscape", desc:"The rock pillars of Meteora at the moment you accept they cannot be real and then accept that they are. Monasteries balanced on top — Greece at its most emphatic.", tags:["meteora","greece","monastery","landscape","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:6  , title:"Prague — Charles Bridge", src:"sales_ready/Prague - Charles Bridge.jpeg", cat:"Architecture", desc:"Charles Bridge in the hour before the tourists arrive. Cobblestones, lanterns, baroque statues — the most beautiful stone bridge in Europe making no effort and no apology.", tags:["prague","charles bridge","czech republic","architecture","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:7  , title:"Budapest — Liberty Bridge", src:"sales_ready/Budapest - Liberty Bridge.jpg", cat:"Architecture", desc:"The Liberty Bridge at the moment when the Danube and the city stop arguing about which one matters more. Green iron against the Hungarian sky.", tags:["budapest","bridge","hungary","architecture","danube"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:8  , title:"Scotland — Loch Lomond", src:"sales_ready/Scotland - Loch Lomond.jpeg", cat:"Landscape", desc:"Loch Lomond under the cloud that Scotland provides by default — the water dark, the hills patient, and the whole frame an argument for overcast photography.", tags:["scotland","loch lomond","landscape","lake","uk"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:9  , title:"Liechtenstein — Alpine Sunset", src:"sales_ready/Liechtenstein - Alpine Sunset.jpeg", cat:"Landscape", desc:"Liechtenstein at sunset, the Alps going through their colour sequence — orange, pink, impossible — and the smallest country on the Rhine watching calmly.", tags:["liechtenstein","alps","sunset","landscape","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:10 , title:"Switzerland — Alpine Farm", src:"sales_ready/Switzerland - Alpine Farm Sunset.jpeg", cat:"Landscape", desc:"An alpine farm at the end of the day, the mountains behind it in their evening colours. Switzerland at its most compositionally considered.", tags:["switzerland","alps","farm","sunset","landscape"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:11 , title:"Colorado — Rocky Mountains", src:"sales_ready/Colorado - Rocky Mountains Sunset.jpg", cat:"Landscape", desc:"The Rockies at last light, when altitude and hour conspire to make the ordinary landscape impossible. Everything is orange. Nothing is ordinary.", tags:["rocky mountains","colorado","sunset","landscape","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:12 , title:"Prague — City Panorama", src:"sales_ready/Prague - City Panorama.jpeg", cat:"Urban", desc:"Prague from above — red rooftops running to the horizon. A city that looks exactly as good from the air as it does at street level, which is rare.", tags:["prague","panorama","czech republic","rooftops","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:13 , title:"Amsterdam — Groenburgwal", src:"sales_ready/Amsterdam - Groenburgwal Night.jpg", cat:"Urban", desc:"The oldest canal in Amsterdam by night, the Zuiderkerk tower rising behind it. A view that Vermeer understood and the city has been maintaining ever since.", tags:["amsterdam","canal","night","netherlands","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:14 , title:"Haifa — Bahá'í Gardens", src:"sales_ready/Haifa - Bahai Gardens Aerial.jpeg", cat:"Landscape", desc:"The Bahá'í Gardens descending Mount Carmel in perfect terraced symmetry toward the Mediterranean. Evidence that a religious site can also be the most beautiful place in the city.", tags:["haifa","bahai","israel","gardens","aerial"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:15 , title:"Virgin Islands — Beach", src:"sales_ready/Virgin Islands - Beach.jpeg", cat:"Landscape", desc:"A beach in the Virgin Islands at the hour when the light comes in low and the water does everything simultaneously. Turquoise has no better argument.", tags:["virgin islands","caribbean","beach","tropical","usa"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:16 , title:"Nancy — Place Stanislas", src:"sales_ready/Nancy - Place Stanislas.jpeg", cat:"Architecture", desc:"Place Stanislas in Nancy at the hour when the gold leaf catches the light and the fountains look like they were designed for exactly this moment. They were.", tags:["nancy","france","place stanislas","architecture","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:17 , title:"Lucerne — Lion Monument", src:"sales_ready/Lucerne - Lion Monument.jpg", cat:"Architecture", desc:"The dying lion of Lucerne, carved into a cliff face to mourn the Swiss Guards. Mark Twain called it the most mournful piece of stone in the world. He was right.", tags:["lucerne","switzerland","lion monument","sculpture","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:18 , title:"England — Stonehenge", src:"sales_ready/England - Stonehenge.jpeg", cat:"Landscape", desc:"Stonehenge in the light that has been falling on it for five thousand years. It is still not clear who it was built for — the stones have made peace with the question.", tags:["stonehenge","england","uk","ancient","landscape"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:19 , title:"Amsterdam — Bicycle", src:"sales_ready/Amsterdam - Bicycle.jpeg", cat:"Urban", desc:"A single bicycle in the frame does everything a bicycle in Amsterdam always does — makes you wonder who left it, where they went, and whether the city even noticed.", tags:["amsterdam","bicycle","netherlands","urban","travel"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:20 , title:"Amsterdam — Canal Bridges", src:"sales_ready/Amsterdam - Canal Bridge Bikes.jpeg", cat:"Urban", desc:"The bicycles accumulate on every bridge in Amsterdam the way the city accumulates years — without urgency, without explanation, in numbers that defy any attempt to count.", tags:["amsterdam","canal","bridge","bicycle","netherlands"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:21 , title:"Amsterdam — Houseboats", src:"sales_ready/Amsterdam - Canal Houseboats.jpeg", cat:"Urban", desc:"Houseboats along the canal as permanent as the houses they float beside. Amsterdam’s most practical decision and its most romantic one, made at the same time.", tags:["amsterdam","houseboat","canal","netherlands","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:22 , title:"Amsterdam — Damrak", src:"sales_ready/Amsterdam - Damrak.jpeg", cat:"Urban", desc:"The main artery of Amsterdam in the hour before it fills. Tall gabled facades crowding the canal like spectators at an event that hasn’t started yet.", tags:["amsterdam","damrak","canal","netherlands","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:23 , title:"Amsterdam — Nightlife", src:"sales_ready/Amsterdam - Nightlife.jpg", cat:"Urban", desc:"Amsterdam at the hour when the nightlife forgets it’s performing. The bars still open, the streets still full — the city letting itself be seen.", tags:["amsterdam","nightlife","night","netherlands","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:24 , title:"Athens — Academy", src:"sales_ready/Athens - Academy.jpeg", cat:"Architecture", desc:"The Academy of Athens in midday light — neoclassical columns standing at the same confident angle since the nineteenth century. Philosophy rendered as architecture.", tags:["athens","greece","academy","architecture","neoclassical"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:25 , title:"Athens — Colonnade", src:"sales_ready/Athens - Colonnade.jpeg", cat:"Architecture", desc:"Greek stone in Greek light — the colonnade doing what it was built to do, which is make you feel the weight of time without telling you what to do with it.", tags:["athens","greece","colonnade","architecture","ancient"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:26 , title:"Balkans — Mountain Village", src:"sales_ready/Balkans - Mountain Village.jpeg", cat:"Landscape", desc:"A village that belongs to the mountain more than to any map. The Balkans at altitude, where roads end and the views begin and nobody seems to mind which is which.", tags:["balkans","mountain","village","landscape","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:27 , title:"Bucharest — Palace", src:"sales_ready/Bucharest - Palace.jpeg", cat:"Architecture", desc:"The Palace of the Parliament in Bucharest — one of the largest buildings on earth, built by a dictator who didn’t live to see it finished. Enormous and completely serious about it.", tags:["bucharest","romania","palace","architecture","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:28 , title:"Budapest — Cathedral Ceiling", src:"sales_ready/Budapest - Cathedral Ceiling.jpg", cat:"Architecture", desc:"A ceiling that took someone’s life to paint and a moment to photograph. The vaulted interior of a Budapest cathedral — gold leaf and devotion, turned upward.", tags:["budapest","cathedral","hungary","architecture","interior"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:29 , title:"Budapest — Pool Table", src:"sales_ready/Budapest - Pool Table.jpg", cat:"Urban", desc:"A pool table in a Budapest ruin bar — the felt worn, the light overhead unconvincing, and everything about it exactly right.", tags:["budapest","ruin bar","hungary","interior","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:30 , title:"Budapest — Ruin Bar", src:"sales_ready/Budapest - Ruin Bar.jpg", cat:"Urban", desc:"A ruin bar in the seventh district: the building half-collapsed, the crowd fully committed, and the whole arrangement somehow functioning as intended.", tags:["budapest","ruin bar","hungary","nightlife","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:31 , title:"Cathedral — Angel", src:"sales_ready/Cathedral Angel.jpeg", cat:"Architecture", desc:"Stone angel at rest, neither arriving nor departing. A detail from a cathedral facade that most visitors walk past without looking up.", tags:["cathedral","angel","sculpture","architecture","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:32 , title:"Cathedral — Interior", src:"sales_ready/Cathedral Interior.jpeg", cat:"Architecture", desc:"The nave emptied of its congregation and filled with the light that doesn’t need one. Cathedral architecture doing its best work in the silence between services.", tags:["cathedral","interior","architecture","light","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:33 , title:"Colorado — St Mary Glacier", src:"sales_ready/Colorado - St Mary Glacier.jpeg", cat:"Landscape", desc:"St Mary Glacier in September, smaller than it was and smaller than it should be. Ice that remembers a different temperature — still beautiful, still receding.", tags:["glacier","colorado","landscape","ice","mountain"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:34 , title:"Curaçao — Dock", src:"sales_ready/Curacao - Dock.jpeg", cat:"Landscape", desc:"Where Caribbean light hits colonial colour and neither apologises. Willemstad’s waterfront in the silence before the day begins its noise.", tags:["curacao","caribbean","dock","landscape","travel"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:35 , title:"Curaçao — Tidal Pool", src:"sales_ready/Curacao - Tidal Pool.jpg", cat:"Landscape", desc:"A tidal pool in Curaçao — the miniature version of the ocean beside it, complete with its own light and its own rules about what goes where.", tags:["curacao","caribbean","tidal pool","landscape","water"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:36 , title:"Dead Sea — Camel", src:"sales_ready/Dead Sea - Camel.jpeg", cat:"Landscape", desc:"A camel on the shore of the Dead Sea, which is the lowest point on earth. Neither seems concerned about this.", tags:["dead sea","camel","israel","landscape","middle east"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:37 , title:"Haarlem — Grote Markt", src:"sales_ready/Haarlem - Grote Markt.jpeg", cat:"Urban", desc:"The central square of Haarlem on an ordinary afternoon. Dutch civic architecture gathered around its market square as it has been for four hundred years — waiting for nothing.", tags:["haarlem","netherlands","grote markt","urban","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:38 , title:"Haifa — Gardens Path", src:"sales_ready/Haifa - Bahai Gardens.jpg", cat:"Landscape", desc:"The Bahá'í Gardens at ground level — rose beds and fountains arranged with the precision of belief. The sea below, the mountain above, the gardens exactly here.", tags:["haifa","bahai","israel","gardens","landscape"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:39 , title:"London — Cherry Blossoms", src:"sales_ready/London - Cherry Blossoms.jpg", cat:"Urban", desc:"Cherry blossoms in London at the moment the city briefly forgets it is London and becomes something softer. It lasts two weeks. Everyone comes out.", tags:["london","cherry blossom","uk","spring","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:40 , title:"London — Kensington Palace", src:"sales_ready/London - Queen Victoria Kensington Palace.jpeg", cat:"Architecture", desc:"The statue of Queen Victoria at Kensington Palace, looking out at the park she overlooked in life and continues to overlook in bronze.", tags:["london","kensington palace","queen victoria","uk","sculpture"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:41 , title:"London — Skyscrapers", src:"sales_ready/London - Skyscrapers.jpeg", cat:"Urban", desc:"The new London skyline from a distance — the Gherkin, the Shard, the cluster of towers that arrived after the millennium and made their intentions clear.", tags:["london","skyline","skyscrapers","uk","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:42 , title:"Nassau — Lighthouse", src:"sales_ready/Nassau - Lighthouse.jpg", cat:"Architecture", desc:"The lighthouse at Nassau, which has guided ships into the harbour for centuries and continues to do so without asking for recognition.", tags:["nassau","bahamas","lighthouse","caribbean","architecture"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:43 , title:"Netherlands — Windmill", src:"sales_ready/Netherlands - Windmill.jpeg", cat:"Landscape", desc:"A Dutch windmill doing what Dutch windmills have always done — managing water, managing wind, managing the landscape. Engineering turned into landmark.", tags:["netherlands","windmill","holland","landscape","europe"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:44 , title:"Paris — Diana, Tuileries", src:"sales_ready/Paris - Diana Statue Tuileries.jpeg", cat:"Architecture", desc:"Diana in the Tuileries, the goddess of the hunt arrested mid-movement by a sculptor who understood that marble is most alive when it pretends to be on the verge of motion.", tags:["paris","diana","tuileries","sculpture","france"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:45 , title:"Paris — Hercules, Tuileries", src:"sales_ready/Paris - Hercules Statue Tuileries.jpeg", cat:"Architecture", desc:"Hercules at rest in the Tuileries — the myth made marble, the labour finished. Even the gods get tired. The sculptor’s problem now resolved in stone.", tags:["paris","hercules","tuileries","sculpture","france"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:46 , title:"Prague — Bridge Angels", src:"sales_ready/Prague - Charles Bridge Angels.jpeg", cat:"Architecture", desc:"The angels on Charles Bridge in the hour when the Vltava is quiet and the baroque statues have the city almost to themselves.", tags:["prague","charles bridge","angels","architecture","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:47 , title:"Prague — Bridge Crucifix", src:"sales_ready/Prague - Charles Bridge Crucifix.jpeg", cat:"Architecture", desc:"The crucifix on Charles Bridge — gold letters on the iron arch, Christ against the Prague skyline. Medieval faith installed between the spires.", tags:["prague","charles bridge","crucifix","architecture","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:48 , title:"Prague — Bridge Saint I", src:"sales_ready/Prague - Charles Bridge Statue 1.jpeg", cat:"Architecture", desc:"One of the thirty saints on Charles Bridge — positioned, robed, and gesturing at something specific that the centuries have made beautifully ambiguous.", tags:["prague","charles bridge","statue","architecture","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:49 , title:"Prague — Bridge Saint II", src:"sales_ready/Prague - Charles Bridge Statue 2.jpeg", cat:"Architecture", desc:"Stone saint above the Vltava, the city continuing behind it. Charles Bridge was designed to be a procession of belief — and it still reads that way.", tags:["prague","charles bridge","statue","architecture","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:50 , title:"Prague — Powder Tower", src:"sales_ready/Prague - Powder Tower.jpeg", cat:"Architecture", desc:"The Powder Tower at the entrance to Old Town — medieval gate, gothic detail, and the perpetual question of who decided to build something this elaborate for a city entrance.", tags:["prague","powder tower","architecture","gothic","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:51 , title:"Prague — St Vitus Cathedral", src:"sales_ready/Prague - St Vitus Cathedral.jpeg", cat:"Architecture", desc:"St Vitus Cathedral filling the frame with gothic intention. The Bohemian kings are buried here. The stained glass catches the afternoon. The gargoyles watch regardless.", tags:["prague","st vitus","cathedral","gothic","czech republic"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:52 , title:"Prague — Vltava Swans", src:"sales_ready/Prague - Vltava Swans.jpeg", cat:"Urban", desc:"Swans on the Vltava below Charles Bridge — white against the green-grey of the river, the medieval city behind them, the whole scene refusing to be subtle.", tags:["prague","vltava","swans","czech republic","river"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:53 , title:"Malmö — Train Platform", src:"sales_ready/Scandinavia - Malmo Train Platform.jpeg", cat:"Urban", desc:"The train platform in Malmö in the grey Scandinavian morning. The architecture clean, the light diffuse, the departure imminent.", tags:["malmo","sweden","train","platform","scandinavia"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:54 , title:"Thessaloniki — Alexander", src:"sales_ready/Thessaloniki - Equestrian Statue.jpeg", cat:"Architecture", desc:"The equestrian statue of Alexander the Great on the Thessaloniki waterfront — bronze and ambition on the Aegean shore, looking south toward the conquests.", tags:["thessaloniki","alexander","greece","sculpture","aegean"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:55 , title:"Zagreb — Park Bridge", src:"sales_ready/Zagreb - Park Bridge.jpeg", cat:"Urban", desc:"A bridge in a Zagreb park, the trees in their season. The Croatian capital knows how to make a park feel unhurried, and it is right.", tags:["zagreb","croatia","park","bridge","urban"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
+  { id:56 , title:"Zagreb — Stations of Cross", src:"sales_ready/Zagreb - Stations of Cross.jpeg", cat:"Architecture", desc:"The Stations of the Cross climbing the hill above Zagreb — stone reliefs and devotion arranged against the city skyline, a procession ascending since 1706.", tags:["zagreb","croatia","stations of cross","architecture","history"], sizes:[{label:'16×24"',detail:'Standard · signature-sized wall piece',price:89},{label:'24×36"',detail:'Gallery · statement style installation',price:149}] },
 ];
 
 /* ══════════════════════════════════════════════════════════
@@ -1803,10 +1845,10 @@ const POSTS = [
     location:'Budapest, Hungary',
     title:'Budapest After Dark',
     excerpt:'Everything is better with your best friend along. The wandering is looser, the bars stay open longer, and the wrong turns become the stories you actually tell later.',
-    img:'sales_ready/Elizabeth.jpeg',
-    imgAlt:'Elizabeth Bridge over the Danube, Budapest at dusk',
-    linkedArt:8,
-    ctaTitle:'Elizabeth Bridge — available as a canvas print.',
+    img:'sales_ready/Budapest - Liberty Bridge.jpg',
+    imgAlt:'Budapest Liberty Bridge over the Danube at dusk',
+    linkedArt:7,
+    ctaTitle:'Liberty Bridge — available as a canvas print.',
     ctaSub:'Budapest at dusk. 16×24" and 24×36" — made to order.',
     body:[
       "Travelling with your best friend changes the physics of a trip. You move slower, talk to more people, say yes to things you would have walked past alone. Budapest with company is a different city from Budapest solo — more chaotic, significantly more fun, and considerably less sleep.",
@@ -1823,9 +1865,9 @@ const POSTS = [
     location:'Colorado, USA',
     title:'Colorado: The Ramen Was Better Than the Mountains',
     excerpt:'Everyone already knows what the Rockies look like. What nobody told me about was the bowl of ramen in Boulder that I am still thinking about four years later.',
-    img:'sales_ready/Rocky Mountains.jpg',
+    img:'sales_ready/Colorado - Rocky Mountains Sunset.jpg',
     imgAlt:'Rocky Mountains Colorado at altitude',
-    linkedArt:20,
+    linkedArt:11,
     ctaTitle:'Rocky Mountains — available as a canvas print.',
     ctaSub:"The continent's spine. 16×24\" and 24×36\" — made to order.",
     body:[
@@ -1863,9 +1905,9 @@ const POSTS = [
     location:'Europe — 20 Countries, 5 Weeks',
     title:'The Backpack and the Train',
     excerpt:'Five weeks. Twenty countries. Twelve to fifteen miles of walking per day. Every major city. Every famous statue. Every overcrowded square I had on my list, and a hundred streets that were not on any list.',
-    img:'sales_ready/Amsterdam.jpeg',
+    img:'sales_ready/Amsterdam - Damrak Night.jpeg',
     imgAlt:'Amsterdam canal at dawn',
-    linkedArt:3,
+    linkedArt:2,
     ctaTitle:'Amsterdam — available as a canvas print.',
     ctaSub:'The city before the city. 16×24" and 24×36" — made to order.',
     body:[
@@ -1883,9 +1925,9 @@ const POSTS = [
     location:'Caribbean — Curaçao, Tortola, Haiti, St. Lucia',
     title:'Islands: Light That Does Not Apologize',
     excerpt:'Caribbean light is not subtle. It is direct, high-noon honest, and it makes everything look exactly like what it is. That is harder to photograph than it sounds.',
-    img:'sales_ready/Curacao.jpeg',
+    img:'sales_ready/Curacao - Dock.jpeg',
     imgAlt:'Curaçao waterfront, Willemstad',
-    linkedArt:5,
+    linkedArt:34,
     ctaTitle:'Curaçao — available as a canvas print.',
     ctaSub:'Willemstad at first light. 16×24" and 24×36" — made to order.',
     body:[
@@ -2371,71 +2413,103 @@ document.addEventListener('keydown', e => {
    GALLERY ROTATION CONFIG
    ──────────────────────────────────────────────────────────
    HOW IT WORKS:
-   - All artwork lives in the ART array below
-   - Pieces marked rotate:true are in the "rotation pool"
-   - Every CYCLE_DAYS, a new set of VISIBLE_COUNT pieces
-     from that pool become visible — automatically, no work needed
-   - Permanent pieces (rotate:false) always show
-   - vault:true pieces only appear during vault windows
-
-   YOUR VISION: 8 permanent + 8 rotating = ~16 total visible
-   Rotating pool cycles every 6 weeks. Old pieces come back
-   periodically as the pool cycles through — natural scarcity.
-
-   TO ADD NEW ARTWORK: Add to ART array with rotate:true and
-   the gallery handles the rest automatically.
+   - 18 artwork slots are visible at any time
+   - Every calendar day, exactly ONE slot rotates to a new piece
+   - Which slot rotates: daysSinceLaunch % 18
+   - Which piece goes in: determined deterministically by the cycle
+   - This creates daily scarcity — one piece changes per day,
+     each piece is visible ~18 days before its slot cycles again
+   - With 56 total pieces, full cycle repeats every 504 days
    ══════════════════════════════════════════════════════════ */
 const ROTATION_CONFIG = {
-  CYCLE_DAYS: 42,       // 6-week rotation cycle
-  VISIBLE_COUNT: 8,     // how many rotating pieces show at once
-  VAULT_CYCLE_DAYS: 60, // vault opens on 60-day cycle
-  VAULT_WINDOW_HRS: 72  // vault stays open 72 hours
+  VISIBLE_COUNT: 18,       // slots always shown in gallery
+  LAUNCH_DAY: Math.floor(new Date('2026-03-18').getTime() / 86400000),
+  VAULT_CYCLE_DAYS: 60,    // vault opens on 60-day cycle
+  VAULT_WINDOW_HRS: 72     // vault stays open 72 hours
 };
 
-/* ──────────────────────────────────────────────────────────
-   ART FLAGS — control visibility per piece
-   rotate: false = always visible (permanent fixture)
-   rotate: true  = part of rotating pool (cycles in/out)
-   vault:  true  = hidden except during vault 72hr windows
-
-   CURRENT STATE: All pieces permanent while gallery grows.
-   Once you reach 20+ pieces, set rotate:true on ~half of them
-   to activate the marketplace rotation mechanic.
-   ──────────────────────────────────────────────────────────*/
 const ART_FLAGS = {
-  3:  { rotate: false },
-  5:  { rotate: false },
-  6:  { rotate: false },
-  7:  { rotate: false },
-  8:  { rotate: false },
-  10: { rotate: false },
-  11: { rotate: false },
-  12: { rotate: false },
-  17: { rotate: false },
-  20: { rotate: false },
-  22: { rotate: false },
-  25: { rotate: false },
-  27: { rotate: false },
-  28: { rotate: false }
-  // New pieces added here — use rotate:true to put in rotation pool
+  1  : { rotate: true },
+  2  : { rotate: true },
+  3  : { rotate: true },
+  4  : { rotate: true },
+  5  : { rotate: true },
+  6  : { rotate: true },
+  7  : { rotate: true },
+  8  : { rotate: true },
+  9  : { rotate: true },
+  10 : { rotate: true },
+  11 : { rotate: true },
+  12 : { rotate: true },
+  13 : { rotate: true },
+  14 : { rotate: true },
+  15 : { rotate: true },
+  16 : { rotate: true },
+  17 : { rotate: true },
+  18 : { rotate: true },
+  19 : { rotate: true },
+  20 : { rotate: true },
+  21 : { rotate: true },
+  22 : { rotate: true },
+  23 : { rotate: true },
+  24 : { rotate: true },
+  25 : { rotate: true },
+  26 : { rotate: true },
+  27 : { rotate: true },
+  28 : { rotate: true },
+  29 : { rotate: true },
+  30 : { rotate: true },
+  31 : { rotate: true },
+  32 : { rotate: true },
+  33 : { rotate: true },
+  34 : { rotate: true },
+  35 : { rotate: true },
+  36 : { rotate: true },
+  37 : { rotate: true },
+  38 : { rotate: true },
+  39 : { rotate: true },
+  40 : { rotate: true },
+  41 : { rotate: true },
+  42 : { rotate: true },
+  43 : { rotate: true },
+  44 : { rotate: true },
+  45 : { rotate: true },
+  46 : { rotate: true },
+  47 : { rotate: true },
+  48 : { rotate: true },
+  49 : { rotate: true },
+  50 : { rotate: true },
+  51 : { rotate: true },
+  52 : { rotate: true },
+  53 : { rotate: true },
+  54 : { rotate: true },
+  55 : { rotate: true },
+  56 : { rotate: true },
 };
 
 function getVisibleArt() {
-  const permanent = ART.filter(a => !ART_FLAGS[a.id]?.rotate && !ART_FLAGS[a.id]?.vault);
-  const rotationPool = ART.filter(a => ART_FLAGS[a.id]?.rotate);
-  if (!rotationPool.length) return ART;
-  // Deterministic rotation based on current date cycle
-  const cycleMs = ROTATION_CONFIG.CYCLE_DAYS * 24 * 60 * 60 * 1000;
-  const cycleIndex = Math.floor(Date.now() / cycleMs);
-  const offset = cycleIndex % rotationPool.length;
-  const rotated = [];
-  for (let i = 0; i < ROTATION_CONFIG.VISIBLE_COUNT && i < rotationPool.length; i++) {
-    rotated.push(rotationPool[(offset + i) % rotationPool.length]);
+  const pool = ART;
+  const SLOTS = ROTATION_CONFIG.VISIBLE_COUNT; // 18
+  const dayN = Math.floor(Date.now() / 86400000) - ROTATION_CONFIG.LAUNCH_DAY;
+  const visible = [];
+  for (let slot = 0; slot < SLOTS; slot++) {
+    // How many times has this slot rotated by today?
+    const rotations = Math.max(0, Math.floor((dayN - slot) / SLOTS));
+    // Piece index: start at slot, advance by SLOTS each rotation
+    const pieceIdx = (slot + rotations * SLOTS) % pool.length;
+    visible.push(pool[pieceIdx]);
   }
-  return [...permanent, ...rotated].sort((a,b) => ART.indexOf(a) - ART.indexOf(b));
+  // Sort by original ART array order for consistent display
+  return visible.sort((a, b) => pool.indexOf(a) - pool.indexOf(b));
 }
 
 function isRotating(id) { return ART_FLAGS[id]?.rotate === true; }
+
+/* ── Today's rotating slot (for badge display) ─────────────── */
+function getTodaySlot() {
+  const dayN = Math.floor(Date.now() / 86400000) - ROTATION_CONFIG.LAUNCH_DAY;
+  return dayN % ROTATION_CONFIG.VISIBLE_COUNT;
+}
 
 /* ── VAULT LOGIC ─────────────────────────────────────────── */
 function getVaultStatus() {
